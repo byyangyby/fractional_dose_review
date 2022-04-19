@@ -1,0 +1,982 @@
+Record_number,Author,Journal,Year,Vaccine,Vaccine_type,Manufacture,Group_ID,Group,Subgroup,Dose_level,Dose_concentration,Display_item,Time,Dosages,Measurement,N,Event,Risk
+15,"Xia, S",Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A1,"2ug, phase 1, adult",A,Lower,2,Table 2,7,Any,Solicited,24,11,46
+15,"Xia, S",Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A2,"4ug, phase 1, adult",A,Standard,4,Table 2,7,Any,Solicited,24,8,33
+15,"Xia, S",Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A3,"8ug, phase 1, adult",A,Higher,8,Table 2,7,Any,Solicited,24,11,46
+15,Xia. S,Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A4,"2ug, phase 1, elderly",B,Lower,2,Table 3,7,Any,Solicited,24,1,4
+15,Xia. S,Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A5,"4ug, phase 1, elderly",B,Standard,4,Table 3,7,Any,Solicited,24,6,25
+15,Xia. S,Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A6,"8ug, phase 1, elderly",B,Higher,8,Table 3,7,Any,Solicited,24,5,21
+15,"Xia, S",Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A1,"2ug, phase 1, adult",A,Lower,2,Table 2,28,Any,Overall,24,12,50
+15,"Xia, S",Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A2,"4ug, phase 1, adult",A,Standard,4,Table 2,28,Any,Overall,24,11,46
+15,"Xia, S",Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A3,"8ug, phase 1, adult",A,Higher,8,Table 2,28,Any,Overall,24,11,46
+15,Xia. S,Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A4,"2ug, phase 1, elderly",B,Lower,2,Table 3,28,Any,Overall,24,2,8
+15,Xia. S,Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A5,"4ug, phase 1, elderly",B,Standard,4,Table 3,28,Any,Overall,24,7,29
+15,Xia. S,Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A6,"8ug, phase 1, elderly",B,Higher,8,Table 3,28,Any,Overall,24,5,21
+15,"Xia, S",Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A1,"2ug, phase 1, adult",A,Lower,2,Table 2,7,Any,Local,24,NA,NA
+15,"Xia, S",Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A2,"4ug, phase 1, adult",A,Standard,4,Table 2,7,Any,Local,24,NA,NA
+15,"Xia, S",Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A3,"8ug, phase 1, adult",A,Higher,8,Table 2,7,Any,Local,24,NA,NA
+15,Xia. S,Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A4,"2ug, phase 1, elderly",B,Lower,2,Table 3,7,Any,Local,24,NA,NA
+15,Xia. S,Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A5,"4ug, phase 1, elderly",B,Standard,4,Table 3,7,Any,Local,24,NA,NA
+15,Xia. S,Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A6,"8ug, phase 1, elderly",B,Higher,8,Table 3,7,Any,Local,24,NA,NA
+15,"Xia, S",Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A1,"2ug, phase 1, adult",A,Lower,2,Table 2,7,Any,Systemic,24,NA,NA
+15,"Xia, S",Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A2,"4ug, phase 1, adult",A,Standard,4,Table 2,7,Any,Systemic,24,NA,NA
+15,"Xia, S",Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A3,"8ug, phase 1, adult",A,Higher,8,Table 2,7,Any,Systemic,24,NA,NA
+15,Xia. S,Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A4,"2ug, phase 1, elderly",B,Lower,2,Table 3,7,Any,Systemic,24,NA,NA
+15,Xia. S,Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A5,"4ug, phase 1, elderly",B,Standard,4,Table 3,7,Any,Systemic,24,NA,NA
+15,Xia. S,Lancet ID,2020,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A6,"8ug, phase 1, elderly",B,Higher,8,Table 3,7,Any,Systemic,24,NA,NA
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A1,"2ug, 3-5 yrs",A,Lower,2,Table 3,30,Full,Local,83,1,1.2
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A2,"4ug, 3-5 yrs",A,Standard,4,Table 3,30,Full,Local,84,4,4.76
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A3,"8ug, 3-5 yrs",A,Higher,8,Table 3,30,Full,Local,84,8,9.52
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A4,"2ug, 6-12 yrs",B,Lower,2,Table 4,30,Full,Local,84,8,9.52
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A5,"4ug, 6-12 yrs",B,Standard,4,Table 4,30,Full,Local,84,19,22.62
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A6,"8ug, 6-12 yrs",B,Higher,8,Table 4,30,Full,Local,84,11,13.1
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A7,"2ug, 13-17 yrs",C,Lower,2,Table 5,30,Full,Local,84,10,11.9
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A8,"4ug, 13-17 yrs",C,Standard,4,Table 5,30,Full,Local,84,13,15.48
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A9,"8ug, 13-17 yrs",C,Higher,8,Table 5,30,Full,Local,84,6,7.14
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A1,"2ug, 3-5 yrs",A,Lower,2,Table 3,30,Full,Systemic,83,14,16.87
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A2,"4ug, 3-5 yrs",A,Standard,4,Table 3,30,Full,Systemic,84,22,26.19
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A3,"8ug, 3-5 yrs",A,Higher,8,Table 3,30,Full,Systemic,84,28,33.33
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A4,"2ug, 6-12 yrs",B,Lower,2,Table 4,30,Full,Systemic,84,6,7.14
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A5,"4ug, 6-12 yrs",B,Standard,4,Table 4,30,Full,Systemic,84,6,7.14
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A6,"8ug, 6-12 yrs",B,Higher,8,Table 4,30,Full,Systemic,84,14,16.67
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A7,"2ug, 13-17 yrs",C,Lower,2,Table 5,30,Full,Systemic,84,28,33.33
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A8,"4ug, 13-17 yrs",C,Standard,4,Table 5,30,Full,Systemic,84,17,20.24
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A9,"8ug, 13-17 yrs",C,Higher,8,Table 5,30,Full,Systemic,84,12,14.29
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A1,"2ug, 3-5 yrs",A,Lower,2,Table 3,30,Full,Overall,83,15,18.1
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A2,"4ug, 3-5 yrs",A,Standard,4,Table 3,30,Full,Overall,84,27,32.1
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A3,"8ug, 3-5 yrs",A,Higher,8,Table 3,30,Full,Overall,84,36,42.9
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A4,"2ug, 6-12 yrs",B,Lower,2,Table 4,30,Full,Overall,84,15,17.9
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A5,"4ug, 6-12 yrs",B,Standard,4,Table 4,30,Full,Overall,84,25,29.8
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A6,"8ug, 6-12 yrs",B,Higher,8,Table 4,30,Full,Overall,84,25,29.8
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A7,"2ug, 13-17 yrs",C,Lower,2,Table 5,30,Full,Overall,84,38,45.2
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A8,"4ug, 13-17 yrs",C,Standard,4,Table 5,30,Full,Overall,84,30,3.6
+2382,"Xia, S",Lancet ID,2021,BBIBP-CorV,Inactivated,Sinopharm (Beijing),A9,"8ug, 13-17 yrs",C,Higher,8,Table 5,30,Full,Overall,84,18,21.4
+6,"Xia, S",JAMA,2020,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A1,"Low-dose, phase 1",A,None,2.5,Table 2,7,Full,Local,24,5,20.8
+6,"Xia, S",JAMA,2020,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A2,"Medium-dose, phase 1",A,None,5,Table 2,7,Full,Local,24,1,4.2
+6,"Xia, S",JAMA,2020,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A3,"High-dose, phase 1",A,None,10,Table 2,7,Full,Local,24,6,25
+6,"Xia, S",JAMA,2020,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A1,"Low-dose, phase 1",A,None,2.5,Table 2,7,Full,Systemic,24,0,0
+6,"Xia, S",JAMA,2020,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A2,"Medium-dose, phase 1",A,None,5,Table 2,7,Full,Systemic,24,3,12.5
+6,"Xia, S",JAMA,2020,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A3,"High-dose, phase 1",A,None,10,Table 2,7,Full,Systemic,24,1,4.2
+6,"Xia, S",JAMA,2020,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A1,"Low-dose, phase 1",A,None,2.5,Table 2,28,Full,Overall,24,5,20.8
+6,"Xia, S",JAMA,2020,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A2,"Medium-dose, phase 1",A,None,5,Table 2,28,Full,Overall,24,4,16.7
+6,"Xia, S",JAMA,2020,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A3,"High-dose, phase 1",A,None,10,Table 2,28,Full,Overall,24,6,25
+42,Ella. R,Lancet ID,2021,BBV152,Inactivated,Covaxin,A1,"Low-dose, Algel-IMDG",A,Lower,3,Table 2/Table S2,7,Partial,Local,100,5,5
+42,Ella. R,Lancet ID,2021,BBV152,Inactivated,Covaxin,A2,"High-dose, Algel-IMDG",A,Standard,6,Table 2/Table S2,7,Partial,Local,100,5,5
+42,Ella. R,Lancet ID,2021,BBV152,Inactivated,Covaxin,A1,"Low-dose, Algel-IMDG",A,Lower,3,Table 2/Table S2,7,Full,Local,100,2,2
+42,Ella. R,Lancet ID,2021,BBV152,Inactivated,Covaxin,A2,"High-dose, Algel-IMDG",A,Standard,6,Table 2/Table S2,7,Full,Local,100,1,1
+42,Ella. R,Lancet ID,2021,BBV152,Inactivated,Covaxin,A1,"Low-dose, Algel-IMDG",A,Lower,3,Table 2/Table S2,7,Partial,Systemic,100,5,5
+42,Ella. R,Lancet ID,2021,BBV152,Inactivated,Covaxin,A2,"High-dose, Algel-IMDG",A,Standard,6,Table 2/Table S2,7,Partial,Systemic,100,14,14
+42,Ella. R,Lancet ID,2021,BBV152,Inactivated,Covaxin,A1,"Low-dose, Algel-IMDG",A,Lower,3,Table 2/Table S2,7,Full,Systemic,100,5,5
+42,Ella. R,Lancet ID,2021,BBV152,Inactivated,Covaxin,A2,"High-dose, Algel-IMDG",A,Standard,6,Table 2/Table S2,7,Full,Systemic,100,1,1
+42,Ella. R,Lancet ID,2021,BBV152,Inactivated,Covaxin,A1,"Low-dose, Algel-IMDG",A,Lower,3,Table 2/Table S2,28,Partial,Unsolicited,100,NA,NA
+42,Ella. R,Lancet ID,2021,BBV152,Inactivated,Covaxin,A2,"High-dose, Algel-IMDG",A,Standard,6,Table 2/Table S2,28,Partial,Unsolicited,100,NA,NA
+42,Ella. R,Lancet ID,2021,BBV152,Inactivated,Covaxin,A1,"Low-dose, Algel-IMDG",A,Lower,3,Table 2/Table S2,28,Full,Unsolicited,100,NA,NA
+42,Ella. R,Lancet ID,2021,BBV152,Inactivated,Covaxin,A2,"High-dose, Algel-IMDG",A,Standard,6,Table 2/Table S2,28,Full,Unsolicited,100,NA,NA
+316,Ella. R,Lancet ID,2021,BBV152,Inactivated,Covaxin,A1,Low dose,A,Lower,3,Table 3/Text,7,Partial,Local,190,9,5
+316,Ella. R,Lancet ID,2021,BBV152,Inactivated,Covaxin,A2,High dose,A,Standard,6,Table 3/Text,7,Partial,Local,190,8,4
+316,Ella. R,Lancet ID,2021,BBV152,Inactivated,Covaxin,A1,Low dose,A,Lower,3,Table 3/Text,7,Full,Local,190,8,4
+316,Ella. R,Lancet ID,2021,BBV152,Inactivated,Covaxin,A2,High dose,A,Standard,6,Table 3/Text,7,Full,Local,190,7,4
+316,Ella. R,Lancet ID,2021,BBV152,Inactivated,Covaxin,A1,Low dose,A,Lower,3,Table 3/Text,7,Partial,Systemic,190,9,5
+316,Ella. R,Lancet ID,2021,BBV152,Inactivated,Covaxin,A2,High dose,A,Standard,6,Table 3/Text,7,Partial,Systemic,190,14,7
+316,Ella. R,Lancet ID,2021,BBV152,Inactivated,Covaxin,A1,Low dose,A,Lower,3,Table 3/Text,7,Any,Systemic,190,12,6
+316,Ella. R,Lancet ID,2021,BBV152,Inactivated,Covaxin,A2,High dose,A,Standard,6,Table 3/Text,7,Any,Systemic,190,11,6
+850,Che. Y,CID,2020,CAMS,Inactivated,Chinese Academy of Medical Sciences,A1,"Medium-dose, 14 days",A,Lower,100,Table 2,7,Any,Local,150,24,16
+850,Che. Y,CID,2020,CAMS,Inactivated,Chinese Academy of Medical Sciences,A2,"High dose, 14 days",A,Standard,150,Table 2,7,Any,Local,150,27,18
+850,Che. Y,CID,2020,CAMS,Inactivated,Chinese Academy of Medical Sciences,A3,"Medium-dose, 28 days",B,None,100,Table 2,7,Any,Local,150,22,14.7
+850,Che. Y,CID,2020,CAMS,Inactivated,Chinese Academy of Medical Sciences,A4,"High dose, 28 days",B,None,150,Table 2,7,Any,Local,150,18,12
+850,Che. Y,CID,2020,CAMS,Inactivated,Chinese Academy of Medical Sciences,A1,"Medium-dose, 14 days",A,Lower,100,Table 2,7,Any,Systemic,150,15,10
+850,Che. Y,CID,2020,CAMS,Inactivated,Chinese Academy of Medical Sciences,A2,"High dose, 14 days",A,Standard,150,Table 2,7,Any,Systemic,150,20,13.3
+850,Che. Y,CID,2020,CAMS,Inactivated,Chinese Academy of Medical Sciences,A3,"Medium-dose, 28 days",B,None,100,Table 2,7,Any,Systemic,150,20,13.3
+850,Che. Y,CID,2020,CAMS,Inactivated,Chinese Academy of Medical Sciences,A4,"High dose, 28 days",B,None,150,Table 2,7,Any,Systemic,150,12,8
+850,Che. Y,CID,2020,CAMS,Inactivated,Chinese Academy of Medical Sciences,A1,"Medium-dose, 14 days",A,Lower,100,Table 2,7,Any,Unsolicited,150,4,2.7
+850,Che. Y,CID,2020,CAMS,Inactivated,Chinese Academy of Medical Sciences,A2,"High dose, 14 days",A,Standard,150,Table 2,7,Any,Unsolicited,150,2,1.3
+850,Che. Y,CID,2020,CAMS,Inactivated,Chinese Academy of Medical Sciences,A3,"Medium-dose, 28 days",B,None,100,Table 2,7,Any,Unsolicited,150,11,7.3
+850,Che. Y,CID,2020,CAMS,Inactivated,Chinese Academy of Medical Sciences,A4,"High dose, 28 days",B,None,150,Table 2,7,Any,Unsolicited,150,5,3.3
+850,Che. Y,CID,2020,CAMS,Inactivated,Chinese Academy of Medical Sciences,A1,"Medium-dose, 14 days",A,Lower,100,Table 2,28,Any,Overall,150,36,24
+850,Che. Y,CID,2020,CAMS,Inactivated,Chinese Academy of Medical Sciences,A2,"High dose, 14 days",A,Standard,150,Table 2,28,Any,Overall,150,41,27.3
+850,Che. Y,CID,2020,CAMS,Inactivated,Chinese Academy of Medical Sciences,A3,"Medium-dose, 28 days",B,None,100,Table 2,28,Any,Overall,150,40,26.7
+850,Che. Y,CID,2020,CAMS,Inactivated,Chinese Academy of Medical Sciences,A4,"High dose, 28 days",B,None,150,Table 2,28,Any,Overall,150,29,19.3
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1,NA,A,Lower,1.5,appendix Table 2-4,7,Any,Local,57,NA,NA
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2,NA,A,Standard,3,appendix Table 2-4,7,Any,Local,56,NA,NA
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,NA,B,Lower,1.5,appendix Table 2-4,7,Any,Local,81,NA,NA
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A4,NA,B,Standard,3,appendix Table 2-4,7,Any,Local,81,NA,NA
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A5,NA,C,Lower,1.5,appendix Table 2-4,7,Any,Local,81,NA,NA
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A6,NA,C,Standard,3,appendix Table 2-4,7,Any,Local,80,NA,NA
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1,NA,A,Lower,1.5,appendix Table 2-4,7,Any,Systemic,57,NA,NA
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2,NA,A,Standard,3,appendix Table 2-4,7,Any,Systemic,56,NA,NA
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,NA,B,Lower,1.5,appendix Table 2-4,7,Any,Systemic,81,NA,NA
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A4,NA,B,Standard,3,appendix Table 2-4,7,Any,Systemic,81,NA,NA
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A5,NA,C,Lower,1.5,appendix Table 2-4,7,Any,Systemic,81,NA,NA
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A6,NA,C,Standard,3,appendix Table 2-4,7,Any,Systemic,80,NA,NA
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1,NA,A,Lower,1.5,appendix Table 2-4,7,Any,Solicited,57,12,21
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2,NA,A,Standard,3,appendix Table 2-4,7,Any,Solicited,56,14,25
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,NA,B,Lower,1.5,appendix Table 2-4,7,Any,Solicited,81,11,14
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A4,NA,B,Standard,3,appendix Table 2-4,7,Any,Solicited,81,15,19
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A5,NA,C,Lower,1.5,appendix Table 2-4,7,Any,Solicited,81,28,35
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A6,NA,C,Standard,3,appendix Table 2-4,7,Any,Solicited,80,30,38
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1,NA,A,Lower,1.5,appendix Table 2-4,28,Any,Unsolicited,57,2,4
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2,NA,A,Standard,3,appendix Table 2-4,28,Any,Unsolicited,56,6,11
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,NA,B,Lower,1.5,appendix Table 2-4,28,Any,Unsolicited,81,2,2
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A4,NA,B,Standard,3,appendix Table 2-4,28,Any,Unsolicited,81,5,6
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A5,NA,C,Lower,1.5,appendix Table 2-4,28,Any,Unsolicited,81,7,9
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A6,NA,C,Standard,3,appendix Table 2-4,28,Any,Unsolicited,80,4,5
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1,NA,A,Lower,1.5,appendix Table 2-4,28,Any,Overall,57,13,23
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2,NA,A,Standard,3,appendix Table 2-4,28,Any,Overall,56,15,27
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,NA,B,Lower,1.5,appendix Table 2-4,28,Any,Overall,81,12,15
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A4,NA,B,Standard,3,appendix Table 2-4,28,Any,Overall,81,18,22
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A5,NA,C,Lower,1.5,appendix Table 2-4,28,Any,Overall,81,31,38
+846,Han. B,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A6,NA,C,Standard,3,appendix Table 2-4,28,Any,Overall,80,30,38
+321,Wu. Z,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,NA,A,Lower,1.5,Table 2,28,Any,Local,100,13,13
+321,Wu. Z,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1/A4,NA,A,Standard,3,Table 2,28,Any,Local,125,15,12
+321,Wu. Z,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2/A5,NA,A,Higher,6,Table 2,28,Any,Local,123,13,11
+321,Wu. Z,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,NA,A,Lower,1.5,Table 2,28,Any,Systemic,100,10,10
+321,Wu. Z,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1/A4,NA,A,Standard,3,Table 2,28,Any,Systemic,125,13,10
+321,Wu. Z,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2/A5,NA,A,Higher,6,Table 2,28,Any,Systemic,123,18,15
+321,Wu. Z,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,NA,A,Lower,1.5,Table 2,28,Any,Overall,100,20,20
+321,Wu. Z,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1/A4,NA,A,Standard,3,Table 2,28,Any,Overall,125,25,20
+321,Wu. Z,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2/A5,NA,A,Higher,6,Table 2,28,Any,Overall,123,27,22
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1,"Low dose, 14 days interval, phase 1",A,Standard,3,appendix Table 3-1,28,Any,Local,24,4,16.7
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2,"High dose, 14 days interval, phase 1",A,Higher,6,appendix Table 3-1,28,Any,Local,24,5,20.8
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1,NA,A,Standard,3,appendix Table 3-2,14,Partial,Local,24,4,16.7
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2,NA,A,Higher,6,appendix Table 3-2,14,Partial,Local,24,4,16.7
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1,NA,A,Standard,3,appendix Table 3-2,28,Full,Local,24,1,4.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2,NA,A,Higher,6,appendix Table 3-2,28,Full,Local,24,3,12.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B1,"Low dose, 28 days interval, phase 1",B,Standard,3,appendix Table 3-3,28,Any,Local,24,3,12.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B2,"High dose, 28 days interval, phase 1",B,Higher,6,appendix Table 3-3,28,Any,Local,24,3,12.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B1,NA,B,Standard,3,appendix Table 3-4,28,Partial,Local,24,3,12.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B2,NA,B,Higher,6,appendix Table 3-4,28,Partial,Local,24,3,12.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B1,NA,B,Standard,3,appendix Table 3-4,28,Full,Local,24,1,4.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B2,NA,B,Higher,6,appendix Table 3-4,28,Full,Local,24,0,0
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,"Low dose, 14 days interval, phase 2",C,Standard,3,appendix Table 3-5,28,Any,Local,120,28,23.3
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A4,"High dose, 14 days interval, phase 2",C,Higher,6,appendix Table 3-5,28,Any,Local,120,33,27.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,NA,C,Standard,3,appendix Table 3-6,14,Partial,Local,120,13,10.8
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A4,NA,C,Higher,6,appendix Table 3-6,14,Partial,Local,120,21,17.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,NA,C,Standard,3,appendix Table 3-6,28,Full,Local,120,17,14.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A4,NA,C,Higher,6,appendix Table 3-6,28,Full,Local,120,15,12.6
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B3,"Low dose, 28 days interval, phase 2",D,Standard,3,appendix Table 3-7,28,Any,Local,120,12,10
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B4,"High dose, 28 days interval, phase 2",D,Higher,6,appendix Table 3-7,28,Any,Local,120,16,13.3
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B3,NA,D,Standard,3,appendix Table 3-8,28,Partial,Local,120,9,7.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B4,NA,D,Higher,6,appendix Table 3-8,28,Partial,Local,120,15,12.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B3,NA,D,Standard,3,appendix Table 3-8,28,Full,Local,117,3,2.6
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B4,NA,D,Higher,6,appendix Table 3-8,28,Full,Local,118,8,6.8
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1,"Low dose, 14 days interval, phase 1",A,Standard,3,appendix Table 3-1,28,Any,Systemic,24,3,12.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2,"High dose, 14 days interval, phase 1",A,Higher,6,appendix Table 3-1,28,Any,Systemic,24,4,16.7
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1,NA,A,Standard,3,appendix Table 3-2,14,Partial,Systemic,24,2,8.3
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2,NA,A,Higher,6,appendix Table 3-2,14,Partial,Systemic,24,2,8.3
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1,NA,A,Standard,3,appendix Table 3-2,28,Full,Systemic,24,0,0
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2,NA,A,Higher,6,appendix Table 3-2,28,Full,Systemic,24,2,8.3
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B1,"Low dose, 28 days interval, phase 1",B,Standard,3,appendix Table 3-3,28,Any,Systemic,24,2,8.3
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B2,"High dose, 28 days interval, phase 1",B,Higher,6,appendix Table 3-3,28,Any,Systemic,24,2,8.3
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B1,NA,B,Standard,3,appendix Table 3-4,28,Partial,Systemic,24,1,4.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B2,NA,B,Higher,6,appendix Table 3-4,28,Partial,Systemic,24,1,4.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B1,NA,B,Standard,3,appendix Table 3-4,28,Full,Systemic,24,1,4.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B2,NA,B,Higher,6,appendix Table 3-4,28,Full,Systemic,24,1,4.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,"Low dose, 14 days interval, phase 2",C,Standard,3,appendix Table 3-5,28,Any,Systemic,120,19,15.8
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A4,"High dose, 14 days interval, phase 2",C,Higher,6,appendix Table 3-5,28,Any,Systemic,120,16,13.3
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,NA,C,Standard,3,appendix Table 3-6,14,Partial,Systemic,120,15,12.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A4,NA,C,Higher,6,appendix Table 3-6,14,Partial,Systemic,120,13,10.8
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,NA,C,Standard,3,appendix Table 3-6,28,Full,Systemic,120,5,4.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A4,NA,C,Higher,6,appendix Table 3-6,28,Full,Systemic,120,6,5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B3,"Low dose, 28 days interval, phase 2",D,Standard,3,appendix Table 3-7,28,Any,Systemic,120,14,11.7
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B4,"High dose, 28 days interval, phase 2",D,Higher,6,appendix Table 3-7,28,Any,Systemic,120,12,10
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B3,NA,D,Standard,3,appendix Table 3-8,28,Partial,Systemic,120,14,11.7
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B4,NA,D,Higher,6,appendix Table 3-8,28,Partial,Systemic,120,10,8.3
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B3,NA,D,Standard,3,appendix Table 3-8,28,Full,Systemic,117,4,3.4
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B4,NA,D,Higher,6,appendix Table 3-8,28,Full,Systemic,118,3,2.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1,"Low dose, 14 days interval, phase 1",A,Standard,3,appendix Table 3-1,28,Any,Solicited,24,6,25
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2,"High dose, 14 days interval, phase 1",A,Higher,6,appendix Table 3-1,28,Any,Solicited,24,9,37.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1,NA,A,Standard,3,appendix Table 3-2,14,Partial,Solicited,24,6,25
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2,NA,A,Higher,6,appendix Table 3-2,14,Partial,Solicited,24,6,25
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1,NA,A,Standard,3,appendix Table 3-2,28,Full,Solicited,24,1,4.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2,NA,A,Higher,6,appendix Table 3-2,28,Full,Solicited,24,5,20.8
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B1,"Low dose, 28 days interval, phase 1",B,Standard,3,appendix Table 3-3,28,Any,Solicited,24,3,12.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B2,"High dose, 28 days interval, phase 1",B,Higher,6,appendix Table 3-3,28,Any,Solicited,24,4,16.7
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B1,NA,B,Standard,3,appendix Table 3-4,28,Partial,Solicited,24,3,12.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B2,NA,B,Higher,6,appendix Table 3-4,28,Partial,Solicited,24,3,12.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B1,NA,B,Standard,3,appendix Table 3-4,28,Full,Solicited,24,2,8.3
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B2,NA,B,Higher,6,appendix Table 3-4,28,Full,Solicited,24,1,4.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,"Low dose, 14 days interval, phase 2",C,Standard,3,appendix Table 3-5,28,Any,Solicited,120,39,32.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A4,"High dose, 14 days interval, phase 2",C,Higher,6,appendix Table 3-5,28,Any,Solicited,120,40,33.3
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,NA,C,Standard,3,appendix Table 3-6,14,Partial,Solicited,120,23,19.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A4,NA,C,Higher,6,appendix Table 3-6,14,Partial,Solicited,120,27,22.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,NA,C,Standard,3,appendix Table 3-6,28,Full,Solicited,120,19,15.8
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A4,NA,C,Higher,6,appendix Table 3-6,28,Full,Solicited,120,20,16.8
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B3,"Low dose, 28 days interval, phase 2",D,Standard,3,appendix Table 3-7,28,Any,Solicited,120,23,19.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B4,"High dose, 28 days interval, phase 2",D,Higher,6,appendix Table 3-7,28,Any,Solicited,120,23,19.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B3,NA,D,Standard,3,appendix Table 3-8,28,Partial,Solicited,120,22,18.3
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B4,NA,D,Higher,6,appendix Table 3-8,28,Partial,Solicited,120,21,17.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B3,NA,D,Standard,3,appendix Table 3-8,28,Full,Solicited,117,7,6
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B4,NA,D,Higher,6,appendix Table 3-8,28,Full,Solicited,118,10,8.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1,"Low dose, 14 days interval, phase 1",A,Standard,3,appendix Table 3-1,28,Any,Unsolicited,24,1,4.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2,"High dose, 14 days interval, phase 1",A,Higher,6,appendix Table 3-1,28,Any,Unsolicited,24,2,8.3
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1,NA,A,Standard,3,appendix Table 3-2,14,Partial,Unsolicited,24,1,4.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2,NA,A,Higher,6,appendix Table 3-2,14,Partial,Unsolicited,24,2,8.3
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1,NA,A,Standard,3,appendix Table 3-2,28,Full,Unsolicited,24,0,0
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2,NA,A,Higher,6,appendix Table 3-2,28,Full,Unsolicited,24,0,0
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B1,"Low dose, 28 days interval, phase 1",B,Standard,3,appendix Table 3-3,28,Any,Unsolicited,24,0,0
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B2,"High dose, 28 days interval, phase 1",B,Higher,6,appendix Table 3-3,28,Any,Unsolicited,24,0,0
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B1,NA,B,Standard,3,appendix Table 3-4,28,Partial,Unsolicited,24,0,0
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B2,NA,B,Higher,6,appendix Table 3-4,28,Partial,Unsolicited,24,0,0
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B1,NA,B,Standard,3,appendix Table 3-4,28,Full,Unsolicited,24,0,0
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B2,NA,B,Higher,6,appendix Table 3-4,28,Full,Unsolicited,24,0,0
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,"Low dose, 14 days interval, phase 2",C,Standard,3,appendix Table 3-5,28,Any,Unsolicited,120,3,2.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A4,"High dose, 14 days interval, phase 2",C,Higher,6,appendix Table 3-5,28,Any,Unsolicited,120,3,2.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,NA,C,Standard,3,appendix Table 3-6,14,Partial,Unsolicited,120,2,1.7
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A4,NA,C,Higher,6,appendix Table 3-6,14,Partial,Unsolicited,120,3,2.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,NA,C,Standard,3,appendix Table 3-6,28,Full,Unsolicited,120,1,0.8
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A4,NA,C,Higher,6,appendix Table 3-6,28,Full,Unsolicited,120,0,0
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B3,"Low dose, 28 days interval, phase 2",D,Standard,3,appendix Table 3-7,28,Any,Unsolicited,120,0,0
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B4,"High dose, 28 days interval, phase 2",D,Higher,6,appendix Table 3-7,28,Any,Unsolicited,120,1,0.8
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B3,NA,D,Standard,3,appendix Table 3-8,28,Partial,Unsolicited,120,0,0
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B4,NA,D,Higher,6,appendix Table 3-8,28,Partial,Unsolicited,120,1,0.8
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B3,NA,D,Standard,3,appendix Table 3-8,28,Full,Unsolicited,117,0,0
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B4,NA,D,Higher,6,appendix Table 3-8,28,Full,Unsolicited,118,0,0
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1,"Low dose, 14 days interval, phase 1",A,Standard,3,appendix Table 3-1,28,Any,Overall,24,7,29.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2,"High dose, 14 days interval, phase 1",A,Higher,6,appendix Table 3-1,28,Any,Overall,24,9,37.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1,NA,A,Standard,3,appendix Table 3-2,14,Partial,Overall,24,7,29.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2,NA,A,Higher,6,appendix Table 3-2,14,Partial,Overall,24,6,25
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A1,NA,A,Standard,3,appendix Table 3-2,28,Full,Overall,24,1,4.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A2,NA,A,Higher,6,appendix Table 3-2,28,Full,Overall,24,5,20.8
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B1,"Low dose, 28 days interval, phase 1",B,Standard,3,appendix Table 3-3,28,Any,Overall,24,3,12.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B2,"High dose, 28 days interval, phase 1",B,Higher,6,appendix Table 3-3,28,Any,Overall,24,4,16.7
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B1,NA,B,Standard,3,appendix Table 3-4,28,Partial,Overall,24,3,12.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B2,NA,B,Higher,6,appendix Table 3-4,28,Partial,Overall,24,3,12.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B1,NA,B,Standard,3,appendix Table 3-4,28,Full,Overall,24,2,8.3
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B2,NA,B,Higher,6,appendix Table 3-4,28,Full,Overall,24,1,4.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,"Low dose, 14 days interval, phase 2",C,Standard,3,appendix Table 3-5,28,Any,Overall,120,40,33.3
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A4,"High dose, 14 days interval, phase 2",C,Higher,6,appendix Table 3-5,28,Any,Overall,120,42,35
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,NA,C,Standard,3,appendix Table 3-6,14,Partial,Overall,120,24,20
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A4,NA,C,Higher,6,appendix Table 3-6,14,Partial,Overall,120,29,24.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A3,NA,C,Standard,3,appendix Table 3-6,28,Full,Overall,120,20,16.7
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,A4,NA,C,Higher,6,appendix Table 3-6,28,Full,Overall,120,20,16.8
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B3,"Low dose, 28 days interval, phase 2",D,Standard,3,appendix Table 3-7,28,Any,Overall,120,23,19.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B4,"High dose, 28 days interval, phase 2",D,Higher,6,appendix Table 3-7,28,Any,Overall,120,23,19.2
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B3,NA,D,Standard,3,appendix Table 3-8,28,Partial,Overall,120,22,18.3
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B4,NA,D,Higher,6,appendix Table 3-8,28,Partial,Overall,120,21,17.5
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B3,NA,D,Standard,3,appendix Table 3-8,28,Full,Overall,117,7,6
+30,Zhang. Y,Lancet ID,2021,CoronaVac,Inactivated,Sinovac,B4,NA,D,Higher,6,appendix Table 3-8,28,Full,Overall,118,10,8.5
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,A1,"Low dose, phase 1",A,None,5,Table 2,28,Any,Local,24,4,17
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,A2,"High dose, phase 1",A,None,10,Table 2,28,Any,Local,24,4,17
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,A3,"Low dose, 14 days, phase 2",B,None,5,Table 2,28,Any,Local,100,11,11
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,A4,"High dose, 14 days, phase 2",B,None,10,Table 2,28,Any,Local,100,8,8
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,B1,"Low dose, 28 days, phase 2",C,Standard,5,Table 2,28,Any,Local,100,16,16
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,B2,"High dose, 28 days, phase 2",C,Higher,10,Table 2,28,Any,Local,100,18,18
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,A1,"Low dose, phase 1",A,None,5,Table 2,28,Any,Systemic,24,2,8
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,A2,"High dose, phase 1",A,None,10,Table 2,28,Any,Systemic,24,1,4
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,A3,"Low dose, 14 days, phase 2",B,None,5,Table 2,28,Any,Systemic,100,6,6
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,A4,"High dose, 14 days, phase 2",B,None,10,Table 2,28,Any,Systemic,100,11,11
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,B1,"Low dose, 28 days, phase 2",C,Standard,5,Table 2,28,Any,Systemic,100,6,6
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,B2,"High dose, 28 days, phase 2",C,Higher,10,Table 2,28,Any,Systemic,100,10,10
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,A1,"Low dose, phase 1",A,None,5,Table 2,28,Any,Unsolicited,24,7,29
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,A2,"High dose, phase 1",A,None,10,Table 2,28,Any,Unsolicited,24,3,13
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,A3,"Low dose, 14 days, phase 2",B,None,5,Table 2,28,Any,Unsolicited,100,0,0
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,A4,"High dose, 14 days, phase 2",B,None,10,Table 2,28,Any,Unsolicited,100,0,0
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,B1,"Low dose, 28 days, phase 2",C,Standard,5,Table 2,28,Any,Unsolicited,100,0,0
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,B2,"High dose, 28 days, phase 2",C,Higher,10,Table 2,28,Any,Unsolicited,100,0,0
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,A1,"Low dose, phase 1",A,None,5,Table 2,28,Any,Overall,24,13,54
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,A2,"High dose, phase 1",A,None,10,Table 2,28,Any,Overall,24,11,46
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,A3,"Low dose, 14 days, phase 2",B,None,5,Table 2,28,Any,Overall,100,16,16
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,A4,"High dose, 14 days, phase 2",B,None,10,Table 2,28,Any,Overall,100,19,19
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,B1,"Low dose, 28 days, phase 2",C,Standard,5,Table 2,28,Any,Overall,100,25,25
+312,Pan. H. X,Chinese Medical Journal,2021,KCONVAC,Inactivated,Minhai BioTech,B2,"High dose, 28 days, phase 2",C,Higher,10,Table 2,28,Any,Overall,100,26,26
+977,Guo. W,EClinicalMedicine,2021,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A1,"3 low doses, aged 18 to 59",A,None,2.5,Table 2,7,Any,Local,84,11,13.1
+977,Guo. W,EClinicalMedicine,2021,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A2,"3 middle doses, aged 18 to 59",A,None,5,Table 2,7,Any,Local,84,15,17.9
+977,Guo. W,EClinicalMedicine,2021,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A3,"3 high doses, aged 18 to 59",A,None,10,Table 2,7,Any,Local,84,21,25
+977,Guo. W,EClinicalMedicine,2021,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A4,"3 low doses, aged 60 and above",B,None,2.5,Table 2,7,Any,Local,84,2,2.4
+977,Guo. W,EClinicalMedicine,2021,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A5,"3 middle doses, aged 60 and above",B,None,5,Table 2,7,Any,Local,84,11,13.1
+977,Guo. W,EClinicalMedicine,2021,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A6,"3 high doses, aged 60 and above",B,None,10,Table 2,7,Any,Local,84,3,3.6
+977,Guo. W,EClinicalMedicine,2021,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A1,"3 low doses, aged 18 to 59",A,None,2.5,Table 2,7,Any,Systemic,84,3,3.6
+977,Guo. W,EClinicalMedicine,2021,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A2,"3 middle doses, aged 18 to 59",A,None,5,Table 2,7,Any,Systemic,84,4,4.8
+977,Guo. W,EClinicalMedicine,2021,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A3,"3 high doses, aged 18 to 59",A,None,10,Table 2,7,Any,Systemic,84,1,1.2
+977,Guo. W,EClinicalMedicine,2021,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A4,"3 low doses, aged 60 and above",B,None,2.5,Table 2,7,Any,Systemic,84,2,2.4
+977,Guo. W,EClinicalMedicine,2021,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A5,"3 middle doses, aged 60 and above",B,None,5,Table 2,7,Any,Systemic,84,4,4.8
+977,Guo. W,EClinicalMedicine,2021,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A6,"3 high doses, aged 60 and above",B,None,10,Table 2,7,Any,Systemic,84,4,4.8
+977,Guo. W,EClinicalMedicine,2021,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A1,"3 low doses, aged 18 to 59",A,None,2.5,Table 2,7,Any,Unsolicited,84,0,0
+977,Guo. W,EClinicalMedicine,2021,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A2,"3 middle doses, aged 18 to 59",A,None,5,Table 2,7,Any,Unsolicited,84,0,0
+977,Guo. W,EClinicalMedicine,2021,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A3,"3 high doses, aged 18 to 59",A,None,10,Table 2,7,Any,Unsolicited,84,0,0
+977,Guo. W,EClinicalMedicine,2021,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A4,"3 low doses, aged 60 and above",B,None,2.5,Table 2,7,Any,Unsolicited,84,0,0
+977,Guo. W,EClinicalMedicine,2021,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A5,"3 middle doses, aged 60 and above",B,None,5,Table 2,7,Any,Unsolicited,84,0,0
+977,Guo. W,EClinicalMedicine,2021,Sinopharm (Wuhan),Inactivated,Sinopharm (Wuhan),A6,"3 high doses, aged 60 and above",B,None,10,Table 2,7,Any,Unsolicited,84,0,0
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A1,"Low-dose plus AF03, aged 18 to 49",A,None,1.3,Table S6,7,Partial,Local,16,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B1,"Low-dose plus AS03, aged 18 to 49",B,None,2.6,Table S6,7,Partial,Local,51,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A2,"High-dose plus AF03, aged 18 to 49",A,None,1.3,Table S6,7,Partial,Local,17,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B2,"High-dose plus AS03, aged 18 to 49",B,None,2.6,Table S6,7,Partial,Local,54,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A3,"Low-dose plus AF03, aged above 50",C,None,1.3,Table S6,7,Partial,Local,10,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B3,"Low-dose plus AS03, aged above 50",D,None,2.6,Table S6,7,Partial,Local,28,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A4,"High-dose plus AF03, aged above 50",C,None,1.3,Table S6,7,Partial,Local,9,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B4,"High-dose plus AS03, aged above 50",D,None,2.6,Table S6,7,Partial,Local,31,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A1,"Low-dose plus AF03, aged 18 to 49",A,None,1.3,Table S6,7,Partial,Systemic,16,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B1,"Low-dose plus AS03, aged 18 to 49",B,None,2.6,Table S6,7,Partial,Systemic,51,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A2,"High-dose plus AF03, aged 18 to 49",A,None,1.3,Table S6,7,Partial,Systemic,17,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B2,"High-dose plus AS03, aged 18 to 49",B,None,2.6,Table S6,7,Partial,Systemic,54,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A3,"Low-dose plus AF03, aged above 50",C,None,1.3,Table S6,7,Partial,Systemic,10,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B3,"Low-dose plus AS03, aged above 50",D,None,2.6,Table S6,7,Partial,Systemic,28,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A4,"High-dose plus AF03, aged above 50",C,None,1.3,Table S6,7,Partial,Systemic,9,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B4,"High-dose plus AS03, aged above 50",D,None,2.6,Table S6,7,Partial,Systemic,31,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A1,"Low-dose plus AF03, aged 18 to 49",A,None,1.3,Table S6,21,Partial,Unsolicited,16,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B1,"Low-dose plus AS03, aged 18 to 49",B,None,2.6,Table S6,21,Partial,Unsolicited,51,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A2,"High-dose plus AF03, aged 18 to 49",A,None,1.3,Table S6,21,Partial,Unsolicited,17,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B2,"High-dose plus AS03, aged 18 to 49",B,None,2.6,Table S6,21,Partial,Unsolicited,54,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A3,"Low-dose plus AF03, aged above 50",C,None,1.3,Table S6,21,Partial,Unsolicited,10,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B3,"Low-dose plus AS03, aged above 50",D,None,2.6,Table S6,21,Partial,Unsolicited,28,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A4,"High-dose plus AF03, aged above 50",C,None,1.3,Table S6,21,Partial,Unsolicited,9,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B4,"High-dose plus AS03, aged above 50",D,None,2.6,Table S6,21,Partial,Unsolicited,31,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A1,"Low-dose plus AF03, aged 18 to 49",A,None,1.3,Table S6,7,Full,Local,16,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B1,"Low-dose plus AS03, aged 18 to 49",B,None,2.6,Table S6,7,Full,Local,51,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A2,"High-dose plus AF03, aged 18 to 49",A,None,1.3,Table S6,7,Full,Local,17,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B2,"High-dose plus AS03, aged 18 to 49",B,None,2.6,Table S6,7,Full,Local,54,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A3,"Low-dose plus AF03, aged above 50",C,None,1.3,Table S6,7,Full,Local,10,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B3,"Low-dose plus AS03, aged above 50",D,None,2.6,Table S6,7,Full,Local,28,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A4,"High-dose plus AF03, aged above 50",C,None,1.3,Table S6,7,Full,Local,9,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B4,"High-dose plus AS03, aged above 50",D,None,2.6,Table S6,7,Full,Local,31,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A1,"Low-dose plus AF03, aged 18 to 49",A,None,1.3,Table S6,7,Full,Systemic,16,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B1,"Low-dose plus AS03, aged 18 to 49",B,None,2.6,Table S6,7,Full,Systemic,51,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A2,"High-dose plus AF03, aged 18 to 49",A,None,1.3,Table S6,7,Full,Systemic,17,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B2,"High-dose plus AS03, aged 18 to 49",B,None,2.6,Table S6,7,Full,Systemic,54,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A3,"Low-dose plus AF03, aged above 50",C,None,1.3,Table S6,7,Full,Systemic,10,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B3,"Low-dose plus AS03, aged above 50",D,None,2.6,Table S6,7,Full,Systemic,28,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A4,"High-dose plus AF03, aged above 50",C,None,1.3,Table S6,7,Full,Systemic,9,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B4,"High-dose plus AS03, aged above 50",D,None,2.6,Table S6,7,Full,Systemic,31,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A1,"Low-dose plus AF03, aged 18 to 49",A,None,1.3,Table S6,21,Full,Unsolicited,16,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B1,"Low-dose plus AS03, aged 18 to 49",B,None,2.6,Table S6,21,Full,Unsolicited,51,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A2,"High-dose plus AF03, aged 18 to 49",A,None,1.3,Table S6,21,Full,Unsolicited,17,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B2,"High-dose plus AS03, aged 18 to 49",B,None,2.6,Table S6,21,Full,Unsolicited,54,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A3,"Low-dose plus AF03, aged above 50",C,None,1.3,Table S6,21,Full,Unsolicited,10,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B3,"Low-dose plus AS03, aged above 50",D,None,2.6,Table S6,21,Full,Unsolicited,28,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,A4,"High-dose plus AF03, aged above 50",C,None,1.3,Table S6,21,Full,Unsolicited,9,NA,NA
+906,Goepfert. P. A,Lancet ID,2021,CoV2 preS dTM,Recombinant,Sanofi/GSK,B4,"High-dose plus AS03, aged above 50",D,None,2.6,Table S6,21,Full,Unsolicited,31,NA,NA
+812,Chappell. K. J,The Lancet,2021,Sclamp,Recombinant,Queensland,A1,NA,A,None,5,"sup Table 2.2, 2.3",7,Partial,Local,24,NA,NA
+812,Chappell. K. J,The Lancet,2021,Sclamp,Recombinant,Queensland,A2,NA,A,None,15,"sup Table 2.2, 2.3",7,Partial,Local,24,NA,NA
+812,Chappell. K. J,The Lancet,2021,Sclamp,Recombinant,Queensland,A3,NA,A,None,45,"sup Table 2.2, 2.3",7,Partial,Local,48,NA,NA
+812,Chappell. K. J,The Lancet,2021,Sclamp,Recombinant,Queensland,A1,NA,A,None,5,"sup Table 2.2, 2.3",7,Full,Local,24,NA,NA
+812,Chappell. K. J,The Lancet,2021,Sclamp,Recombinant,Queensland,A2,NA,A,None,15,"sup Table 2.2, 2.3",7,Full,Local,22,NA,NA
+812,Chappell. K. J,The Lancet,2021,Sclamp,Recombinant,Queensland,A3,NA,A,None,45,"sup Table 2.2, 2.3",7,Full,Local,21,NA,NA
+812,Chappell. K. J,The Lancet,2021,Sclamp,Recombinant,Queensland,A1,NA,A,None,5,"sup Table 2.2, 2.3",7,Partial,Systemic,24,NA,NA
+812,Chappell. K. J,The Lancet,2021,Sclamp,Recombinant,Queensland,A2,NA,A,None,15,"sup Table 2.2, 2.3",7,Partial,Systemic,24,NA,NA
+812,Chappell. K. J,The Lancet,2021,Sclamp,Recombinant,Queensland,A3,NA,A,None,45,"sup Table 2.2, 2.3",7,Partial,Systemic,48,NA,NA
+812,Chappell. K. J,The Lancet,2021,Sclamp,Recombinant,Queensland,A1,NA,A,None,5,"sup Table 2.2, 2.3",7,Full,Systemic,24,NA,NA
+812,Chappell. K. J,The Lancet,2021,Sclamp,Recombinant,Queensland,A2,NA,A,None,15,"sup Table 2.2, 2.3",7,Full,Systemic,22,NA,NA
+812,Chappell. K. J,The Lancet,2021,Sclamp,Recombinant,Queensland,A3,NA,A,None,45,"sup Table 2.2, 2.3",7,Full,Systemic,21,NA,NA
+812,Chappell. K. J,The Lancet,2021,Sclamp,Recombinant,Queensland,A1,NA,A,None,5,Text,NA,Any,Solicited,24,22,92
+812,Chappell. K. J,The Lancet,2021,Sclamp,Recombinant,Queensland,A2,NA,A,None,15,Text,NA,Any,Solicited,24,23,96
+812,Chappell. K. J,The Lancet,2021,Sclamp,Recombinant,Queensland,A3,NA,A,None,45,Text,NA,Any,Solicited,24,21,88
+812,Chappell. K. J,The Lancet,2021,Sclamp,Recombinant,Queensland,A1,NA,A,None,5,sup Table 2.1,NA,Any,Unsolicited,24,13,54.2
+812,Chappell. K. J,The Lancet,2021,Sclamp,Recombinant,Queensland,A2,NA,A,None,15,sup Table 2.1,NA,Any,Unsolicited,24,7,29.2
+812,Chappell. K. J,The Lancet,2021,Sclamp,Recombinant,Queensland,A3,NA,A,None,45,sup Table 2.1,NA,Any,Unsolicited,24,7,29.2
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A1,Low dose,A,Lower,5,appendix Table S2,7,Any,Local,15,13,86.7
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A2,Medium dose,A,Standard,15,appendix Table S2,7,Any,Local,15,12,80
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A3,High dose,A,Higher,25,appendix Table S2,7,Any,Local,15,11,73.3
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A1,Low dose,A,Lower,5,appendix Table S2,7,Partial,Local,15,11,73.3
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A2,Medium dose,A,Standard,15,appendix Table S2,7,Partial,Local,15,12,80
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A3,High dose,A,Higher,25,appendix Table S2,7,Partial,Local,15,11,73.3
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A1,Low dose,A,Lower,5,appendix Table S2,7,Full,Local,15,10,66.7
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A2,Medium dose,A,Standard,15,appendix Table S2,7,Full,Local,15,8,53.3
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A3,High dose,A,Higher,25,appendix Table S2,7,Full,Local,15,9,60
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A1,Low dose,A,Lower,5,appendix Table S2,7,Any,Systemic,15,4,26.7
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A2,Medium dose,A,Standard,15,appendix Table S2,7,Any,Systemic,15,6,40
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A3,High dose,A,Higher,25,appendix Table S2,7,Any,Systemic,15,6,40
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A1,Low dose,A,Lower,5,appendix Table S2,7,Partial,Systemic,15,2,13.3
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A2,Medium dose,A,Standard,15,appendix Table S2,7,Partial,Systemic,15,5,33.3
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A3,High dose,A,Higher,25,appendix Table S2,7,Partial,Systemic,15,6,40
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A1,Low dose,A,Lower,5,appendix Table S2,7,Full,Systemic,15,4,26.7
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A2,Medium dose,A,Standard,15,appendix Table S2,7,Full,Systemic,15,1,6.7
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A3,High dose,A,Higher,25,appendix Table S2,7,Full,Systemic,15,4,26.7
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A1,Low dose,A,Lower,5,appendix Table S2,7,Any,Solicited,15,14,93.3
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A2,Medium dose,A,Standard,15,appendix Table S2,7,Any,Solicited,15,12,80
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A3,High dose,A,Higher,25,appendix Table S2,7,Any,Solicited,15,12,80
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A1,Low dose,A,Lower,5,appendix Table S2,7,Partial,Solicited,15,12,80
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A2,Medium dose,A,Standard,15,appendix Table S2,7,Partial,Solicited,15,12,80
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A3,High dose,A,Higher,25,appendix Table S2,7,Partial,Solicited,15,12,80
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A1,Low dose,A,Lower,5,appendix Table S2,7,Full,Solicited,15,11,73.3
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A2,Medium dose,A,Standard,15,appendix Table S2,7,Full,Solicited,15,8,53.3
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A3,High dose,A,Higher,25,appendix Table S2,7,Full,Solicited,15,9,60
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A1,Low dose,A,Lower,5,appendix Table S2,28,Any,Unsolicited,15,12,80
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A2,Medium dose,A,Standard,15,appendix Table S2,28,Any,Unsolicited,15,9,60
+926,Hsieh. S.M,EClinicalMedicine,2021,MVC-COV1901,Recombinant,Medigen,A3,High dose,A,Higher,25,appendix Table S2,28,Any,Unsolicited,15,11,73.3
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A1,"Group B, young",A,Standard,5,appendix Table F,NA,Partial,Local,139,87,62.6
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A2,"Group C, young",B,None,5,appendix Table F,NA,Partial,Local,138,92,66.7
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A3,"Group D, young",A,Higher,25,appendix Table F,NA,Partial,Local,139,104,74.8
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A4,"Group E, young",B,None,25,appendix Table F,NA,Partial,Local,136,105,77.2
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A5,"Group B, elderly",C,Standard,5,appendix Table F,NA,Partial,Local,114,44,38.6
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A6,"Group C, elderly",D,None,5,appendix Table F,NA,Partial,Local,117,43,36.8
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A7,"Group D, elderly",C,Higher,25,appendix Table F,NA,Partial,Local,113,50,44.2
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A8,"Group E, elderly",D,None,25,appendix Table F,NA,Partial,Local,117,70,59.8
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A1,"Group B, young",A,Standard,5,appendix Table G,NA,Full,Local,137,105,76.6
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A2,"Group C, young",B,None,5,appendix Table G,NA,Full,Local,136,19,14
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A3,"Group D, young",A,Higher,25,appendix Table G,NA,Full,Local,137,126,92
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A4,"Group E, young",B,None,25,appendix Table G,NA,Full,Local,137,9,7.1
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A5,"Group B, elderly",C,Standard,5,appendix Table G,NA,Full,Local,113,70,61.9
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A6,"Group C, elderly",D,None,5,appendix Table G,NA,Full,Local,113,8,7.1
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A7,"Group D, elderly",C,Higher,25,appendix Table G,NA,Full,Local,110,74,67.3
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A8,"Group E, elderly",D,None,25,appendix Table G,NA,Full,Local,109,11,10.1
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A1,"Group B, young",A,Standard,5,appendix Table F,NA,Partial,Systemic,139,68,48.9
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A2,"Group C, young",B,None,5,appendix Table F,NA,Partial,Systemic,138,66,47.8
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A3,"Group D, young",A,Higher,25,appendix Table F,NA,Partial,Systemic,139,79,56.8
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A4,"Group E, young",B,None,25,appendix Table F,NA,Partial,Systemic,136,60,44.1
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A5,"Group B, elderly",C,Standard,5,appendix Table F,NA,Partial,Systemic,114,44,37.9
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A6,"Group C, elderly",D,None,5,appendix Table F,NA,Partial,Systemic,117,36,30.8
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A7,"Group D, elderly",C,Higher,25,appendix Table F,NA,Partial,Systemic,113,33,29.2
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A8,"Group E, elderly",D,None,25,appendix Table F,NA,Partial,Systemic,117,40,34.2
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A1,"Group B, young",A,Standard,5,appendix Table G,NA,Full,Systemic,137,88,64.2
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A2,"Group C, young",B,None,5,appendix Table G,NA,Full,Systemic,136,46,33.8
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A3,"Group D, young",A,Higher,25,appendix Table G,NA,Full,Systemic,137,101,73.7
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A4,"Group E, young",B,None,25,appendix Table G,NA,Full,Systemic,137,29,22.8
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A5,"Group B, elderly",C,Standard,5,appendix Table G,NA,Full,Systemic,113,44,38.9
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A6,"Group C, elderly",D,None,5,appendix Table G,NA,Full,Systemic,113,25,22.1
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A7,"Group D, elderly",C,Higher,25,appendix Table G,NA,Full,Systemic,110,56,50.9
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A8,"Group E, elderly",D,None,25,appendix Table G,NA,Full,Systemic,109,22,20.4
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A1/A5,Group B,AC,Standard,5,appendix Table F,35,Any,Unsolicited,258,51,19.8
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A2/A6,Group C,BD,None,5,appendix Table F,35,Any,Unsolicited,256,35,13.7
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A3/A7,Group D,AC,Higher,25,appendix Table F,35,Any,Unsolicited,259,52,20.1
+1582,Formica. N,PLoS Med,2021,NVX-CoV2373,Recombinant,Novavax,A4/A8,Group E,BD,None,25,appendix Table F,35,Any,Unsolicited,255,43,16.9
+11,Keech. C,NEw England Journal of Medicine,2020,NVX-CoV2373,Recombinant,Novavax,A1,Group C,A,Standard,5,appendix Table S7,14,Partial,Local,26,18,69.2
+11,Keech. C,New England Journal of Medicine,2020,NVX-CoV2373,Recombinant,Novavax,A2,Group D,A,Higher,25,appendix Table S7,14,Partial,Local,25,15,60
+11,Keech. C,New England Journal of Medicine,2020,NVX-CoV2373,Recombinant,Novavax,A1,Group C,A,Standard,5,appendix Table S7,14,Full,Local,26,24,92.3
+11,Keech. C,New England Journal of Medicine,2020,NVX-CoV2373,Recombinant,Novavax,A2,Group D,A,Higher,25,appendix Table S7,14,Full,Local,24,19,79.2
+11,Keech. C,NEw England Journal of Medicine,2020,NVX-CoV2373,Recombinant,Novavax,A1,Group C,A,Standard,5,appendix Table S7,14,Partial,Systemic,26,12,46.2
+11,Keech. C,New England Journal of Medicine,2020,NVX-CoV2373,Recombinant,Novavax,A2,Group D,A,Higher,25,appendix Table S7,14,Partial,Systemic,25,14,56
+11,Keech. C,New England Journal of Medicine,2020,NVX-CoV2373,Recombinant,Novavax,A1,Group C,A,Standard,5,appendix Table S7,14,Full,Systemic,26,17,65.4
+11,Keech. C,New England Journal of Medicine,2020,NVX-CoV2373,Recombinant,Novavax,A2,Group D,A,Higher,25,appendix Table S7,14,Full,Systemic,24,18,75
+11,Keech. C,New England Journal of Medicine,2020,NVX-CoV2373,Recombinant,Novavax,A1,Group C,A,Standard,5,Text,14,Any,Unsolicited,NA,NA,NA
+11,Keech. C,New England Journal of Medicine,2020,NVX-CoV2373,Recombinant,Novavax,A2,Group D,A,Higher,25,Text,14,Any,Unsolicited,NA,NA,NA
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,A1/A4,NA,A,Lower,3,Figure 2,7,Partial,Local,16,7,43.8
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,A2/A5,NA,A,Standard,9,Figure 2,7,Partial,Local,16,8,50
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,A3/A6,NA,A,Higher,30,Figure 2,7,Partial,Local,16,9,56.3
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,B1/B4,NA,B,Lower,3,Figure 2,7,Partial,Local,16,1,6.3
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,B2/B5,NA,B,Standard,9,Figure 2,7,Partial,Local,16,5,31.3
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,B3/B6,NA,B,Standard,30,Figure 2,7,Partial,Local,16,7,43.8
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,A1/A4,NA,A,Lower,3,Figure 2,7,Full,Local,16,8,50
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,A2/A5,NA,A,Standard,9,Figure 2,7,Full,Local,16,11,68.8
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,A3/A6,NA,A,Higher,30,Figure 2,7,Full,Local,16,8,50
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,B1/B4,NA,B,Lower,3,Figure 2,7,Full,Local,16,2,12.5
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,B2/B5,NA,B,Standard,9,Figure 2,7,Full,Local,15,5,33.3
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,B3/B6,NA,B,Standard,30,Figure 2,7,Full,Local,16,7,43.8
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,A1/A4,NA,A,Lower,3,Figure 2,7,Partial,Systemic,16,6,37.5
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,A2/A5,NA,A,Standard,9,Figure 2,7,Partial,Systemic,16,4,25
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,A3/A6,NA,A,Higher,30,Figure 2,7,Partial,Systemic,16,6,37.5
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,B1/B4,NA,B,Lower,3,Figure 2,7,Partial,Systemic,16,4,25
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,B2/B5,NA,B,Standard,9,Figure 2,7,Partial,Systemic,16,6,37.5
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,B3/B6,NA,B,Standard,30,Figure 2,7,Partial,Systemic,16,3,18.8
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,A1/A4,NA,A,Lower,3,Figure 2,7,Full,Systemic,16,8,50
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,A2/A5,NA,A,Standard,9,Figure 2,7,Full,Systemic,16,9,56.3
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,A3/A6,NA,A,Higher,30,Figure 2,7,Full,Systemic,16,7,43.8
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,B1/B4,NA,B,Lower,3,Figure 2,7,Full,Systemic,16,4,25
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,B2/B5,NA,B,Standard,9,Figure 2,7,Full,Systemic,15,2,13.3
+285,Richmond. P,Lancet,2021,SCB-2019,Recombinant,Clover,B3/B6,NA,B,Standard,30,Figure 2,7,Full,Systemic,16,5,31.3
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,A1,"Low-dose, phase 1, 2 doses, 28 days, adult",A,None,20,Table 2,7,Any,Local,24,3,13
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,A2,"High-dose, phase 1, 2 doses, 28 days, adult",A,None,40,Table 2,7,Any,Local,24,3,13
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,A3,"Low-dose, phase 1, 2 doses, 28 days, elderly",B,None,20,Table 2,7,Any,Local,18,1,6
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,A4,"High-dose, phase 1, 2 doses, 28 days, elderly",B,None,40,Table 2,7,Any,Local,18,2,11
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,C1,"Low-dose, phase 2, 2 doses, 21 days, adult",C,None,20,Table 3,7,Any,Local,100,6,6
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,C2,"High-dose, phase 2, 2 doses, 21 days, adult",C,None,40,Table 3,7,Any,Local,100,16,16
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,B3,"Low-dose, phase 2, 3 doses, 28 days, adult",D,Lower,20,Table 3,7,Any,Local,100,13,13
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,B4,"High-dose, phase 2, 3 doses, 28 days, adult",D,Standard,40,Table 3,7,Any,Local,100,25,25
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,C3,"Low-dose, phase 2, 2 doses, 21 days, elderly",E,None,20,Table 3,7,Any,Local,100,4,4
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,C4,"High-dose, phase 2, 2 doses, 21 days, elderly",E,None,40,Table 3,7,Any,Local,100,9,9
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,B5,"Low-dose, phase 2, 3 doses, 28 days, elderly",F,Lower,20,Table 3,7,Any,Local,100,10,10
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,B6,"High-dose, phase 2, 3 doses, 28 days, elderly",F,Standard,40,Table 3,7,Any,Local,100,8,8
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,A1,"Low-dose, phase 1, 2 doses, 28 days, adult",A,None,20,Table 2,7,Any,Systemic,24,3,13
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,A2,"High-dose, phase 1, 2 doses, 28 days, adult",A,None,40,Table 2,7,Any,Systemic,24,5,21
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,A3,"Low-dose, phase 1, 2 doses, 28 days, elderly",B,None,20,Table 2,7,Any,Systemic,18,1,6
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,A4,"High-dose, phase 1, 2 doses, 28 days, elderly",B,None,40,Table 2,7,Any,Systemic,18,2,11
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,C1,"Low-dose, phase 2, 2 doses, 21 days, adult",C,None,20,Table 3,7,Any,Systemic,100,12,12
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,C2,"High-dose, phase 2, 2 doses, 21 days, adult",C,None,40,Table 3,7,Any,Systemic,100,7,7
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,B3,"Low-dose, phase 2, 3 doses, 28 days, adult",D,Lower,20,Table 3,7,Any,Systemic,100,10,10
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,B4,"High-dose, phase 2, 3 doses, 28 days, adult",D,Standard,40,Table 3,7,Any,Systemic,100,9,9
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,C3,"Low-dose, phase 2, 2 doses, 21 days, elderly",E,None,20,Table 3,7,Any,Systemic,100,6,6
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,C4,"High-dose, phase 2, 2 doses, 21 days, elderly",E,None,40,Table 3,7,Any,Systemic,100,3,3
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,B5,"Low-dose, phase 2, 3 doses, 28 days, elderly",F,Lower,20,Table 3,7,Any,Systemic,100,12,12
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,B6,"High-dose, phase 2, 3 doses, 28 days, elderly",F,Standard,40,Table 3,7,Any,Systemic,100,10,10
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,A1,"Low-dose, phase 1, 2 doses, 28 days, adult",A,None,20,Table 2,7,Any,Solicited,24,5,21
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,A2,"High-dose, phase 1, 2 doses, 28 days, adult",A,None,40,Table 2,7,Any,Solicited,24,7,29
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,A3,"Low-dose, phase 1, 2 doses, 28 days, elderly",B,None,20,Table 2,7,Any,Solicited,18,2,11
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,A4,"High-dose, phase 1, 2 doses, 28 days, elderly",B,None,40,Table 2,7,Any,Solicited,18,3,17
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,C1,"Low-dose, phase 2, 2 doses, 21 days, adult",C,None,20,Table 3,7,Any,Solicited,100,16,16
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,C2,"High-dose, phase 2, 2 doses, 21 days, adult",C,None,40,Table 3,7,Any,Solicited,100,19,19
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,B3,"Low-dose, phase 2, 3 doses, 28 days, adult",D,Lower,20,Table 3,7,Any,Solicited,100,22,22
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,B4,"High-dose, phase 2, 3 doses, 28 days, adult",D,Standard,40,Table 3,7,Any,Solicited,100,30,30
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,C3,"Low-dose, phase 2, 2 doses, 21 days, elderly",E,None,20,Table 3,7,Any,Solicited,100,10,10
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,C4,"High-dose, phase 2, 2 doses, 21 days, elderly",E,None,40,Table 3,7,Any,Solicited,100,12,12
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,B5,"Low-dose, phase 2, 3 doses, 28 days, elderly",F,Lower,20,Table 3,7,Any,Solicited,100,18,18
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,B6,"High-dose, phase 2, 3 doses, 28 days, elderly",F,Standard,40,Table 3,7,Any,Solicited,100,16,16
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,A1,"Low-dose, phase 1, 2 doses, 28 days, adult",A,None,20,Table S2,28,Any,Unsolicited,24,1,4
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,A2,"High-dose, phase 1, 2 doses, 28 days, adult",A,None,40,Table S2,28,Any,Unsolicited,24,3,13
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,A3,"Low-dose, phase 1, 2 doses, 28 days, elderly",B,None,20,Table S2,28,Any,Unsolicited,18,0,0
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,A4,"High-dose, phase 1, 2 doses, 28 days, elderly",B,None,40,Table S2,28,Any,Unsolicited,18,1,6
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,C1,"Low-dose, phase 2, 2 doses, 21 days, adult",C,None,20,Table S2,28,Any,Unsolicited,100,2,2
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,C2,"High-dose, phase 2, 2 doses, 21 days, adult",C,None,40,Table S2,28,Any,Unsolicited,100,6,6
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,B3,"Low-dose, phase 2, 3 doses, 28 days, adult",D,Lower,20,Table S2,28,Any,Unsolicited,100,0,0
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,B4,"High-dose, phase 2, 3 doses, 28 days, adult",D,Standard,40,Table S2,28,Any,Unsolicited,100,6,6
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,C3,"Low-dose, phase 2, 2 doses, 21 days, elderly",E,None,20,Table S2,28,Any,Unsolicited,100,1,1
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,C4,"High-dose, phase 2, 2 doses, 21 days, elderly",E,None,40,Table S2,28,Any,Unsolicited,100,2,2
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,B5,"Low-dose, phase 2, 3 doses, 28 days, elderly",F,Lower,20,Table S2,28,Any,Unsolicited,100,1,1
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,B6,"High-dose, phase 2, 3 doses, 28 days, elderly",F,Standard,40,Table S2,28,Any,Unsolicited,100,1,1
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,A1,"Low-dose, phase 1, 2 doses, 28 days, adult",A,None,20,Table 2,28,Any,Overall,24,14,58
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,A2,"High-dose, phase 1, 2 doses, 28 days, adult",A,None,40,Table 2,28,Any,Overall,24,13,54
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,A3,"Low-dose, phase 1, 2 doses, 28 days, elderly",B,None,20,Table 2,28,Any,Overall,18,6,33
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,A4,"High-dose, phase 1, 2 doses, 28 days, elderly",B,None,40,Table 2,28,Any,Overall,18,5,28
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,C1,"Low-dose, phase 2, 2 doses, 21 days, adult",C,None,20,Table 3,28,Any,Overall,100,30,30
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,C2,"High-dose, phase 2, 2 doses, 21 days, adult",C,None,40,Table 3,28,Any,Overall,100,37,37
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,B3,"Low-dose, phase 2, 3 doses, 28 days, adult",D,Lower,20,Table 3,28,Any,Overall,100,31,31
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,B4,"High-dose, phase 2, 3 doses, 28 days, adult",D,Standard,40,Table 3,28,Any,Overall,100,41,41
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,C3,"Low-dose, phase 2, 2 doses, 21 days, elderly",E,None,20,Table 3,28,Any,Overall,100,19,19
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,C4,"High-dose, phase 2, 2 doses, 21 days, elderly",E,None,40,Table 3,28,Any,Overall,100,26,26
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,B5,"Low-dose, phase 2, 3 doses, 28 days, elderly",F,Lower,20,Table 3,28,Any,Overall,100,32,32
+118,Meng. F. Y,Signal Transduction and Targeted Therapy,2021,Sf9 cells,Recombinant,West China Hospital,B6,"High-dose, phase 2, 3 doses, 28 days, elderly",F,Standard,40,Table 3,28,Any,Overall,100,28,28
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A1,"10ug, 2 doses, adult",A,Standard,10,Supplementary Table 2,7,Partial,Local,120,9,7.5
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A2,"25ug, 2 doses, adult",A,Higher,25,Supplementary Table 2,7,Partial,Local,120,4,3.33
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A3,"10ug, 2 doses, elderly",B,Standard,10,Supplementary Table 2,7,Partial,Local,120,5,4.17
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A4,"25ug, 2 doses, elderly",B,Higher,25,Supplementary Table 2,7,Partial,Local,120,1,0.83
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A1,"10ug, 2 doses, adult",A,Standard,10,Supplementary Table 2,7,Full,Local,119,3,2.52
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A2,"25ug, 2 doses, adult",A,Higher,25,Supplementary Table 2,7,Full,Local,120,3,2.5
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A3,"10ug, 2 doses, elderly",B,Standard,10,Supplementary Table 2,7,Full,Local,117,2,1.71
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A4,"25ug, 2 doses, elderly",B,Higher,25,Supplementary Table 2,7,Full,Local,117,1,0.85
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A1,"10ug, 2 doses, adult",A,Standard,10,Supplementary Table 2,7,Partial,Systemic,120,12,10
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A2,"25ug, 2 doses, adult",A,Higher,25,Supplementary Table 2,7,Partial,Systemic,120,7,5.83
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A3,"10ug, 2 doses, elderly",B,Standard,10,Supplementary Table 2,7,Partial,Systemic,120,7,5.83
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A4,"25ug, 2 doses, elderly",B,Higher,25,Supplementary Table 2,7,Partial,Systemic,120,12,10
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A1,"10ug, 2 doses, adult",A,Standard,10,Supplementary Table 2,7,Full,Systemic,119,11,9.24
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A2,"25ug, 2 doses, adult",A,Higher,25,Supplementary Table 2,7,Full,Systemic,120,2,1.67
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A3,"10ug, 2 doses, elderly",B,Standard,10,Supplementary Table 2,7,Full,Systemic,117,1,0.85
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A4,"25ug, 2 doses, elderly",B,Higher,25,Supplementary Table 2,7,Full,Systemic,117,2,1.71
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A1,"10ug, 2 doses, adult",A,Standard,10,Supplementary Table 2,7,Partial,Solicited,120,16,13.3
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A2,"25ug, 2 doses, adult",A,Higher,25,Supplementary Table 2,7,Partial,Solicited,120,9,7.5
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A3,"10ug, 2 doses, elderly",B,Standard,10,Supplementary Table 2,7,Partial,Solicited,120,10,8.3
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A4,"25ug, 2 doses, elderly",B,Higher,25,Supplementary Table 2,7,Partial,Solicited,120,13,10.8
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A1,"10ug, 2 doses, adult",A,Standard,10,Supplementary Table 2,7,Full,Solicited,119,14,11.8
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A2,"25ug, 2 doses, adult",A,Higher,25,Supplementary Table 2,7,Full,Solicited,120,4,3.33
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A3,"10ug, 2 doses, elderly",B,Standard,10,Supplementary Table 2,7,Full,Solicited,117,3,2.6
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A4,"25ug, 2 doses, elderly",B,Higher,25,Supplementary Table 2,7,Full,Solicited,117,3,2.6
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A1,"10ug, 2 doses, adult",A,Standard,10,Supplementary Table 2,NA,Partial,Unsolicited,120,3,2.5
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A2,"25ug, 2 doses, adult",A,Higher,25,Supplementary Table 2,NA,Partial,Unsolicited,120,2,1.7
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A3,"10ug, 2 doses, elderly",B,Standard,10,Supplementary Table 2,NA,Partial,Unsolicited,120,2,1.7
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A4,"25ug, 2 doses, elderly",B,Higher,25,Supplementary Table 2,NA,Partial,Unsolicited,120,2,1.7
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A1,"10ug, 2 doses, adult",A,Standard,10,Supplementary Table 2,NA,Full,Unsolicited,119,3,2.5
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A2,"25ug, 2 doses, adult",A,Higher,25,Supplementary Table 2,NA,Full,Unsolicited,120,2,1.7
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A3,"10ug, 2 doses, elderly",B,Standard,10,Supplementary Table 2,NA,Full,Unsolicited,117,0,0
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A4,"25ug, 2 doses, elderly",B,Higher,25,Supplementary Table 2,NA,Full,Unsolicited,117,1,0.85
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A1,"10ug, 2 doses, adult",A,Standard,10,Supplementary Table 2,21,Partial,Overall,120,26,21.7
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A2,"25ug, 2 doses, adult",A,Higher,25,Supplementary Table 2,21,Partial,Overall,120,23,19.2
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A3,"10ug, 2 doses, elderly",B,Standard,10,Supplementary Table 2,21,Partial,Overall,120,19,15.8
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A4,"25ug, 2 doses, elderly",B,Higher,25,Supplementary Table 2,21,Partial,Overall,120,24,20
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A1,"10ug, 2 doses, adult",A,Standard,10,Supplementary Table 2,30,Full,Overall,119,24,20.2
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A2,"25ug, 2 doses, adult",A,Higher,25,Supplementary Table 2,30,Full,Overall,120,10,8.3
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A3,"10ug, 2 doses, elderly",B,Standard,10,Supplementary Table 2,30,Full,Overall,117,7,6
+385,Shu. Y. J,Chinese Medical Journal,2021,V-01,Recombinant,Livzon Mabpharm,A4,"25ug, 2 doses, elderly",B,Higher,25,Supplementary Table 2,30,Full,Overall,117,9,7.7
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A1,"10ug, adult",A,Standard,10,appendix Table S5,NA,Partial,Local,24,0,0
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A2,"25ug, adult",A,Higher,25,appendix Table S5,NA,Partial,Local,24,1,4.17
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A3,"50ug, adult",A,Higher,50,appendix Table S5,NA,Partial,Local,24,4,16.67
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A4,"10ug, elderly",B,Standard,10,appendix Table S5,NA,Partial,Local,24,0,0
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A5,"25ug, elderly",B,Higher,25,appendix Table S5,NA,Partial,Local,24,0,0
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A6,"50ug, elderly",B,Higher,50,appendix Table S5,NA,Partial,Local,24,1,4.17
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A1,"10ug, adult",A,Standard,10,appendix Table S5,NA,Full,Local,24,2,8.33
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A2,"25ug, adult",A,Higher,25,appendix Table S5,NA,Full,Local,24,1,4.35
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A3,"50ug, adult",A,Higher,50,appendix Table S5,NA,Full,Local,24,1,4.17
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A4,"10ug, elderly",B,Standard,10,appendix Table S5,NA,Full,Local,20,0,0
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A5,"25ug, elderly",B,Higher,25,appendix Table S5,NA,Full,Local,24,0,0
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A6,"50ug, elderly",B,Higher,50,appendix Table S5,NA,Full,Local,24,0,0
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A1,"10ug, adult",A,Standard,10,appendix Table S5,NA,Partial,Systemic,24,2,8.33
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A2,"25ug, adult",A,Higher,25,appendix Table S5,NA,Partial,Systemic,24,2,8.33
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A3,"50ug, adult",A,Higher,50,appendix Table S5,NA,Partial,Systemic,24,2,8.33
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A4,"10ug, elderly",B,Standard,10,appendix Table S5,NA,Partial,Systemic,24,0,0
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A5,"25ug, elderly",B,Higher,25,appendix Table S5,NA,Partial,Systemic,24,1,4.17
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A6,"50ug, elderly",B,Higher,50,appendix Table S5,NA,Partial,Systemic,24,3,12.5
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A1,"10ug, adult",A,Standard,10,appendix Table S5,NA,Full,Systemic,24,1,4.17
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A2,"25ug, adult",A,Higher,25,appendix Table S5,NA,Full,Systemic,24,0,0
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A3,"50ug, adult",A,Higher,50,appendix Table S5,NA,Full,Systemic,24,2,8.33
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A4,"10ug, elderly",B,Standard,10,appendix Table S5,NA,Full,Systemic,20,0,0
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A5,"25ug, elderly",B,Higher,25,appendix Table S5,NA,Full,Systemic,24,1,4.17
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A6,"50ug, elderly",B,Higher,50,appendix Table S5,NA,Full,Systemic,24,0,0
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A1,"10ug, adult",A,Standard,10,appendix Table S5,7,Partial,Solicited,24,2,8.3
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A2,"25ug, adult",A,Higher,25,appendix Table S5,7,Partial,Solicited,24,3,12.5
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A3,"50ug, adult",A,Higher,50,appendix Table S5,7,Partial,Solicited,24,5,20.8
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A4,"10ug, elderly",B,Standard,10,appendix Table S5,7,Partial,Solicited,24,0,0
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A5,"25ug, elderly",B,Higher,25,appendix Table S5,7,Partial,Solicited,24,1,4.2
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A6,"50ug, elderly",B,Higher,50,appendix Table S5,7,Partial,Solicited,24,3,12.5
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A1,"10ug, adult",A,Standard,10,appendix Table S5,7,Full,Solicited,24,2,8.3
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A2,"25ug, adult",A,Higher,25,appendix Table S5,7,Full,Solicited,24,1,4.2
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A3,"50ug, adult",A,Higher,50,appendix Table S5,7,Full,Solicited,24,3,12.5
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A4,"10ug, elderly",B,Standard,10,appendix Table S5,7,Full,Solicited,24,0,0
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A5,"25ug, elderly",B,Higher,25,appendix Table S5,7,Full,Solicited,24,1,4.2
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A6,"50ug, elderly",B,Higher,50,appendix Table S5,7,Full,Solicited,24,0,0
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A1,"10ug, adult",A,Standard,10,appendix Table S5,NA,Partial,Unsolicited,24,2,8.3
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A2,"25ug, adult",A,Higher,25,appendix Table S5,NA,Partial,Unsolicited,24,2,8.3
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A3,"50ug, adult",A,Higher,50,appendix Table S5,NA,Partial,Unsolicited,24,4,16.7
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A4,"10ug, elderly",B,Standard,10,appendix Table S5,NA,Partial,Unsolicited,24,2,8.3
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A5,"25ug, elderly",B,Higher,25,appendix Table S5,NA,Partial,Unsolicited,24,2,8.3
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A6,"50ug, elderly",B,Higher,50,appendix Table S5,NA,Partial,Unsolicited,24,2,8.3
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A1,"10ug, adult",A,Standard,10,appendix Table S5,NA,Full,Unsolicited,24,3,12.5
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A2,"25ug, adult",A,Higher,25,appendix Table S5,NA,Full,Unsolicited,24,3,12.5
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A3,"50ug, adult",A,Higher,50,appendix Table S5,NA,Full,Unsolicited,24,0,0
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A4,"10ug, elderly",B,Standard,10,appendix Table S5,NA,Full,Unsolicited,24,1,4.2
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A5,"25ug, elderly",B,Higher,25,appendix Table S5,NA,Full,Unsolicited,24,1,4.2
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A6,"50ug, elderly",B,Higher,50,appendix Table S5,NA,Full,Unsolicited,24,4,16.7
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A1,"10ug, adult",A,Standard,10,appendix Table S5,30,Partial,Overall,24,12,50
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A2,"25ug, adult",A,Higher,25,appendix Table S5,30,Partial,Overall,24,13,54.2
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A3,"50ug, adult",A,Higher,50,appendix Table S5,30,Partial,Overall,24,16,66.7
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A4,"10ug, elderly",B,Standard,10,appendix Table S5,30,Partial,Overall,24,11,45.8
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A5,"25ug, elderly",B,Higher,25,appendix Table S5,30,Partial,Overall,24,11,45.8
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A6,"50ug, elderly",B,Higher,50,appendix Table S5,30,Partial,Overall,24,12,50
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A1,"10ug, adult",A,Standard,10,appendix Table S5,30,Full,Overall,24,10,41.7
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A2,"25ug, adult",A,Higher,25,appendix Table S5,30,Full,Overall,24,7,29.2
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A3,"50ug, adult",A,Higher,50,appendix Table S5,30,Full,Overall,24,8,33.3
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A4,"10ug, elderly",B,Standard,10,appendix Table S5,30,Full,Overall,24,4,16.7
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A5,"25ug, elderly",B,Higher,25,appendix Table S5,30,Full,Overall,24,3,12.5
+288,Zhang. J,Emerging Microbes & Infections,2021,V-01,Recombinant,Livzon Mabpharm,A6,"50ug, elderly",B,Higher,50,appendix Table S5,30,Full,Overall,24,7,29.2
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,A1,"25ug, 3 doses, phase 1",A,Standard,25,Table 2,7,Any,Local,20,9,45
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,A2,"50ug, 3 doses, phase 1",A,Higher,50,Table 2,7,Any,Local,20,12,60
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,B1,"25ug, 2 doses, phase 2",B,None,25,Table 3,7,Any,Local,150,17,11
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,B2,"50ug, 2 doses, phase 2",B,None,50,Table 3,7,Any,Local,150,9,13
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,A3,"25ug, 3 doses, phase 2",C,Standard,25,Table 3,7,Any,Local,150,45,30
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,A4,"50ug, 3 doses, phase 2",C,Higher,50,Table 3,7,Any,Local,150,35,23
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,A1,"25ug, 3 doses, phase 1",A,Standard,25,Table 2,7,Any,Systemic,20,4,20
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,A2,"50ug, 3 doses, phase 1",A,Higher,50,Table 2,7,Any,Systemic,20,5,25
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,B1,"25ug, 2 doses, phase 2",B,None,25,Table 3,7,Any,Systemic,150,15,10
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,B2,"50ug, 2 doses, phase 2",B,None,50,Table 3,7,Any,Systemic,150,16,11
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,A3,"25ug, 3 doses, phase 2",C,Standard,25,Table 3,7,Any,Systemic,150,15,10
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,A4,"50ug, 3 doses, phase 2",C,Higher,50,Table 3,7,Any,Systemic,150,13,9
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,A1,"25ug, 3 doses, phase 1",A,Standard,25,Table 2,7,Any,Solicited,20,12,60
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,A2,"50ug, 3 doses, phase 1",A,Higher,50,Table 2,7,Any,Solicited,20,14,70
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,B1,"25ug, 2 doses, phase 2",B,None,25,Table 3,7,Any,Solicited,150,27,18
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,B2,"50ug, 2 doses, phase 2",B,None,50,Table 3,7,Any,Solicited,150,32,21
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,A3,"25ug, 3 doses, phase 2",C,Standard,25,Table 3,7,Any,Solicited,150,55,37
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,A4,"50ug, 3 doses, phase 2",C,Higher,50,Table 3,7,Any,Solicited,150,42,28
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,A1,"25ug, 3 doses, phase 1",A,Standard,25,Table 2,NA,Any,Unsolicited,20,6,30
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,A2,"50ug, 3 doses, phase 1",A,Higher,50,Table 2,NA,Any,Unsolicited,20,6,30
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,B1,"25ug, 2 doses, phase 2",B,None,25,Table 3,NA,Any,Unsolicited,150,5,3
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,B2,"50ug, 2 doses, phase 2",B,None,50,Table 3,NA,Any,Unsolicited,150,4,3
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,A3,"25ug, 3 doses, phase 2",C,Standard,25,Table 3,NA,Any,Unsolicited,150,7,5
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,A4,"50ug, 3 doses, phase 2",C,Higher,50,Table 3,NA,Any,Unsolicited,150,4,3
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,A1,"25ug, 3 doses, phase 1",A,Standard,25,Table 2,30,Any,Overall,20,14,70
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,A2,"50ug, 3 doses, phase 1",A,Higher,50,Table 2,31,Any,Overall,20,18,90
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,B1,"25ug, 2 doses, phase 2",B,None,25,Table 3,32,Any,Overall,150,43,29
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,B2,"50ug, 2 doses, phase 2",B,None,50,Table 3,33,Any,Overall,150,50,33
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,A3,"25ug, 3 doses, phase 2",C,Standard,25,Table 3,34,Any,Overall,150,72,48
+346,Yang. S,Lancet ID,2021,ZF2001,Recombinant,Anhui Zhifei,A4,"50ug, 3 doses, phase 2",C,Higher,50,Table 3,35,Any,Overall,150,65,43
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A1,"10ug, adult",A,Lower,10,Table 2,7,Any,Local,24,21,88
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A2,"30ug, adult",A,Standard,30,Table 2,7,Any,Local,24,24,100
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A3,"10ug, elderly",B,Lower,10,Table 2,7,Any,Local,24,18,75
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A4,"30ug, elderly",B,Standard,30,Table 2,7,Any,Local,24,21,88
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A1,"10ug, adult",A,Lower,10,Table 3,14,Any,Local,24,21,88
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A2,"30ug, adult",A,Standard,30,Table 3,14,Any,Local,24,24,100
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A3,"10ug, elderly",B,Lower,10,Table 3,14,Any,Local,24,18,75
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A4,"30ug, elderly",B,Standard,30,Table 3,14,Any,Local,24,21,88
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A1,"10ug, adult",A,Lower,10,Table 2,7,Any,Systemic,24,17,71
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A2,"30ug, adult",A,Standard,30,Table 2,7,Any,Systemic,24,21,88
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A3,"10ug, elderly",B,Lower,10,Table 2,7,Any,Systemic,24,4,17
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A4,"30ug, elderly",B,Standard,30,Table 2,7,Any,Systemic,24,18,75
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A1,"10ug, adult",A,Lower,10,Table 3,14,Any,Systemic,24,17,71
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A2,"30ug, adult",A,Standard,30,Table 3,14,Any,Systemic,24,22,92
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A3,"10ug, elderly",B,Lower,10,Table 3,14,Any,Systemic,24,9,38
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A4,"30ug, elderly",B,Standard,30,Table 3,14,Any,Systemic,24,19,79
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A1,"10ug, adult",A,Lower,10,Table 2,7,Any,Solicited,24,21,88
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A2,"30ug, adult",A,Standard,30,Table 2,7,Any,Solicited,24,24,100
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A3,"10ug, elderly",B,Lower,10,Table 2,7,Any,Solicited,24,20,83
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A4,"30ug, elderly",B,Standard,30,Table 2,7,Any,Solicited,24,22,92
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A1,"10ug, adult",A,Lower,10,Table 3,14,Any,Solicited,24,21,88
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A2,"30ug, adult",A,Standard,30,Table 3,14,Any,Solicited,24,24,100
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A3,"10ug, elderly",B,Lower,10,Table 3,14,Any,Solicited,24,21,88
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A4,"30ug, elderly",B,Standard,30,Table 3,14,Any,Solicited,24,23,96
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A1,"10ug, adult",A,Lower,10,Table 2,50,Any,Unsolicited,24,9,38
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A2,"30ug, adult",A,Standard,30,Table 2,50,Any,Unsolicited,24,10,42
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A3,"10ug, elderly",B,Lower,10,Table 2,50,Any,Unsolicited,24,4,17
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A4,"30ug, elderly",B,Standard,30,Table 2,50,Any,Unsolicited,24,9,38
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A1,"10ug, adult",A,Lower,10,Table 3,50,Any,Unsolicited,24,9,38
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A2,"30ug, adult",A,Standard,30,Table 3,50,Any,Unsolicited,24,10,42
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A3,"10ug, elderly",B,Lower,10,Table 3,50,Any,Unsolicited,24,4,17
+218,Li. J,Nature Medicine,2021,BNT162b1,mRNA,Pfizer/BioNTech,A4,"30ug, elderly",B,Standard,30,Table 3,50,Any,Unsolicited,24,9,38
+10,Mulligan. M. J,Nature,2020,BNT162b1,mRNA,Pfizer/BioNTech,A1,10ug,A,Lower,10,Figure 2,7,Partial,Local,12,NA,NA
+10,Mulligan. M. J,Nature,2020,BNT162b1,mRNA,Pfizer/BioNTech,A2,30ug,A,Standard,30,Figure 2,7,Partial,Local,12,NA,NA
+10,Mulligan. M. J,Nature,2020,BNT162b1,mRNA,Pfizer/BioNTech,A3,100ug,A,Higher,100,Figure 2,7,Partial,Local,12,NA,NA
+10,Mulligan. M. J,Nature,2020,BNT162b1,mRNA,Pfizer/BioNTech,A1,10ug,A,Lower,10,Figure 2,7,Full,Local,12,NA,NA
+10,Mulligan. M. J,Nature,2020,BNT162b1,mRNA,Pfizer/BioNTech,A2,30ug,A,Standard,30,Figure 2,7,Full,Local,12,NA,NA
+10,Mulligan. M. J,Nature,2020,BNT162b1,mRNA,Pfizer/BioNTech,A1,10ug,A,Lower,10,Figure 3,7,Partial,Systemic,12,NA,NA
+10,Mulligan. M. J,Nature,2020,BNT162b1,mRNA,Pfizer/BioNTech,A2,30ug,A,Standard,30,Figure 3,7,Partial,Systemic,12,NA,NA
+10,Mulligan. M. J,Nature,2020,BNT162b1,mRNA,Pfizer/BioNTech,A3,100ug,A,Higher,100,Figure 3,7,Partial,Systemic,12,NA,NA
+10,Mulligan. M. J,Nature,2020,BNT162b1,mRNA,Pfizer/BioNTech,A1,10ug,A,Lower,10,Figure 3,7,Full,Systemic,12,NA,NA
+10,Mulligan. M. J,Nature,2020,BNT162b1,mRNA,Pfizer/BioNTech,A2,30ug,A,Standard,30,Figure 3,7,Full,Systemic,12,NA,NA
+10,Mulligan. M. J,Nature,2020,BNT162b1,mRNA,Pfizer/BioNTech,A1,10ug,A,Lower,10,Text,7,Any,Overall,12,6,50
+10,Mulligan. M. J,Nature,2020,BNT162b1,mRNA,Pfizer/BioNTech,A2,30ug,A,Standard,30,Text,7,Any,Overall,12,6,50
+10,Mulligan. M. J,Nature,2020,BNT162b1,mRNA,Pfizer/BioNTech,A3,100ug,A,Higher,100,Text,7,Any,Overall,12,7,58.3
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A1,"10ug, adult, BNT162b1",A,Lower,10,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A1,"10ug, adult, BNT162b1",A,Lower,10,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A2,"20ug, adult, BNT162b1",A,Lower,20,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A2,"20ug, adult, BNT162b1",A,Lower,20,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A3,"30ug, adult, BNT162b1",A,Standard,30,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A3,"30ug, adult, BNT162b1",A,Standard,30,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A4,"10ug, elderly, BNT162b1",B,Lower,10,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A4,"10ug, elderly, BNT162b1",B,Lower,10,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A5,"20ug, elderly, BNT162b1",B,Lower,20,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A5,"20ug, elderly, BNT162b1",B,Lower,20,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A6,"30ug, elderly, BNT162b1",B,Standard,30,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A6,"30ug, elderly, BNT162b1",B,Standard,30,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B1,"10ug, adult, BNT162b2",C,Lower,10,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B1,"10ug, adult, BNT162b2",C,Lower,10,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B2,"20ug, adult, BNT162b2",C,Lower,20,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B2,"20ug, adult, BNT162b2",C,Lower,20,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B3,"30ug, adult, BNT162b2",C,Standard,30,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B3,"30ug, adult, BNT162b2",C,Standard,30,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B4,"10ug, elderly, BNT162b2",D,Lower,10,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B4,"10ug, elderly, BNT162b2",D,Lower,10,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B5,"20ug, elderly, BNT162b2",D,Lower,20,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B5,"20ug, elderly, BNT162b2",D,Lower,20,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B6,"30ug, elderly, BNT162b2",D,Standard,30,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B6,"30ug, elderly, BNT162b2",D,Standard,30,Figure 2,7,Partial,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A1,"10ug, adult, BNT162b1",A,Lower,10,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A1,"10ug, adult, BNT162b1",A,Lower,10,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A2,"20ug, adult, BNT162b1",A,Lower,20,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A2,"20ug, adult, BNT162b1",A,Lower,20,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A3,"30ug, adult, BNT162b1",A,Standard,30,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A3,"30ug, adult, BNT162b1",A,Standard,30,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A4,"10ug, elderly, BNT162b1",B,Lower,10,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A4,"10ug, elderly, BNT162b1",B,Lower,10,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A5,"20ug, elderly, BNT162b1",B,Lower,20,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A5,"20ug, elderly, BNT162b1",B,Lower,20,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A6,"30ug, elderly, BNT162b1",B,Standard,30,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A6,"30ug, elderly, BNT162b1",B,Standard,30,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B1,"10ug, adult, BNT162b2",C,Lower,10,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B1,"10ug, adult, BNT162b2",C,Lower,10,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B2,"20ug, adult, BNT162b2",C,Lower,20,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B2,"20ug, adult, BNT162b2",C,Lower,20,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B3,"30ug, adult, BNT162b2",C,Standard,30,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B3,"30ug, adult, BNT162b2",C,Standard,30,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B4,"10ug, elderly, BNT162b2",D,Lower,10,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B4,"10ug, elderly, BNT162b2",D,Lower,10,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B5,"20ug, elderly, BNT162b2",D,Lower,20,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B5,"20ug, elderly, BNT162b2",D,Lower,20,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B6,"30ug, elderly, BNT162b2",D,Standard,30,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B6,"30ug, elderly, BNT162b2",D,Standard,30,Figure 2,7,Full,Local,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A1,"10ug, adult, BNT162b1",A,Lower,10,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A1,"10ug, adult, BNT162b1",A,Lower,10,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A2,"20ug, adult, BNT162b1",A,Lower,20,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A2,"20ug, adult, BNT162b1",A,Lower,20,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A3,"30ug, adult, BNT162b1",A,Standard,30,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A3,"30ug, adult, BNT162b1",A,Standard,30,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A4,"10ug, elderly, BNT162b1",B,Lower,10,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A4,"10ug, elderly, BNT162b1",B,Lower,10,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A5,"20ug, elderly, BNT162b1",B,Lower,20,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A5,"20ug, elderly, BNT162b1",B,Lower,20,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A6,"30ug, elderly, BNT162b1",B,Standard,30,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A6,"30ug, elderly, BNT162b1",B,Standard,30,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B1,"10ug, adult, BNT162b2",C,Lower,10,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B1,"10ug, adult, BNT162b2",C,Lower,10,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B2,"20ug, adult, BNT162b2",C,Lower,20,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B2,"20ug, adult, BNT162b2",C,Lower,20,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B3,"30ug, adult, BNT162b2",C,Standard,30,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B3,"30ug, adult, BNT162b2",C,Standard,30,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B4,"10ug, elderly, BNT162b2",D,Lower,10,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B4,"10ug, elderly, BNT162b2",D,Lower,10,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B5,"20ug, elderly, BNT162b2",D,Lower,20,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B5,"20ug, elderly, BNT162b2",D,Lower,20,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B6,"30ug, elderly, BNT162b2",D,Standard,30,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B6,"30ug, elderly, BNT162b2",D,Standard,30,Figure 3,7,Partial,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A1,"10ug, adult, BNT162b1",A,Lower,10,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A1,"10ug, adult, BNT162b1",A,Lower,10,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A2,"20ug, adult, BNT162b1",A,Lower,20,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A2,"20ug, adult, BNT162b1",A,Lower,20,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A3,"30ug, adult, BNT162b1",A,Standard,30,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A3,"30ug, adult, BNT162b1",A,Standard,30,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A4,"10ug, elderly, BNT162b1",B,Lower,10,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A4,"10ug, elderly, BNT162b1",B,Lower,10,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A5,"20ug, elderly, BNT162b1",B,Lower,20,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A5,"20ug, elderly, BNT162b1",B,Lower,20,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,A6,"30ug, elderly, BNT162b1",B,Standard,30,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,A6,"30ug, elderly, BNT162b1",B,Standard,30,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B1,"10ug, adult, BNT162b2",C,Lower,10,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B1,"10ug, adult, BNT162b2",C,Lower,10,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B2,"20ug, adult, BNT162b2",C,Lower,20,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B2,"20ug, adult, BNT162b2",C,Lower,20,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B3,"30ug, adult, BNT162b2",C,Standard,30,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B3,"30ug, adult, BNT162b2",C,Standard,30,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B4,"10ug, elderly, BNT162b2",D,Lower,10,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B4,"10ug, elderly, BNT162b2",D,Lower,10,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B5,"20ug, elderly, BNT162b2",D,Lower,20,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B5,"20ug, elderly, BNT162b2",D,Lower,20,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b1,mRNA,Pfizer/BioNTech,B6,"30ug, elderly, BNT162b2",D,Standard,30,Figure 3,7,Full,Systemic,12,NA,NA
+18,Walsh. E. E,New England Journal of Medicine,2020,BNT162b2,mRNA,Pfizer/BioNTech,B6,"30ug, elderly, BNT162b2",D,Standard,30,Figure 3,7,Full,Systemic,12,NA,NA
+2597,Walter. E. B,New England Journal of Medicine,2021,BNT162b2,mRNA,Pfizer/BioNTech,A1,10ug,A,Standard,10,Figure S1,7,Partial,Local,16,NA,NA
+2597,Walter. E. B,New England Journal of Medicine,2021,BNT162b2,mRNA,Pfizer/BioNTech,A2,20ug,A,Higher,20,Figure S1,7,Partial,Local,16,NA,NA
+2597,Walter. E. B,New England Journal of Medicine,2021,BNT162b2,mRNA,Pfizer/BioNTech,A2,30ug,A,Higher,30,Figure S1,7,Partial,Local,4,NA,NA
+2597,Walter. E. B,New England Journal of Medicine,2021,BNT162b2,mRNA,Pfizer/BioNTech,A1,10ug,A,Standard,10,Figure S1,7,Full,Local,16,NA,NA
+2597,Walter. E. B,New England Journal of Medicine,2021,BNT162b2,mRNA,Pfizer/BioNTech,A2,20ug,A,Higher,20,Figure S1,7,Full,Local,16,NA,NA
+2597,Walter. E. B,New England Journal of Medicine,2021,BNT162b2,mRNA,Pfizer/BioNTech,A2,30ug,A,Higher,30,Figure S1,7,Full,Local,4,NA,NA
+2597,Walter. E. B,New England Journal of Medicine,2021,BNT162b2,mRNA,Pfizer/BioNTech,A1,10ug,A,Standard,10,Figure S1,7,Partial,Systemic,16,NA,NA
+2597,Walter. E. B,New England Journal of Medicine,2021,BNT162b2,mRNA,Pfizer/BioNTech,A2,20ug,A,Higher,20,Figure S1,7,Partial,Systemic,16,NA,NA
+2597,Walter. E. B,New England Journal of Medicine,2021,BNT162b2,mRNA,Pfizer/BioNTech,A2,30ug,A,Higher,30,Figure S1,7,Partial,Systemic,4,NA,NA
+2597,Walter. E. B,New England Journal of Medicine,2021,BNT162b2,mRNA,Pfizer/BioNTech,A1,10ug,A,Standard,10,Figure S1,7,Full,Systemic,16,NA,NA
+2597,Walter. E. B,New England Journal of Medicine,2021,BNT162b2,mRNA,Pfizer/BioNTech,A2,20ug,A,Higher,20,Figure S1,7,Full,Systemic,16,NA,NA
+2597,Walter. E. B,New England Journal of Medicine,2021,BNT162b2,mRNA,Pfizer/BioNTech,A2,30ug,A,Higher,30,Figure S1,7,Full,Systemic,4,NA,NA
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A1,2ug group,A,Lower,2,"appendix Table 3, 4a, figure 2",7,Partial,Local,38,NA,NA
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A2,4ug group,A,Lower,4,"appendix Table 3, 4a, figure 2",7,Partial,Local,40,NA,NA
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A3,6ug group,A,Lower,6,"appendix Table 3, 4a, figure 2",7,Partial,Local,40,NA,NA
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A4,8ug group,A,Lower,8,"appendix Table 3, 4a, figure 2",7,Partial,Local,38,NA,NA
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A5,12ug group,A,Standard,12,"appendix Table 3, 4a, figure 2",7,Partial,Local,24,NA,NA
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A1,2ug group,A,Lower,2,"appendix Table 3, 4b, figure 2",7,Full,Local,36,NA,NA
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A2,4ug group,A,Lower,4,"appendix Table 3, 4b, figure 2",7,Full,Local,37,NA,NA
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A3,6ug group,A,Lower,6,"appendix Table 3, 4b, figure 2",7,Full,Local,37,NA,NA
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A4,8ug group,A,Lower,8,"appendix Table 3, 4b, figure 2",7,Full,Local,35,NA,NA
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A5,12ug group,A,Standard,12,"appendix Table 3, 4b, figure 2",7,Full,Local,23,NA,NA
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A1,2ug group,A,Lower,2,"appendix Table 3, 4a, figure 2",7,Partial,Systemic,38,NA,NA
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A2,4ug group,A,Lower,4,"appendix Table 3, 4a, figure 2",7,Partial,Systemic,40,NA,NA
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A3,6ug group,A,Lower,6,"appendix Table 3, 4a, figure 2",7,Partial,Systemic,40,NA,NA
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A4,8ug group,A,Lower,8,"appendix Table 3, 4a, figure 2",7,Partial,Systemic,38,NA,NA
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A5,12ug group,A,Standard,12,"appendix Table 3, 4a, figure 2",7,Partial,Systemic,24,NA,NA
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A1,2ug group,A,Lower,2,"appendix Table 3, 4b, figure 2",7,Full,Systemic,36,NA,NA
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A2,4ug group,A,Lower,4,"appendix Table 3, 4b, figure 2",7,Full,Systemic,37,NA,NA
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A3,6ug group,A,Lower,6,"appendix Table 3, 4b, figure 2",7,Full,Systemic,37,NA,NA
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A4,8ug group,A,Lower,8,"appendix Table 3, 4b, figure 2",7,Full,Systemic,35,NA,NA
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A5,12ug group,A,Standard,12,"appendix Table 3, 4b, figure 2",7,Full,Systemic,23,NA,NA
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A1,2ug group,A,Lower,2,"appendix Table 3, 4b, figure 2",28,Any,Unsolicited,47,7,14.9
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A2,4ug group,A,Lower,4,"appendix Table 3, 4b, figure 2",28,Any,Unsolicited,48,19,39.6
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A3,6ug group,A,Lower,6,"appendix Table 3, 4b, figure 2",28,Any,Unsolicited,46,15,32.6
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A4,8ug group,A,Lower,8,"appendix Table 3, 4b, figure 2",28,Any,Unsolicited,44,18,40.9
+754,Kremsner. P. G,Wien Klin Wochenschr,2021,CVnCoV,mRNA,Curevac,A5,12ug group,A,Standard,12,"appendix Table 3, 4b, figure 2",28,Any,Unsolicited,28,12,42.9
+12,Anderson .E. J,The new england journal o f medicine,2020,mRNA-1273,mRNA,Moderna,A1,"Low-dose, 56to70",A,Lower,25,Table S2,7,Partial,Local,10,5,50
+12,Anderson .E. J,The new england journal o f medicine,2020,mRNA-1273,mRNA,Moderna,A2,"Low-dose, 70 and above",B,Lower,25,Table S2,7,Partial,Local,10,6,60
+12,Anderson .E. J,The new england journal o f medicine,2020,mRNA-1273,mRNA,Moderna,A3,"High-dose, 56to70",A,Standard,100,Table S2,7,Partial,Local,10,8,80
+12,Anderson .E. J,The new england journal o f medicine,2020,mRNA-1273,mRNA,Moderna,A4,"High-dose, 70 and above",B,Standard,100,Table S2,7,Partial,Local,10,8,80
+12,Anderson .E. J,The new england journal o f medicine,2020,mRNA-1273,mRNA,Moderna,A1,"Low-dose, 56to70",A,Lower,25,Table S2,7,Full,Local,10,6,60
+12,Anderson .E. J,The new england journal o f medicine,2020,mRNA-1273,mRNA,Moderna,A2,"Low-dose, 70 and above",B,Lower,25,Table S2,7,Full,Local,10,7,70
+12,Anderson .E. J,The new england journal o f medicine,2020,mRNA-1273,mRNA,Moderna,A3,"High-dose, 56to70",A,Standard,100,Table S2,7,Full,Local,9,8,88.9
+12,Anderson .E. J,The new england journal o f medicine,2020,mRNA-1273,mRNA,Moderna,A4,"High-dose, 70 and above",B,Standard,100,Table S2,7,Full,Local,10,10,100
+12,Anderson .E. J,The new england journal o f medicine,2020,mRNA-1273,mRNA,Moderna,A1,"Low-dose, 56to70",A,Lower,25,Table S2,7,Partial,Systemic,10,5,50
+12,Anderson .E. J,The new england journal o f medicine,2020,mRNA-1273,mRNA,Moderna,A2,"Low-dose, 70 and above",B,Lower,25,Table S2,7,Partial,Systemic,10,5,50
+12,Anderson .E. J,The new england journal o f medicine,2020,mRNA-1273,mRNA,Moderna,A3,"High-dose, 56to70",A,Standard,100,Table S2,7,Partial,Systemic,10,3,30
+12,Anderson .E. J,The new england journal o f medicine,2020,mRNA-1273,mRNA,Moderna,A4,"High-dose, 70 and above",B,Standard,100,Table S2,7,Partial,Systemic,10,3,30
+12,Anderson .E. J,The new england journal o f medicine,2020,mRNA-1273,mRNA,Moderna,A1,"Low-dose, 56to70",A,Lower,25,Table S2,7,Full,Systemic,10,7,70
+12,Anderson .E. J,The new england journal o f medicine,2020,mRNA-1273,mRNA,Moderna,A2,"Low-dose, 70 and above",B,Lower,25,Table S2,7,Full,Systemic,10,3,30
+12,Anderson .E. J,The new england journal o f medicine,2020,mRNA-1273,mRNA,Moderna,A3,"High-dose, 56to70",A,Standard,100,Table S2,7,Full,Systemic,9,8,88.9
+12,Anderson .E. J,The new england journal o f medicine,2020,mRNA-1273,mRNA,Moderna,A4,"High-dose, 70 and above",B,Standard,100,Table S2,7,Full,Systemic,10,7,70
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A1,"Low-dose, 18to55",A,Lower,50,Table S2,7,Partial,Local,100,73,73
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A2,"High-dose, 18to55",A,Standard,100,Table S2,7,Partial,Local,100,87,87
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A3,"Low-dose, 18to55",A,Lower,50,Table S2,7,Full,Local,97,78,80
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A4,"High-dose, 18to55",A,Standard,100,Table S2,7,Full,Local,99,89,90
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A1,"Low-dose, 55 and above",B,Lower,50,Table S2,7,Partial,Local,100,58,58
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A2,"Low-dose, 55 and above",B,Standard,100,Table S2,7,Partial,Local,100,81,81
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A3,"Low-dose, 55 and above",B,Lower,50,Table S2,7,Full,Local,100,78,80
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A4,"High-dose, 55 and above",B,Standard,100,Table S2,7,Full,Local,100,81,82
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A1,"Low-dose, 18to55",A,Lower,50,Table S2,7,Partial,Systemic,100,46,46
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A2,"High-dose, 18to55",A,Standard,100,Table S2,7,Partial,Systemic,100,52,52
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A3,"Low-dose, 18to55",A,Lower,50,Table S2,7,Full,Systemic,97,69,71
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A4,"High-dose, 18to55",A,Standard,100,Table S2,7,Full,Systemic,99,89,79
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A1,"Low-dose, 55 and above",B,Lower,50,Table S2,7,Partial,Systemic,100,37,37
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A2,"Low-dose, 55 and above",B,Standard,100,Table S2,7,Partial,Systemic,100,37,37
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A3,"Low-dose, 55 and above",B,Lower,50,Table S2,7,Full,Systemic,100,66,67
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A4,"High-dose, 55 and above",B,Standard,100,Table S2,7,Full,Systemic,100,75,76
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A1,"Low-dose, 18to55",A,Lower,50,Table S2,7,Partial,Solicited,100,79,79
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A2,"High-dose, 18to55",A,Standard,100,Table S2,7,Partial,Solicited,100,91,91
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A3,"Low-dose, 18to55",A,Lower,50,Table S2,7,Full,Solicited,97,86,89
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A4,"High-dose, 18to55",A,Standard,100,Table S2,7,Full,Solicited,99,92,93
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A1,"Low-dose, 55 and above",B,Lower,50,Table S2,7,Partial,Solicited,100,63,63
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A2,"Low-dose, 55 and above",B,Standard,100,Table S2,7,Partial,Solicited,100,85,85
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A3,"Low-dose, 55 and above",B,Lower,50,Table S2,7,Full,Solicited,98,85,87
+233,Chu. L,Vaccine,2021,mRNA-1273,mRNA,Moderna,A4,"High-dose, 55 and above",B,Standard,100,Table S2,7,Full,Solicited,99,86,87
+19,Jackson. L. A,New England Journal of Medicine,2020,mRNA-1273,mRNA,Moderna,A1,25ug,A,Lower,25,appendix Table S2,7,Partial,Local,15,10,66.7
+19,Jackson. L. A,New England Journal of Medicine,2020,mRNA-1273,mRNA,Moderna,A2,100ug,A,Standard,100,appendix Table S2,7,Partial,Local,15,13,86.6
+19,Jackson. L. A,New England Journal of Medicine,2020,mRNA-1273,mRNA,Moderna,A3,250ug,A,Higher,250,appendix Table S2,7,Partial,Local,15,15,100
+19,Jackson. L. A,New England Journal of Medicine,2020,mRNA-1273,mRNA,Moderna,A1,25ug,A,Lower,25,appendix Table S2,7,Full,Local,13,10,76.9
+19,Jackson. L. A,New England Journal of Medicine,2020,mRNA-1273,mRNA,Moderna,A2,100ug,A,Standard,100,appendix Table S2,7,Full,Local,15,15,100
+19,Jackson. L. A,New England Journal of Medicine,2020,mRNA-1273,mRNA,Moderna,A3,250ug,A,Higher,250,appendix Table S2,7,Full,Local,14,14,100
+19,Jackson. L. A,New England Journal of Medicine,2020,mRNA-1273,mRNA,Moderna,A1,25ug,A,Lower,25,appendix Table S2,7,Partial,Systemic,15,5,33.3
+19,Jackson. L. A,New England Journal of Medicine,2020,mRNA-1273,mRNA,Moderna,A2,100ug,A,Standard,100,appendix Table S2,7,Partial,Systemic,15,10,66.7
+19,Jackson. L. A,New England Journal of Medicine,2020,mRNA-1273,mRNA,Moderna,A3,250ug,A,Higher,250,appendix Table S2,7,Partial,Systemic,15,8,53.4
+19,Jackson. L. A,New England Journal of Medicine,2020,mRNA-1273,mRNA,Moderna,A1,25ug,A,Lower,25,appendix Table S2,7,Full,Systemic,13,7,53.9
+19,Jackson. L. A,New England Journal of Medicine,2020,mRNA-1273,mRNA,Moderna,A2,100ug,A,Standard,100,appendix Table S2,7,Full,Systemic,15,15,100
+19,Jackson. L. A,New England Journal of Medicine,2020,mRNA-1273,mRNA,Moderna,A3,250ug,A,Higher,250,appendix Table S2,7,Full,Systemic,14,11,78.6
+16,Sadoff. J,New England Journal of Medicine,2021,Ad26.COV2.S,Vector,Janssen,A1/B1,NA,A,Standard,5,appendix Table S3,7,Partial,Local,162,104,64.2
+16,Sadoff. J,New England Journal of Medicine,2021,Ad26.COV2.S,Vector,Janssen,A2/B2,NA,A,Higher,10,appendix Table S3,7,Partial,Local,158,123,77.5
+16,Sadoff. J,New England Journal of Medicine,2021,Ad26.COV2.S,Vector,Janssen,A3,NA,B,Standard,5,appendix Table S3,7,Partial,Local,161,66,41
+16,Sadoff. J,New England Journal of Medicine,2021,Ad26.COV2.S,Vector,Janssen,A4,NA,B,Higher,10,appendix Table S3,7,Partial,Local,161,68,42.2
+16,Sadoff. J,New England Journal of Medicine,2021,Ad26.COV2.S,Vector,Janssen,A1/B1,NA,A,Standard,5,appendix Figure S3,7,Full,Local,80,53,66.4
+16,Sadoff. J,New England Journal of Medicine,2021,Ad26.COV2.S,Vector,Janssen,A2/B2,NA,A,Higher,10,appendix Figure S3,7,Full,Local,80,58,73
+16,Sadoff. J,New England Journal of Medicine,2021,Ad26.COV2.S,Vector,Janssen,A1/B1,NA,A,Standard,5,appendix Table S3,7,Partial,Systemic,162,105,64.8
+16,Sadoff. J,New England Journal of Medicine,2021,Ad26.COV2.S,Vector,Janssen,A2/B2,NA,A,Higher,10,appendix Table S3,7,Partial,Systemic,158,132,83.5
+16,Sadoff. J,New England Journal of Medicine,2021,Ad26.COV2.S,Vector,Janssen,A3,NA,B,Standard,5,appendix Table S3,7,Partial,Systemic,161,74,46
+16,Sadoff. J,New England Journal of Medicine,2021,Ad26.COV2.S,Vector,Janssen,A4,NA,B,Higher,10,appendix Table S3,7,Partial,Systemic,161,88,54.7
+16,Sadoff. J,New England Journal of Medicine,2021,Ad26.COV2.S,Vector,Janssen,A1/B1,NA,A,Standard,5,appendix Figure S3,7,Full,Systemic,80,47,58.4
+16,Sadoff. J,New England Journal of Medicine,2021,Ad26.COV2.S,Vector,Janssen,A2/B2,NA,A,Higher,10,appendix Figure S3,7,Full,Systemic,80,55,69
+526,Wu. S,Lancet ID,2021,Ad5-nCoV,Vector,AMMS,A1,1Dium,A,None,5,appendix Table S1,7,Full,Solicited,26,19,73.1
+526,Wu. S,Lancet ID,2021,Ad5-nCoV,Vector,AMMS,A2,2Dium,A,None,10,appendix Table S1,7,Full,Solicited,26,15,57.7
+17,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A1,Low dose,A,Standard,5,Table 2,7,Full,Solicited,36,30,83
+17,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A2,Middle dose,A,Higher,10,Table 2,7,Full,Solicited,36,30,83
+17,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A3,High dose,A,Higher,15,Table 2,7,Full,Solicited,36,27,75
+17,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A1,Low dose,A,Standard,5,Table 2,28,Full,Overall,36,31,86
+17,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A2,Middle dose,A,Higher,10,Table 2,28,Full,Overall,36,30,83
+17,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A3,High dose,A,Higher,15,Table 2,28,Full,Overall,36,27,75
+17,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A1,Low dose,A,Standard,5,Table 2,7,Full,Local,36,NA,NA
+17,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A2,Middle dose,A,Higher,10,Table 2,7,Full,Local,36,NA,NA
+17,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A3,High dose,A,Higher,15,Table 2,7,Full,Local,36,NA,NA
+17,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A1,Low dose,A,Standard,5,Table 2,7,Full,Systemic,36,NA,NA
+17,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A2,Middle dose,A,Higher,10,Table 2,7,Full,Systemic,36,NA,NA
+17,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A3,High dose,A,Higher,15,Table 2,7,Full,Systemic,36,NA,NA
+3,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A1,High dose,A,Higher,10,Table 2,14,Full,Solicited,253,183,72
+3,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A2,Low dose,A,Standard,5,Table 2,14,Full,Solicited,129,96,74
+3,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A1,High dose,A,Higher,10,Table 2,14,Full,Unsolicited,253,19,8
+3,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A2,Low dose,A,Standard,5,Table 2,14,Full,Unsolicited,129,7,5
+3,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A1,High dose,A,Higher,10,Table 2,28,Full,Overall,253,196,77
+3,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A2,Low dose,A,Standard,5,Table 2,28,Full,Overall,129,98,76
+3,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A1,High dose,A,Higher,10,Table 2,14,Full,Local,253,NA,NA
+3,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A2,Low dose,A,Standard,5,Table 2,14,Full,Local,129,NA,NA
+3,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A1,High dose,A,Higher,10,Table 2,14,Full,Systemic,253,NA,NA
+3,Zhu. F,Lancet,2020,Ad5-nCoV,Vector,CanSino,A2,Low dose,A,Standard,5,Table 2,14,Full,Systemic,129,NA,NA
+2431,Zhu. F,Clinical infectious disease,2021,Ad5-nCoV,Vector,CanSino,A1,"Middle dose, old cohort",A,Higher,10,Supplementary Table 4,14,Partial,Local,100,17,17
+2431,Zhu. F,Clinical infectious disease,2021,Ad5-nCoV,Vector,CanSino,A2,"Low dose, old cohort",A,Standard,5,Supplementary Table 4,14,Partial,Local,100,21,21
+2431,Zhu. F,Clinical infectious disease,2021,Ad5-nCoV,Vector,CanSino,A1,"Middle dose, old cohort",A,Higher,10,Supplementary Table 4,14,Full,Local,100,18,18
+2431,Zhu. F,Clinical infectious disease,2021,Ad5-nCoV,Vector,CanSino,A2,"Low dose, old cohort",A,Standard,5,Supplementary Table 4,14,Full,Local,100,17,17
+2431,Zhu. F,Clinical infectious disease,2021,Ad5-nCoV,Vector,CanSino,A1,"Middle dose, old cohort",A,Higher,10,Supplementary Table 4,14,Partial,Systemic,100,10,10
+2431,Zhu. F,Clinical infectious disease,2021,Ad5-nCoV,Vector,CanSino,A2,"Low dose, old cohort",A,Standard,5,Supplementary Table 4,14,Partial,Systemic,100,6,6
+2431,Zhu. F,Clinical infectious disease,2021,Ad5-nCoV,Vector,CanSino,A1,"Middle dose, old cohort",A,Higher,10,Supplementary Table 4,14,Full,Systemic,100,9,9
+2431,Zhu. F,Clinical infectious disease,2021,Ad5-nCoV,Vector,CanSino,A2,"Low dose, old cohort",A,Standard,5,Supplementary Table 4,14,Full,Systemic,100,3,3
+2431,Zhu. F,Clinical infectious disease,2021,Ad5-nCoV,Vector,CanSino,A1,"Middle dose, old cohort",A,Higher,10,Supplementary Table 4,14,Partial,Solicited,100,23,23
+2431,Zhu. F,Clinical infectious disease,2021,Ad5-nCoV,Vector,CanSino,A2,"Low dose, old cohort",A,Standard,5,Supplementary Table 4,14,Partial,Solicited,100,24,24
+2431,Zhu. F,Clinical infectious disease,2021,Ad5-nCoV,Vector,CanSino,A1,"Middle dose, old cohort",A,Higher,10,Supplementary Table 4,14,Full,Solicited,100,22,22
+2431,Zhu. F,Clinical infectious disease,2021,Ad5-nCoV,Vector,CanSino,A2,"Low dose, old cohort",A,Standard,5,Supplementary Table 4,14,Full,Solicited,100,19,19
+2431,Zhu. F,Clinical infectious disease,2021,Ad5-nCoV,Vector,CanSino,A1,"Middle dose, old cohort",A,Higher,10,Supplementary Table 4,28,Partial,Unsolicited,100,5,5
+2431,Zhu. F,Clinical infectious disease,2021,Ad5-nCoV,Vector,CanSino,A2,"Low dose, old cohort",A,Standard,5,Supplementary Table 4,28,Partial,Unsolicited,100,2,2
+2431,Zhu. F,Clinical infectious disease,2021,Ad5-nCoV,Vector,CanSino,A1,"Middle dose, old cohort",A,Higher,10,Supplementary Table 4,28,Full,Unsolicited,100,0,0
+2431,Zhu. F,Clinical infectious disease,2021,Ad5-nCoV,Vector,CanSino,A2,"Low dose, old cohort",A,Standard,5,Supplementary Table 4,28,Full,Unsolicited,100,1,1
+837,Tebas. P,EClinicalMedicine,2021,INO-4880,DNA,Inovio,A1,1mg dose group,A,Standard,1,Figure 2,56,Partial,Local,20,2,10
+837,Tebas. P,EClinicalMedicine,2021,INO-4880,DNA,Inovio,A2,2mg dose group,A,Higher,2,Figure 2,56,Partial,Local,20,1,5
+837,Tebas. P,EClinicalMedicine,2021,INO-4880,DNA,Inovio,A1,1mg dose group,A,Standard,1,Figure 2,56,Full,Local,20,2,10
+837,Tebas. P,EClinicalMedicine,2021,INO-4880,DNA,Inovio,A2,2mg dose group,A,Higher,2,Figure 2,56,Full,Local,20,0,0
+837,Tebas. P,EClinicalMedicine,2021,INO-4880,DNA,Inovio,A1,1mg dose group,A,Standard,1,Figure 2,56,Partial,Systemic,20,0,0
+837,Tebas. P,EClinicalMedicine,2021,INO-4880,DNA,Inovio,A2,2mg dose group,A,Higher,2,Figure 2,56,Partial,Systemic,20,1,5
+837,Tebas. P,EClinicalMedicine,2021,INO-4880,DNA,Inovio,A1,1mg dose group,A,Standard,1,Figure 2,56,Full,Systemic,20,0,0
+837,Tebas. P,EClinicalMedicine,2021,INO-4880,DNA,Inovio,A2,2mg dose group,A,Higher,2,Figure 2,56,Full,Systemic,20,0,0
+779,Momin. T,EClinicalMedicine,2021,ZyCoV-D,DNA,Zydus Cadila,A1,"1mg, needle",A,None,1,Figure 2,7,Any,Local,12,1,8.3
+779,Momin. T,EClinicalMedicine,2021,ZyCoV-D,DNA,Zydus Cadila,A2,"2mg, needle",A,None,2,Figure 2,7,Any,Local,12,1,8.3
+779,Momin. T,EClinicalMedicine,2021,ZyCoV-D,DNA,Zydus Cadila,B1,"1mg, needle free",B,None,1,Figure 2,7,Any,Local,12,1,8.3
+779,Momin. T,EClinicalMedicine,2021,ZyCoV-D,DNA,Zydus Cadila,B2,"2mg, needle free",B,None,2,Figure 2,7,Any,Local,12,2,8.3
+779,Momin. T,EClinicalMedicine,2021,ZyCoV-D,DNA,Zydus Cadila,A1,"1mg, needle",A,None,1,Figure 2,7,Any,Systemic,12,1,8.3
+779,Momin. T,EClinicalMedicine,2021,ZyCoV-D,DNA,Zydus Cadila,A2,"2mg, needle",A,None,2,Figure 2,7,Any,Systemic,12,1,8.3
+779,Momin. T,EClinicalMedicine,2021,ZyCoV-D,DNA,Zydus Cadila,B1,"1mg, needle free",B,None,1,Figure 2,7,Any,Systemic,12,0,0
+779,Momin. T,EClinicalMedicine,2021,ZyCoV-D,DNA,Zydus Cadila,B2,"2mg, needle free",B,None,2,Figure 2,7,Any,Systemic,12,0,0
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,A1,NA,A,Standard,3.75,Figure 2,7,Partial,Local,20,20,100
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,A2,NA,A,Higher,7.5,Figure 2,7,Partial,Local,20,16,80
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,A3,NA,A,Higher,15,Figure 2,7,Partial,Local,20,17,85
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,B1,NA,B,None,3.75,Figure 2,7,Partial,Local,20,17,85
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,B2,NA,B,None,7.5,Figure 2,7,Partial,Local,20,16,80
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,B3,NA,B,None,15,Figure 2,7,Partial,Local,20,16,80
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,A1,NA,A,Standard,3.75,Figure 2,7,Full,Local,19,19,100
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,A2,NA,A,Higher,7.5,Figure 2,7,Full,Local,20,19,95
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,A3,NA,A,Higher,15,Figure 2,7,Full,Local,20,16,80
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,B1,NA,B,None,3.75,Figure 2,7,Full,Local,20,15,75
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,B2,NA,B,None,7.5,Figure 2,7,Full,Local,20,14,70
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,B3,NA,B,None,15,Figure 2,7,Full,Local,19,14,73.7
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,A1,NA,A,Standard,3.75,Figure 2,7,Partial,Systemic,20,10,50
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,A2,NA,A,Higher,7.5,Figure 2,7,Partial,Systemic,20,6,30
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,A3,NA,A,Higher,15,Figure 2,7,Partial,Systemic,20,12,60
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,B1,NA,B,None,3.75,Figure 2,7,Partial,Systemic,20,13,65
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,B2,NA,B,None,7.5,Figure 2,7,Partial,Systemic,20,10,50
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,B3,NA,B,None,15,Figure 2,7,Partial,Systemic,20,7,35
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,A1,NA,A,Standard,3.75,Figure 2,7,Full,Systemic,19,16,84.2
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,A2,NA,A,Higher,7.5,Figure 2,7,Full,Systemic,20,18,90
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,A3,NA,A,Higher,15,Figure 2,7,Full,Systemic,20,15,75
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,B1,NA,B,None,3.75,Figure 2,7,Full,Systemic,20,9,45
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,B2,NA,B,None,7.5,Figure 2,7,Full,Systemic,20,7,35
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,B3,NA,B,None,15,Figure 2,7,Full,Systemic,19,9,47.4
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,B1,NA,B,None,3.75,Table S8-10,21,Full,Unsolicited,20,9,45
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,B2,NA,B,None,7.5,Table S8-10,21,Full,Unsolicited,20,11,55
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,B3,NA,B,None,15,Table S8-10,21,Full,Unsolicited,20,6,30
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,A1,NA,A,Standard,3.75,Table S8-10,21,Full,Unsolicited,20,8,40
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,A2,NA,A,Higher,7.5,Table S8-10,21,Full,Unsolicited,20,7,35
+303,Ward. B. J,Nature Medicine,2021,Plant-based VLP,Virus-like particle,Medicago,A3,NA,A,Higher,15,Table S8-10,21,Full,Unsolicited,20,11,55
