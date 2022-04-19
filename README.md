@@ -4,7 +4,7 @@ This reposory contains data and R scripts that were used for the preprint entitl
 
 Correspondance regarding this study shall be addressed to Benjamin Cowling (bcowling@hku.hk) or Bingyi Yang (yangby@hku.hk).
 
-# Data
+## Data
 
 All data were extracted and summaized from published studies, with detailed can be found in file **"References"**. 
 
@@ -16,6 +16,6 @@ All data were extracted and summaized from published studies, with detailed can 
 6) *data_safety.csv* & *data_safety_agg.xlsx* - Contains data used to compare safety profiles after recieving fractional and standard dose groups.
 
 
-# Analysis
+## Analysis
 
 R scripts that were used for main and supplementary analysis can be found in *Fractional_doses.Rmd*.
