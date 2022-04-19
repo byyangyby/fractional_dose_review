@@ -6,7 +6,7 @@ Correspondance regarding this study shall be addressed to Benjamin Cowling (bcow
 
 ## Data
 
-All data were extracted and summaized from published studies, with detailed can be found in file **"References"**. 
+All data were extracted and summaized from published studies, with detailed can be found in file *References"*. 
 
 1) *data_seroconversion.csv* - Contains data used to examine differences in the proportion of seroconversion of nAbs after recieving fractional and standard dose groups.
 2) *data_nAbs.csv* - Contains data used to estimate dose-response relationships between dose fracnation and nAbs levels.
