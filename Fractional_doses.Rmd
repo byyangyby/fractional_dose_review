@@ -1,0 +1,4513 @@
+---
+title: "Fractional_dose_review"
+author: "Bingyi Yang"
+date: "19/04/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+
+knitr::opts_chunk$set(echo = FALSE,
+                      message = FALSE)
+
+library(readxl)
+library(estmeansd)
+library(tidyverse)
+library(nlme)
+library(ggpubr)
+library(ggplot2)
+library(knitr)
+library(metafor)
+library(scales)
+library(lemon)
+library(ggsci)
+
+theme_set(
+  
+  theme_bw() +
+    
+    theme(axis.text.x = element_text(size = 16,
+                                     colour = "black"),
+          axis.text.y = element_text(size = 16,
+                                     colour = "black"),
+          panel.grid.major = element_blank(),
+          panel.background = element_blank(),
+          panel.grid.minor = element_blank(),
+          panel.border = element_blank(),
+          axis.line = element_line(colour = "black"),
+          plot.margin = unit(c(0.5,0.8,0.5,0.5), "cm"),
+          axis.title.x = element_text(size = 16, face = 'bold',colour = "black"),
+          axis.title.y = element_text(size = 16, face = 'bold',colour = "black"),
+          plot.title = element_text(size = 24, face = 'bold',colour = "black"),
+          legend.text = element_text(size = 16, colour = "black"),
+          legend.title = element_text(size = 16, colour = "black"),
+          plot.title.position = 'plot')
+    
+  
+)
+
+set.seed(12345)
+
+```
+
+
+```{r functions, include=FALSE}
+
+#
+# function to transform new variables for nAbs data
+# ratio to convalescent level
+# input
+#   data = raw, raw data on nAbs
+# output
+#   data frame used for fitGAM()
+#
+
+transNewVars = function(data){
+  
+  test = data %>%
+    dplyr::filter(!(is.na(Ref_baseline) & is.na(Ref_conv))) %>%
+    arrange(Record_number, Group_ID, Days_lower)
+  
+  test = lapply(unique(test$Record_number), function(i){
+    
+    ## ratio of antibodies
+    used = test %>%
+      dplyr::filter(Record_number == i)
+    
+    temp = t(sapply(1:nrow(used), function(j){
+      
+      mu = log10(used$Immunity_value[j])
+      sd = log10(used$Immunity_value[j]/used$Immunity_value_lower[j]) /1.96
+      sd = ifelse(is.na(sd), 0, sd)
+      
+      # baseline
+      if(is.na(used$Ref_baseline[j])){
+        
+        res_baseline = rep(NA, 3)
+        
+      } else {
+        
+        mu_ref = log10(used$Ref_baseline[j])
+        sd_ref = log10(used$Ref_baseline[j]/used$Ref_baseline_lower[j])/1.96
+        sd_ref = ifelse(is.na(sd_ref), 0, sd_ref)
+        
+        ratios = sapply(1:1000, function(k) rnorm(1, mean = mu, sd = sd) - rnorm(1, mean = mu_ref, sd = sd_ref))
+        ratios = 10^ratios
+        
+        res_baseline = c(mean(ratios),
+                         quantile(ratios, c(.025, .975)))
+        
+        
+      }
+      
+      # convalescent
+      if(is.na(used$Ref_conv[j])){
+        
+        res_conv = rep(NA, 3)
+        
+      } else {
+        
+        mu_ref = log10(used$Ref_conv[j])
+        sd_ref = log10(used$Ref_conv[j]/used$Ref_conv_lower[j])/1.96
+        sd_ref = ifelse(is.na(sd_ref), 0, sd_ref)
+        
+        ratios = sapply(1:1000, function(k) rnorm(1, mean = mu, sd = sd) - rnorm(1, mean = mu_ref, sd = sd_ref))
+        ratios = 10^ratios
+        
+        res_conv = c(mean(ratios),
+                     quantile(ratios, c(.025, .975)))
+        
+        
+      }
+      
+      c(res_baseline, res_conv)
+      
+    }))
+    
+    colnames(temp) = c('ratio_to_baseline', 
+                       "ratio_to_baseline_lower",
+                       "ratio_to_baseline_hgiher",
+                       'ratio_to_conv', 
+                       "ratio_to_conv_lower",
+                       "ratio_to_conv_hgiher")
+    
+    used = cbind(used, temp)
+    
+    ## doses
+    temp = t(sapply(1:nrow(used), function(j){
+      
+      dose = used$Total_doses[j]
+      refdose = unique(used$Total_doses[used$Group_ID == used$Reference_to_lowest_dose[j]])
+      
+      if(dose == refdose){
+        
+        lowest = used$Concentration_dose_1[j]/unique(used$Concentration_dose_1[used$Group_ID == used$Reference_to_lowest_dose[j]])
+        highest = used$Concentration_dose_1[j]/unique(used$Concentration_dose_1[used$Group_ID == used$Reference_to_highest_dose[j]])
+        
+      } else {
+        
+        lowest = NA
+        highest = NA
+        
+      }
+      
+      
+      
+      gpid = used$Group_ID[j]
+      refid = unique(used$Group_ID[used$Candidate_for_further_evaluation == 'Yes'])
+      
+      if(length(refid) == 0){
+        refid = NA
+      }
+      if(!is.na(refid)){
+        
+        refid = refid[grepl(gsub("[0-9]", '', gpid), refid)]
+        if(length(refid) > 0){
+          
+          ref_concentration = unique(used$Concentration_dose_1[used$Group_ID %in% refid])
+          
+          standard = used$Concentration_dose_1[j]/ref_concentration
+        } else{
+          standard = NA
+        }
+        
+        
+      } else {
+        standard = NA
+      }
+      
+      c(lowest, highest, standard)
+      
+    }))
+    
+    colnames(temp) = c('concentration_to_lowest', 
+                       "concentration_to_highest",
+                       "concentration_to_standard")
+    
+    used = cbind(used, temp)
+    
+    used
+    
+  })
+  test = do.call('rbind', test)
+  
+  return(test)
+  
+}
+
+
+#
+# function to fit dose-response relationship of nAbs
+# see Equation 3 in Methods
+#
+
+fitGAM = function(res_nt_ab){
+  
+  model_data = res_nt_ab %>%
+    dplyr::select(ratio_to_conv, concentration_to_standard, Vaccine_type, 
+                  Age_lower, Age_upper, Total_doses, Days_since_last_dose, 
+                  Target) %>%
+    drop_na()  %>%
+    filter(Target %in% c("Live virus", 
+                         "Pseudo virus") &
+             concentration_to_standard >= 0.1) %>%
+    mutate(log_concentration_to_standard = log2(concentration_to_standard),
+           Age_gp = case_when(Age_upper <= 18 ~ 'Children',
+                              Age_lower >= 18 ~ 'Adult'),
+           Age_gp = ifelse(Age_lower >= 55, 'Elderly', Age_gp),
+           Age_gp = ifelse(is.na(Age_gp), 'Adult', Age_gp))
+  
+  model = mgcv::gam(log2(ratio_to_conv) ~ s(Days_since_last_dose) + 
+                      s(log_concentration_to_standard) + 
+                      Vaccine_type +
+                      Age_gp + 
+                      Total_doses + Target,
+                    data = model_data)
+  
+  return(model)
+  
+}
+
+
+#
+# function to predict dose-response relationship of nAbs
+# input
+#   model = fitted model from fitGAM()
+#   age = age groups, "Adult", "Children", or "Elderly"
+#   vector_dose = 1 or 2
+# output
+#   list of predictions used to plot figure 1A
+#
+
+getPredByConcentration = function(model, age, vector_dose){
+  
+  comb = expand.grid(vaccine_type = c('Inactivated',
+                                      'Recombinant',
+                                      'mRNA',
+                                      'Vector'),
+                     days = c(0, 14, 28))
+  comb$vaccine_type = as.character(comb$vaccine_type)
+  comb$days = as.numeric(comb$days)
+  
+  datList = lapply(1:nrow(comb), function(i){
+    
+    dat = data.frame(
+      log_concentration_to_standard = log2(seq(0.03, 5, 0.005)),
+      Vaccine_type = comb$vaccine_type[i],
+      Age_gp = age,
+      Total_doses = 2,
+      Days_since_last_dose = comb$days[i],
+      Target = 'Live virus'
+    )
+    
+    if(vector_dose == 1 & comb$vaccine_type[i] == 'Vector'){
+      
+      dat$Total_doses = 1
+      
+    }
+    
+    dat
+    
+  })
+  
+  names(datList) = paste(comb[,1], comb[,2])
+  
+  predList = lapply(datList, function(dat){
+    
+    pred = predict(model, 
+                   newdata = dat, 
+                   se.fit = TRUE)
+    
+    data.frame(
+      concentration = dat$log_concentration_to_standard,
+      est = 2^pred$fit,
+      lower = 2^(pred$fit - 1.96*pred$se.fit),
+      upper = 2^(pred$fit + 1.96*pred$se.fit)
+    )
+    
+  })
+  
+  names(predList) = names(datList)
+  
+  predList
+  
+}
+
+# function for validation - figure S4
+plotOfPredByConcentrationValidation = function(predList, model, panel, time, label){
+  
+  scenarios = names(predList)
+  
+  sel = scenarios[grepl(c('mRNA',
+                          'Recombinant',
+                          'Vector',
+                          'Inactivated')[panel], 
+                        scenarios)]
+  
+  y.max = c(0.5, 6, 6)[time]
+  
+  par(mar = c(5,6,6,2))
+  plot(NULL, 
+       las = 1,
+       xlab = 'Ratio to standard dose',
+       ylab = 'Standardized nAbs',
+       xlim = c(-5, 2.5),
+       ylim = c(0, y.max),
+       type = 'l', lwd = 2,
+       cex.lab = 2, cex.axis = 2,
+       axes = FALSE)
+  
+  colors = c('#AD002AFF',
+             '#0099B4FF',
+             '#925E9FFF')
+  
+  
+  i = time
+  
+  used = predList[names(predList) == sel[i]]
+  
+  x = used[[1]]$concentration
+  
+  polygon(x = c(x, rev(x)),
+          y = c(used[[1]]$lower,
+                rev(used[[1]]$upper)),
+          border = NA,
+          col = adjustcolor(
+            "#979aaa",
+            alpha.f = 0.2))
+  
+  lines(x,
+        used[[1]]$est,
+        lwd = 2,
+        col = "#4c516d")
+  
+  # data
+  data_used = bind_cols(model$model,
+                        pred = predict(model))
+  data_used = data_used %>%
+    filter(Days_since_last_dose >= c(0, 7, 14)[time] &
+             Days_since_last_dose <= c(0, 7, 28)[time] &
+             Vaccine_type == c('mRNA',
+                               'Recombinant',
+                               'Vector',
+                               'Inactivated')[panel])
+  
+  x = jitter(data_used$log_concentration_to_standard)
+  y = 2^data_used$`log2(ratio_to_conv)`
+  
+  pch = case_when(data_used$Target == "Pseudo virus" ~ 15,
+                  data_used$Target == "Live virus" ~ 19)
+  
+  pointColors = case_when(data_used$Age_gp == "Adult" ~ "#0084ff",
+                          data_used$Age_gp == "Children" ~ "#d696bb",
+                          data_used$Age_gp == "Elderly" ~ "#ffc300")
+  
+  points(x, y,
+         pch = pch,
+         col = adjustcolor(pointColors, alpha.f = 0.4),
+         cex = 2)
+  
+  if(!(time == 2 & panel  %in% c(3, 4))){
+    
+    cor.est = cor.test(data_used$`log2(ratio_to_conv)`, data_used$pred,
+                       method = "pearson")
+    
+    pvalue = if(cor.est$p.value >= 0.01){
+      paste("P =", sprintf("%.03f", cor.est$p.value))
+    } else {"P < 0.01"}
+    
+    cor.text = paste("r = ",
+                     sprintf("%.02f", cor.est$estimate),
+                     "; ", pvalue, sep = "")
+    text(x = -4.8,
+         y = y.max,
+         cor.text,
+         cex = 2,
+         adj = c(0, 0.5))
+    
+  }
+  
+
+  
+  # ref line
+  segments(-5, 1, log2(5), 1, col = 'black', lty = 2, lwd = 2)
+  
+  axis(side = 1, 
+       pos = 0,
+       at = log2(c(0.03, 0.1, 0.5, 1, 2, 5)),
+       labels = c(0.03, 0.1, 0.5, 1, 2, 5),
+       cex.axis = 2,
+       lwd = 2)
+  
+  if(time == 1){
+    
+    axis(side = 2, 
+         pos = -5.1,
+         at = c(0.01, 0.1, 0.2, 0.3, 0.4, 0.5),
+         labels = c(0.01, round(c(0.1, 0.2, 0.3, 0.4, 0.5), 1)),
+         cex.axis = 2,
+         xpd = TRUE,
+         las = 1,
+         las = 2,
+         lwd = 2)
+    
+    title(main = c('mRNA',
+                   'Protein subunit',
+                   'NR viral vector',
+                   'Inactivated'
+    )[panel], 
+    cex.main = 2)
+    
+  }
+  if(time != 1){
+    
+    axis(side = 2, 
+         pos = -5.1,
+         at = c(0.01, 1:6),
+         labels = c(0.01, round(1:6, 0)),
+         cex.axis = 2,
+         xpd = TRUE,
+         las = 1,
+         las = 2,
+         lwd = 2)
+    
+  }
+  
+  
+  if(panel == 4 & time  == 2){
+    
+    legend(x = -4.8,
+           y = y.max,
+           legend = c('Children',
+                      'Adult',
+                      'Elderly'),
+           col = c("#d696bb",
+                   "#0084ff",
+                   "#ffc300"),
+           lty = 1,
+           lwd = 3,
+           cex = 2,
+           bty = 'n',
+           title = 'Age group')
+    
+  }
+  
+  if(panel == 4 & time  == 3){
+    
+    legend(x = -4.8,
+           y = y.max,
+           legend = c('Live virus',
+                      'Pseudo virs'),
+           col = "black",
+           pch = c(19, 15),
+           cex = 2,
+           bty = 'n',
+           title = 'Assay antigen')
+    
+    
+  }
+  
+  
+  text(x = -6,
+       y = c(0.576, 6.8,6.8)[time],
+       label,
+       font = 2,
+       cex = 2.5,
+       xpd = TRUE)
+  
+}
+
+#
+# function to predict dose-response relationship of VEs against ancestral strains
+# input
+#   model = fitted model from fitGAM()
+#   age = age groups, "Adult", "Children", or "Elderly"
+#   vector_dose = 1 or 2
+# output
+#   list of predictions used to plot figure 1B & C
+#
+
+getVEPredByConcentration = function(model, age, vector_dose){
+  
+  comb = expand.grid(vaccine_type = c('Inactivated',
+                                      'Recombinant',
+                                      'mRNA',
+                                      'Vector'),
+                     days = 14)
+  comb$vaccine_type = as.character(comb$vaccine_type)
+  comb$days = as.numeric(comb$days)
+  
+  datList = lapply(1:nrow(comb), function(i){
+    
+    dat = data.frame(
+      log_concentration_to_standard = log2(seq(0.03, 5, 0.005)),
+      Vaccine_type = comb$vaccine_type[i],
+      Age_gp = age,
+      Total_doses = 2,
+      Days_since_last_dose = comb$days[i],
+      Target = 'Live virus'
+    )
+    
+    if(vector_dose == 1 & comb$vaccine_type[i] == 'Vector'){
+      
+      dat$Total_doses = 1
+      
+    }
+    
+    dat
+    
+  })
+  
+  names(datList) = paste(comb[,1], comb[,2])
+  
+  predList = lapply(datList, function(dat){
+    
+    pred = predict(model, 
+                   newdata = dat, 
+                   se.fit = TRUE)
+    res_ab = data.frame(
+      concentration = dat$log_concentration_to_standard,
+      est = 2^pred$fit,
+      lower = 2^(pred$fit - 1.96*pred$se.fit),
+      upper = 2^(pred$fit + 1.96*pred$se.fit)
+    ) %>%
+      mutate(
+        
+        ve = 1/(1 + exp(-3*(log10(est) - log10(0.2)))),
+        ve_lower = 1/(1 + exp(-3*(log10(lower) - log10(0.2)))),
+        ve_upper = 1/(1 + exp(-3*(log10(upper) - log10(0.2)))),
+        
+        ve_sev = 1/(1 + exp(-2.94*(log10(est) - log10(0.030)))),
+        ve_sev_lower = 1/(1 + exp(-2.94*(log10(lower) - log10(0.030)))),
+        ve_sev_upper = 1/(1 + exp(-2.94*(log10(upper) - log10(0.030))))
+        
+      )
+    
+    res_ab
+    
+  })
+  
+  names(predList) = names(datList)
+  
+  predList
+  
+}
+
+
+# function to plot figure 1A
+plotOfPredByConcentration = function(predList, panel, label){
+  
+  scenarios = names(predList)
+  
+  sel = scenarios[grepl(c('mRNA',
+                          'Recombinant',
+                          'Vector',
+                          'Inactivated')[panel], 
+                        scenarios)]
+  
+  par(mar = c(5,6,6,2))
+  plot(NULL, 
+       las = 1,
+       xlab = 'Ratio to standard dose concentration',
+       ylab = 'Ratio to convalenscent sera',
+       xlim = c(-5, 2.5),
+       ylim = c(0, 6),
+       type = 'l', lwd = 2,
+       cex.lab = 2, cex.axis = 2,
+       axes = FALSE)
+  
+  colors = c('#AD002AFF',
+             '#0099B4FF',
+             '#925E9FFF')
+  
+  for(i in 1:length(sel)){
+    
+    used = predList[names(predList) == sel[i]]
+    
+    x = used[[1]]$concentration
+    
+    polygon(x = c(x, rev(x)),
+            y = c(used[[1]]$lower,
+                  rev(used[[1]]$upper)),
+            border = NA,
+            col = adjustcolor(colors[i],
+                              alpha.f = 0.2))
+    
+    lines(x,
+          used[[1]]$est,
+          lwd = 2,
+          col = colors[i])
+    
+    if(i == 2){
+      
+      x = c(-1, 0)
+      y = used[[1]][used[[1]]$concentration %in% x, 2:4]
+      
+      points(x, y[, 1],
+             pch = c(19, 15),
+             col = colors[i],
+             cex = 2)
+      
+      txt = paste(sprintf("%.01f", y[,1]),
+                  " (",
+                  sprintf("%.01f", y[,2]),
+                  ", ",
+                  sprintf("%.01f", y[,3]),
+                  ")",
+                  sep = '')
+      
+      text(x = x,
+           y = y[,1] * c(1.2, 1.3, 2.3, 3)[panel],
+           txt,
+           cex = 2,
+           adj = c(1, 1))
+      
+      
+    }
+    
+  }
+  
+  segments(-5, 1, log2(5), 1, col = 'black', lty = 2, lwd = 2)
+  
+  axis(side = 1, 
+       pos = -0.15,
+       at = log2(c(0.03, 0.1, 0.5, 1, 2, 5)),
+       labels = c(0.03, 0.1, 0.5, 1, 2, 5),
+       cex.axis = 2,
+       lwd = 2)
+  
+  axis(side = 2, 
+       pos = -5.1,
+       at = c(0.01, 1:6),
+       labels = c(0.01, round(1:6, 0)),
+       cex.axis = 2,
+       xpd = TRUE,
+       las = 1,
+       las = 2,
+       lwd = 2)
+  
+  if(panel == 4){
+    
+    legend(x = -4.8,
+           y = 6,
+           legend = c('Day 0',
+                      'Day 14',
+                      'Day 28'),
+           col = colors,
+           lty = 1,
+           lwd = 3,
+           cex = 2,
+           bty = 'n',
+           title = 'Days after full vaccination')
+    
+    legend(x = -0.1,
+           y = 6,
+           legend = c('Half-dose',
+                      'Standard dose'),
+           col = "black",
+           pch = c(19, 15),
+           cex = 2,
+           bty = 'n',
+           title = 'Vaccination doses')
+    
+    
+  }
+  
+  title(main = c('mRNA',
+                 'Protein subunit',
+                 'NR viral vector',
+                 'Inactivated'
+  )[panel], 
+  cex.main = 2)
+  
+  text(x = -6,
+       y = 6.8,
+       label,
+       font = 2,
+       cex = 2.5,
+       xpd = TRUE)
+  
+}
+
+
+# function to plot figure 1B
+plotVEByConcentrationCombined = function(predList, panel, label){
+  
+  
+  scenarios = names(predList)
+  
+  par(mar = c(5,6,6,2))
+  plot(NULL, 
+       las = 1,
+       xlab = 'Ratio to standard dose concentration',
+       ylab = 'VE, %',
+       xlim = c(-5, 2.5),
+       ylim = c(0, 1),
+       type = 'l', lwd = 2,
+       cex.lab = 2, cex.axis = 2,
+       axes = FALSE)
+  
+  used = predList[[panel]]
+  
+  x = used$concentration
+  
+  for(outcome in c("infection", "severe")){
+    
+    if(outcome == "infection"){
+      columns_used = c("ve", "ve_lower", "ve_upper")
+      colors = case_when(grepl('mRNA', scenarios)  ~ '#E64B35B2',
+                         grepl('Inactivated', scenarios) ~ '#4DBBD5B2',
+                         grepl('Vector', scenarios) ~ '#00A087B2',
+                         grepl('Recombinant', scenarios) ~ '#7E6148B2')
+      pch_used = 19
+      y.txt = 0.2
+      txt = "Symptomatic"
+    }
+    
+    if(outcome == "severe"){
+      columns_used = c("ve_sev", "ve_sev_lower", "ve_sev_upper")
+      colors = case_when(grepl('mRNA', scenarios)  ~ '#b82b17',
+                         grepl('Inactivated', scenarios) ~ '#2994ad',
+                         grepl('Vector', scenarios) ~ '#005446',
+                         grepl('Recombinant', scenarios) ~ '#4d3c2c')
+      pch_used = 15
+      y.txt = 0.1
+      txt = "Severe"
+    }
+    
+    polygon(x = c(x, rev(x)),
+            y = c(used[ ,columns_used[2]],
+                  rev(used[ ,columns_used[3]])),
+            border = NA,
+            col = adjustcolor(colors[panel],
+                              alpha.f = 0.2))
+    
+    lines(x,
+          used[ ,columns_used[1]],
+          lwd = 2,
+          col = colors[panel])
+    
+    y.mid = used[x == -1, columns_used[1]]
+    x.mid = -1
+    y.lower = used[x == -1, columns_used[2]]
+    y.upper = used[x == -1, columns_used[3]]
+    
+    points(x = x.mid, 
+           y = y.mid,
+           col = colors[panel],
+           pch = pch_used,
+           cex = 2)
+    
+    ve_txt =  paste(sprintf('%.0f', y.mid*100),
+                    ' (',
+                    sprintf('%.0f', y.lower*100),
+                    ', ',
+                    sprintf('%.0f', y.upper*100),
+                    ')',
+                    sep = '')
+    
+    points(x = log2(0.19), 
+           y = y.txt,
+           col = colors[panel],
+           pch = pch_used,
+           cex = 1.5)
+    
+    text(x = log2(0.23), 
+         y = y.txt,
+         txt,
+         cex = 1.5,
+         adj = c(0, 0.5))
+    
+    text(x = 0.2,
+         y = y.txt,
+         ve_txt,
+         cex = 1.5,
+         adj = c(0, 0.5))
+    
+    
+  }
+  
+  
+  text(x = log2(0.19), 
+       y = 0.3,
+       "Half-dose VE",
+       cex = 1.5,
+       adj = c(0, 0.5))
+  
+  
+  axis(side = 1, 
+       pos = -0.05,
+       at = log2(c(0.03, 0.1, 0.5, 1, 2, 5)),
+       labels = c(0.03, 0.1, 0.5, 1, 2, 5),
+       cex.axis = 2,
+       lwd = 2)
+  
+  axis(side = 2, 
+       pos = -5.2,
+       at = seq(0, 1, 0.2),
+       labels = seq(0, 1, 0.2)*100,
+       cex.axis = 2,
+       xpd = TRUE,
+       las = 1,
+       las = 2)
+  
+  
+  title(main = c('Inactivated',
+                 'Protein subunit',
+                 'mRNA',
+                 'NR viral vector')[panel], 
+        cex.main = 2)
+  
+  text(x = -6,
+       y = 1.17,
+       label,
+       font = 2,
+       cex = 2.5,
+       xpd = TRUE)
+  
+}
+
+
+# function to plot figure 1C
+plotVEByConcentrationCombinedRelative = function(predList, panel, label){
+  
+  
+  scenarios = names(predList)
+  
+  par(mar = c(5,6,6,2))
+  plot(NULL, 
+       las = 1,
+       xlab = 'Ratio to standard dose concentration',
+       ylab = 'Ratio to standard dose VE',
+       xlim = c(-5, 2.5),
+       ylim = c(0, 1),
+       type = 'l', lwd = 2,
+       cex.lab = 2, cex.axis = 2,
+       axes = FALSE)
+  
+  used = predList[[panel]]
+  
+  x = used$concentration
+  x0 = log2(1)
+  
+  for(outcome in c("infection", "severe")){
+    
+    if(outcome == "infection"){
+      columns_used = c("ve", "ve_lower", "ve_upper")
+      colors = case_when(grepl('mRNA', scenarios)  ~ '#E64B35B2',
+                         grepl('Inactivated', scenarios) ~ '#4DBBD5B2',
+                         grepl('Vector', scenarios) ~ '#00A087B2',
+                         grepl('Recombinant', scenarios) ~ '#7E6148B2')
+      pch_used = 19
+      y.txt = 0.2
+      txt = "Symptomatic"
+      y0 = used$ve[used$concentration == x0]
+    }
+    
+    if(outcome == "severe"){
+      columns_used = c("ve_sev", "ve_sev_lower", "ve_sev_upper")
+      colors = case_when(grepl('mRNA', scenarios)  ~ '#b82b17',
+                         grepl('Inactivated', scenarios) ~ '#2994ad',
+                         grepl('Vector', scenarios) ~ '#005446',
+                         grepl('Recombinant', scenarios) ~ '#4d3c2c')
+      pch_used = 15
+      y.txt = 0.1
+      txt = "Severe"
+      y0 = used$ve_sev[used$concentration == x0]
+    }
+    
+    polygon(x = c(x, rev(x)),
+            y = c(used[ ,columns_used[2]],
+                  rev(used[ ,columns_used[3]]))/y0,
+            border = NA,
+            col = adjustcolor(colors[panel],
+                              alpha.f = 0.2))
+    
+    lines(x,
+          used[ ,columns_used[1]]/y0,
+          lwd = 2,
+          col = colors[panel])
+
+    
+    lines(x[x<=0], 2^(x[x<=0]), lty = 2, lwd = 2)
+    
+
+  }
+  
+  axis(side = 1, 
+       pos = -0.05,
+       at = log2(c(0.03, 0.1, 0.5, 1, 2, 5)),
+       labels = c(0.03, 0.1, 0.5, 1, 2, 5),
+       cex.axis = 2,
+       lwd = 2)
+  
+  axis(side = 2, 
+       pos = -5.2,
+       at = seq(0, 1, 0.2),
+       labels = seq(0, 1, 0.2),
+       cex.axis = 2,
+       xpd = TRUE,
+       las = 1,
+       las = 2)
+  
+  
+  title(main = c('Inactivated',
+                 'Protein subunit',
+                 'mRNA',
+                 'NR viral vector')[panel], 
+        cex.main = 2)
+  
+  text(x = -6,
+       y = 1.17,
+       label,
+       font = 2,
+       cex = 2.5,
+       xpd = TRUE)
+  
+}
+
+
+# function to plot figure 2
+aggVePlot = function(ve_agg, panel, variant, outcome){
+  
+  x.lim = c(0, 4)
+  y.lim = c(0, 100)
+  x.pos = seq(0.5, 4, 1)
+  
+  if(variant == "Alpha"){
+    left_mar = 9
+  } else {
+    left_mar = 6
+  }
+  if(outcome == "Infection"){
+    top_mar = 6
+    label = "Symptomatic"
+  } else {
+    top_mar = 4
+  }
+  if(outcome == "Severe"){
+    bottom_mar = 13
+    label = "Severe"
+  } else {
+    bottom_mar = 2
+  }
+  
+  par(mar = c(bottom_mar,left_mar,top_mar,2))
+  
+  plot(NULL, 
+       las = 1,
+       xlab = '',
+       ylab = 'VE, %',
+       xlim = x.lim,
+       ylim = y.lim,
+       type = 'l', lwd = 2,
+       cex.lab = 2, 
+       cex.axis = 2,
+       axes = FALSE)
+  
+  segments(x.lim[1], 50, x.lim[2], 50, lwd = 2, lty = 2)
+  
+  used = ve_agg[ve_agg$variant == variant &
+                  ve_agg$outcome == outcome, ]
+  
+  used = used[c(3,2,4,1), ]
+  
+  colors = case_when(grepl('mRNA', used$platform)  ~ '#E64B35FF',
+                     grepl('Inactivated', used$platform) ~ '#4DBBD5FF',
+                     grepl('NR viral vector', used$platform) ~ '#00A087FF',
+                     grepl('Protein_subunit', used$platform) ~ '#7E6148FF')
+  
+  shapes = case_when(outcome == "Infection" ~ 0,
+                     outcome == "Severe" ~ 2)
+  
+  
+  points(x.pos,
+         used$est,
+         pch = shapes,
+         col = colors,
+         cex = 2.5,
+         lwd = 2)
+  
+  segments(x.pos,
+           used$lower,
+           x.pos,
+           used$upper,
+           col= colors,
+           lwd = 3)
+  segments(x.pos-0.1,
+           used$lower,
+           x.pos+0.1,
+           used$lower,
+           col= colors,
+           lwd = 3)
+  segments(x.pos-0.1,
+           used$upper,
+           x.pos+0.1,
+           used$upper,
+           col= colors,
+           lwd = 3)
+  
+  axis(side = 1, 
+       pos = -5,
+       at = seq(0, 4, 1),
+       labels = NA,
+       cex.axis = 2,
+       lwd = 2)
+  
+  if(outcome == "Severe"){
+    
+    text(x = x.pos,
+         y = -9,
+         gsub("_", " ", used$platform),
+         cex = 2,
+         xpd = TRUE,
+         adj = c(1, 0.5),
+         srt = 90)
+    
+  }
+  
+  axis(side = 2, 
+       pos = -0.05,
+       at = seq(0, 100, 20),
+       cex.axis = 2,
+       xpd = TRUE,
+       las = 1,
+       lwd = 2)
+  
+  
+  if(variant == 'Alpha'){
+    
+    mtext(text = label,
+          side = 2,
+          line = 6,
+          xpd = TRUE,
+          at = 50,
+          font = 2,
+          cex = 2)
+    
+    
+  }
+  
+  if(outcome == "Infection"){
+    
+    mtext(text = variant,
+          side = 3,
+          line = 2,
+          xpd = TRUE,
+          at = 2,
+          font = 2,
+          cex = 2)
+    
+    
+  }
+  
+  text(x = -1.3,
+       y = 105,
+       panel,
+       font = 2,
+       cex = 3,
+       xpd = TRUE)
+  
+}
+
+
+# function to plot figure s3
+
+mlabfun <- function(text, res) {
+  list(bquote(paste(.(text),
+                    " (Q = ", .(formatC(res$QE, digits=2, format="f")),
+                    ", df = ", .(res$k - res$p),
+                    ", p ", .(metafor:::.pval(res$QEp, digits=2, showeq=TRUE, sep=" ")), "; ",
+                    I^2, " = ", .(formatC(res$I2, digits=1, format="f")), "%, ",
+                    tau^2, " = ", .(formatC(res$tau2, digits=2, format="f")), ")")))} # codes adapted from https://www.metafor-project.org/doku.php/plots:forest_plot_with_subgroups
+
+fitMetaSeroConv = function(seroconversion, measurement, dose_level){
+  
+  rr_subset = getSeroconversionSubset(seroconversion,
+                                      measurement = measurement, 
+                                      dose_level = dose_level)
+  
+  dat <- escalc(measure="RR", 
+                ai=N_seroconversion, n1i=N, 
+                ci=`N_seroconversion.1`, n2i=`N.1`, 
+                data=rr_subset)
+  res <- rma(yi, vi, data=dat)
+  
+  platform = unique(dat$Vaccine_type)
+  
+  resSub = lapply(platform, function(i){
+    
+    rma(yi, vi, 
+        subset = (Vaccine_type == i), 
+        data = dat)
+    
+  })
+  
+  names(resSub) = platform
+  
+  
+  list(full = res,
+       subgroup = resSub,
+       data = dat)
+  
+}
+
+getSeroconversionSubset = function(seroconversion, measurement, dose_level){
+  
+  if(measurement == "any"){
+    
+    sc_sub = seroconversion %>%
+      dplyr::filter(Dose_level %in% c("Standard", dose_level) &
+                      !is.na(N_seroconversion)) %>%
+      left_join(., 
+                raw %>%
+                  dplyr::select(Record_number, Year, Vaccine, Vaccine_type) %>%
+                  unique(),
+                by = c("Record_number", "Year", "Vaccine", "Vaccine_type"))
+    
+  } else {
+    
+    sc_sub = seroconversion %>%
+      dplyr::filter(Target == measurement &
+                      Dose_level %in% c("Standard", dose_level) &
+                      !is.na(N_seroconversion)) %>%
+      left_join(., 
+                raw %>%
+                  dplyr::select(Record_number, Year, Vaccine, Vaccine_type) %>%
+                  unique(),
+                by = c("Record_number", "Year", "Vaccine", "Vaccine_type"))
+    
+  }
+  
+  
+  ids = unique(sc_sub$Record_number)
+  
+  rr_subset = lapply(ids, function(i){
+    
+    # print(i)
+    
+    used = sc_sub[sc_sub$Record_number == i, ]
+    
+    if(!all(used$Dose_level == "Standard")){
+      
+      gps = unique(used[, c("Subgroup", "Age_lower")])
+      
+      df =lapply(1:nrow(gps), function(j){
+        
+        xn_1 = used[used$Subgroup == gps$Subgroup[j] &
+                      used$Age_lower == gps$Age_lower[j] &
+                      used$Dose_level == dose_level, 
+                    c("N_seroconversion", "N", "Dose_concentration")]
+        
+        xn_2 = used[used$Subgroup == gps$Subgroup[j] & 
+                      used$Age_lower == gps$Age_lower[j] &
+                      used$Dose_level == "Standard", 
+                    c("N_seroconversion", "N", "Dose_concentration")]
+        days = used[used$Subgroup == gps$Subgroup[j] & 
+                      used$Age_lower == gps$Age_lower[j] &
+                      used$Dose_level == "Standard", 
+                    c("Days_since_last_dose")]
+        
+        if(nrow(xn_1) > 0 & nrow(xn_2) > 0){
+          
+          df = data.frame(
+            Record_number = i,
+            Author = used$Author[1],
+            Year = used$Year[1],
+            Vaccine = used$Vaccine[1],
+            Vaccine_type = used$Vaccine_type[1],
+            Days_since_last_dose = days,
+            
+            Age_lower = gps$Age_lower[j],
+            Age_upper =  unique(used$Age_upper[used$Age_lower == gps$Age_lower[j]]),
+            
+            Subgroup = gps$Subgroup[j],
+            
+            n1i = xn_1[2],
+            n2i = xn_2[2],
+            
+            x1i = xn_1[1],
+            x2i = xn_2[1],
+            
+            Dose_ratio = pull(xn_1[3])/pull(xn_2[3]),
+            Antigen = used$Target[1]
+            
+          )
+          
+          df[df$Days_since_last_dose == max(df$Days_since_last_dose), ]
+          
+          
+        }
+        
+      })
+      
+      do.call('rbind', df)
+      
+    }
+    
+    
+    
+  })
+  
+  rr_subset = do.call('rbind', rr_subset)
+  
+  rr_subset$Study = paste(rr_subset$Author, rr_subset$Year, sep = ", ")
+  
+  rr_subset$Dose_ratio = round(rr_subset$Dose_ratio, 2)
+  
+  rr_subset %>%
+    arrange(Vaccine_type, Dose_ratio) %>%
+    mutate("Nonstandard_dose" = paste(N_seroconversion, N, sep = "/"),
+           "Standard_dose" = paste(N_seroconversion.1, N.1, sep = "/"),
+           Age_gp = case_when(Age_upper <= 18 ~ 'Children',
+                              Age_lower >= 18 ~ 'Adult'),
+           Age_gp = ifelse(Age_lower >= 55, 'Elderly', Age_gp),
+           Age_gp = ifelse(is.na(Age_gp), 'Adult', Age_gp))
+  
+}
+
+scForestPlot = function(seroconversion, measurement, dose_level){
+  
+   colUsed = "Vaccine_type"
+  
+  if(dose_level == "Lower" & measurement == "any"){
+    
+    orderLev = c("Inactivated",
+                 "mRNA",
+                 "Recombinant")
+    subgroupLabel = c("Inactivated", 
+                      "mRNA",
+                      "Protein subunit")
+    
+  }
+  
+  if(dose_level == "Higher" & measurement == "any"){
+    
+    orderLev =    c("mRNA",
+                    "Recombinant",
+                    "Vector",
+                    "Inactivated",
+                    "Virus-like particle",
+                    "DNA") 
+    subgroupLabel = c("mRNA",
+                      "Protein subunit",
+                      "Non-replicating vector",
+                      "Inactivated", 
+                      "Virus-like particle",
+                      "DNA")
+    
+  }
+  
+  
+  labels =  c("Vaccine",
+              "Dose \nratio",
+              "Age group",
+              "Nonstandard \ngroup",
+              "Standard \ngroup",
+              "Antigen")
+  
+  models = fitMetaSeroConv(seroconversion, measurement, dose_level)
+  
+  dat = models$data %>%
+    mutate(Antigen = gsub(" virus", "", Antigen))
+  x.pos = c(-7.5, -6.5, -5.5, -4, -2.5, -1.5)
+  n = sapply(c(orderLev), function(i) sum(dat[ ,colUsed] == i))
+  
+  
+  x.min = -10
+  x.max = 2.5
+  y.min = -1
+  y.max = 2 + 4*length(n) + nrow(dat)
+  
+  par(mar = c(6,6,6,6))
+  
+  if(length(orderLev) == 3){
+    
+    y.pos = c(3:(n[1]+2),
+              (n[1]+7):(n[1]+6+n[2]),
+              (n[1]+n[2]+11):(sum(n)+10))
+    
+    text.pos = c(2,
+                 n[1]+6,
+                 n[1]+n[2]+10)
+    
+  }
+  
+  if(length(orderLev) == 4){
+    
+    y.pos = c(3:(n[1]+2),
+              (n[1]+7):(n[1]+n[2]+6),
+              (n[1]+n[2]+11):(sum(n[1:3])+10),
+              (sum(n[1:3])+15):(sum(n[1:4])+14))
+    
+    text.pos = c(2,
+                 n[1]+6,
+                 sum(n[1:2])+10,
+                 sum(n[1:3])+14)
+    
+  }
+  
+  if(length(orderLev) == 5){
+    
+    y.pos = c(3:(n[1]+2),
+              (n[1]+7):(n[1]+n[2]+6),
+              (n[1]+n[2]+11):(sum(n[1:3])+10),
+              (sum(n[1:3])+15):(sum(n[1:4])+14),
+              (sum(n[1:4])+19):(sum(n[1:5])+18))
+    
+    text.pos = c(2,
+                 n[1]+6,
+                 sum(n[1:2])+10,
+                 sum(n[1:3])+14,
+                 sum(n[1:4])+18)
+    
+  }
+  
+  if(length(orderLev) == 6){
+    
+    y.pos = c(3:(n[1]+2),
+              (n[1]+7):(n[1]+n[2]+6),
+              (n[1]+n[2]+11):(sum(n[1:3])+10),
+              (sum(n[1:3])+15):(sum(n[1:4])+14),
+              (sum(n[1:4])+19):(sum(n[1:5])+18),
+              (sum(n[1:5])+23):(sum(n[1:6])+22))
+    
+    text.pos = c(2,
+                 n[1]+6,
+                 sum(n[1:2])+10,
+                 sum(n[1:3])+14,
+                 sum(n[1:4])+18,
+                 sum(n[1:5])+22)
+    
+  }
+  
+  
+  top.pos = 2
+  
+  forest(models$full, 
+         annotate = TRUE,
+         addfit = TRUE,
+         xlim = c(x.min,x.max), 
+         ylim = c(y.min, y.max),
+         at = seq(-1, 0.5, 0.5),
+         header = c("Study", "Log risk ratio"),
+         slab = paste(dat$Author, 
+                      dat$Year, 
+                      sep=", "),
+         top = top.pos, 
+         ilab=dat[ ,c("Vaccine",
+                      "Dose_ratio",
+                      "Age_gp",
+                      "Nonstandard_dose",
+                      "Standard_dose",
+                      "Antigen")],
+         ilab.xpos = x.pos,
+         order = factor(dat[ ,colUsed],
+                        orderLev), 
+         rows= y.max - y.pos,
+         mlab = mlabfun("RE Model for All Studies", models$full),
+         cex = 1,
+         xlab = 'Log risk ratio', 
+         digits = 3L)
+  
+  text(x.min, 
+       y.max - text.pos, 
+       pos = 4, 
+       subgroupLabel,
+       font = 4, cex = 1)
+  
+  text(x.pos, 
+       y.max, 
+       labels,
+       font = 2,
+       cex = 1)
+  
+  ### add summary polygons for the three subgroups
+  
+  nStudy = n[orderLev]
+  vUsed = c(1:length(nStudy))[nStudy >= 3]
+  
+  for(m in vUsed){
+    
+    addpoly(models$subgroup[[m]], 
+            row = y.max - text.pos[m] - n[m] - 1.5, 
+            cex = 1,  xpd = TRUE,
+            mlab = mlabfun("RE Model for Subgroup", 
+                           models$subgroup[[m]]),
+            digits = 3L)
+    
+  }
+  
+}
+
+
+# function to summarise RE model for seroconversion (Table S3)
+getScMetaTable = function(seroconversion, measurement, dose_level){
+  
+  rr_subset = getSeroconversionSubset(seroconversion,
+                                      measurement = measurement, 
+                                      dose_level = dose_level)
+  
+  dat <- escalc(measure="RR", 
+                ai=N_seroconversion, n1i=N, 
+                ci=`N_seroconversion.1`, n2i=`N.1`, 
+                data=rr_subset)
+  
+  if(dose_level == "Lower"){
+    
+    res <- rma(yi, vi,
+               mods = ~ factor(Vaccine_type,
+                               levels = c("mRNA", "Inactivated", "Recombinant")) + Age_gp + Dose_ratio + Antigen,
+               data=dat)
+    
+  }
+  
+  if(dose_level == "Higher"){
+    
+    res <- rma(yi, vi,
+               mods = ~ factor(Vaccine_type,
+                               levels = c("mRNA", 
+                                          "Inactivated", 
+                                          "Recombinant", 
+                                          "Vector", 
+                                          "Virus-like particle",
+                                          "DNA")) + Age_gp + Dose_ratio + Antigen,
+               data=dat)
+    
+  }
+  
+  smr = summary(res)
+  
+  tab = cbind(smr$b, smr$ci.lb, smr$ci.ub)
+  tab = (exp(tab)-1)*100
+  
+  est = paste(sprintf("%.01f", tab[,1]),
+              " (",
+              sprintf("%.01f", tab[,2]),
+              ", ",
+              sprintf("%.01f", tab[,3]),
+              ")",
+              sep = "")
+  
+  est[-1]
+  
+  
+  
+}
+
+
+#
+# forest plot for nAbs - figure S5-7
+#
+pointEstPlot = function(res_nt_ab, 
+                        subgroup,
+                        d1, d2,
+                        concentration,
+                        panel){
+  
+  used = res_nt_ab %>%
+    filter(Days_since_last_dose >= d1 &
+             Days_since_last_dose <= d2) %>%
+    filter(!is.na(ratio_to_conv)) %>%
+    mutate(Vaccine = ifelse(is.na(Vaccine),
+                            Manufacture,
+                            Vaccine)) %>%
+    arrange(Vaccine_type, concentration_to_standard)
+  
+  if(concentration == 'lower'){
+    
+    used = used %>%
+      filter(concentration_to_standard < 1)
+    
+  }
+  
+  if(concentration == 'standard'){
+    
+    used = used %>%
+      filter(concentration_to_standard == 1)
+    
+  }
+  
+  if(concentration == 'higher'){
+    
+    used = used %>%
+      filter(concentration_to_standard > 1)
+    
+  }
+  
+  x.min = -11
+  x.max = 2
+  y.min = 0
+  y.max = nrow(used)
+  y.space = y.max/7
+  
+  size = 1.5
+  
+  y.pos = seq(y.max-0.5, y.min + 0.5, length.out = y.max)
+  
+  colors = case_when(used$Vaccine_type == 'mRNA' ~ '#E64B35FF',
+                     used$Vaccine_type == 'Inactivated' ~ '#4DBBD5FF',
+                     used$Vaccine_type == 'Vector' ~ '#00A087FF',
+                     used$Vaccine_type == 'Recombinant' ~ '#7E6148FF',
+                     used$Vaccine_type == 'Virus-like particle' ~ '#8491B4FF',
+                     used$Vaccine_type == 'DNA' ~ '#91D1C2FF')
+  
+  shapes = case_when(used$Target == 'Live virus' ~ 15,
+                     used$Target == 'Pseudo virus' ~ 17)
+  
+  ages = case_when(used$Age_upper == 100 ~ paste(used$Age_lower, "+", sep = ''),
+                   used$Age_upper < 100 ~ paste(used$Age_lower, '-', used$Age_upper, sep = ''))
+  
+  par(mar = c(6, 3, 7, 3))
+  plot(NULL,
+       xlim = c(x.min, x.max),
+       ylim = c(y.min, y.max),
+       las = 1,
+       cex.lab = 2,
+       cex.axis = 2,
+       xlab = '',
+       ylab = '',
+       axes = FALSE)
+  
+  segments(0, y.min, 0, y.max, lty = 2, lwd = 1.5)
+  
+  points(log10(used$ratio_to_conv),
+         y.pos,
+         cex = 1.5,
+         pch = shapes,
+         col = colors)
+  
+  segments(log10(used$ratio_to_conv_lower),
+           y.pos,
+           log10(used$ratio_to_conv_hgiher),
+           y.pos,
+           col = colors,
+           lwd = 1.5)
+  
+  # referece
+  text(x.min,
+       y.pos,
+       used$Author,
+       cex = size,
+       adj = c(0, 0.5))
+  
+  # vaccine
+  text(x.min + 1.5,
+       y.pos,
+       used$Vaccine,
+       cex = size,
+       adj = c(0, 0.5))
+  
+  # age
+  text(x.min + 3.5,
+       y.pos,
+       ages,
+       cex = size,
+       adj = c(0, 0.5))
+  
+  # sample size
+  text(x.min + 5,
+       y.pos,
+       used$N,
+       cex = size,
+       adj = c(0, 0.5))
+  
+  # factional doses
+  text(x.min + 6,
+       y.pos,
+       sprintf('%.1f', used$concentration_to_standard),
+       cex = size,
+       adj = c(0, 0.5))
+  
+  # total doses
+  text(x.min + 7,
+       y.pos,
+       used$Total_doses,
+       cex = size,
+       adj = c(0, 0.5))
+  
+  
+  # title
+  text(c(x.min,
+         x.min + 1.5,
+         x.min + 3.5,
+         x.min + 5,
+         x.min + 6,
+         x.min + 6,
+         x.min + 7,
+         x.min + 7),
+       c(rep(y.max + y.space/2, 5),
+         y.max + y.space/7,
+         y.max + y.space/2,
+         y.max + y.space/7),
+       c('Reference',
+         'Vaccine',
+         'Age',
+         'N',
+         'Dose',
+         'fraction',
+         'Total',
+         'dosage'),
+       cex = size,
+       font = 2,
+       xpd = TRUE,
+       adj = c(0, 0.5))
+  
+  if(d1 == 0){x.lab = 'Ratio to convalesent sera, day 0'}
+  if(d1 == 14){x.lab = 'Ratio to convalesent sera, day 14'}
+  if(d1 == 28){x.lab = 'Ratio to convalesent sera, day 28 and after'}
+  
+  text(-1,
+       y.min - y.space,
+       x.lab,
+       cex = size,
+       font = 2,
+       xpd = TRUE)
+  
+  
+  # axis
+  
+  axis(side = 1, pos = y.min - y.space/6,
+       at = seq(-3, 2, 1),
+       labels = c("0.001", "0.01", "0.1", "1", "10", "100"),
+       cex.axis = size)
+  
+  axis(side = 3, 
+       pos = y.max + y.space/6,
+       at = seq(-3, 2, 1),
+       labels = c("0.001", "0.01", "0.1", "1", "10", "100"),
+       cex.axis = size,
+       xpd = TRUE)
+  
+  text(x = x.min - 0.5,
+       y = y.max + y.space*1.2,
+       LETTERS[panel],
+       font = 2,
+       cex = 2.5,
+       xpd = TRUE)
+  
+  text(x = (x.min + x.max)/2,
+       y = y.max + y.space*1.2,
+       c('Lower dose',
+         'Standard dose',
+         'Higher dose')[panel],
+       font = 2,
+       cex = 2.5,
+       xpd = TRUE)
+  
+}
+
+pointEstLegendPlot = function(){
+  
+  colors = c('Inactivated' = '#4DBBD5FF',
+             'mRNA' = '#E64B35FF',
+             'Protein subunit' = '#7E6148FF',
+             'Non-replicating vector' = '#00A087FF',
+             'Virus-like particle' = '#8491B4FF',
+             'DNA' = '#91D1C2FF')
+  
+  
+  x.min = 0
+  x.max = 1
+  y.min = 0
+  y.max = 1
+  
+  par(mar = c(6, 3, 7, 3))
+  plot(NULL,
+       xlim = c(x.min, x.max),
+       ylim = c(y.min, y.max),
+       las = 1,
+       cex.lab = 2,
+       cex.axis = 2,
+       xlab = '',
+       ylab = '',
+       axes = FALSE)
+  
+  legend(x = 0.1,
+         y = 1,
+         legend = names(colors),
+         col = colors,
+         lwd = 3,
+         lty = 1,
+         bty = 'n',
+         cex = 1.5,
+         title = 'Vaccine type',
+         title.adj = 0)
+  
+  
+  legend(x = 0.4,
+         y = 1,
+         legend = c('Live virus',
+                    'Pseudo virus'),
+         col = 'black',
+         lwd = 2.5,
+         pt.cex = 2,
+         lty = 1,
+         pch = c(15, 17),
+         bty = 'n',
+         cex = 1.5,
+         title = 'Antigen',
+         title.adj = 0)
+  
+  rect(xleft = 0,
+       ybottom = 0.5,
+       xright = 0.7,
+       ytop = 1.05,
+       xpd = TRUE)
+  
+  
+}
+
+
+#
+# dose-response relationship by time since vaccinations
+# figure s8
+#
+
+getPredByTime = function(model, age, vector_dose){
+  
+  comb = expand.grid(vaccine_type = c('Inactivated',
+                                      'Recombinant',
+                                      'mRNA',
+                                      'Vector'),
+                     concentration = c(0.5, 1, 2))
+  comb$vaccine_type = as.character(comb$vaccine_type)
+  comb$concentration = as.numeric(comb$concentration)
+  
+  datList = lapply(1:nrow(comb), function(i){
+    
+    dat = data.frame(
+      log_concentration_to_standard = log2(comb[i, 2]),
+      Vaccine_type = comb[i, 1],
+      Age_gp = age,
+      Total_doses = 2,
+      Days_since_last_dose = seq(-5, 28, 1),
+      Target = 'Live virus'
+    )
+    
+    if(vector_dose == 1 & comb$vaccine_type[i] == 'Vector'){
+
+      dat$Total_doses = 1
+
+    }
+    
+    dat
+    
+  })
+  
+  names(datList) = paste(comb[,1], comb[,2])
+  
+  predList = lapply(datList, function(dat){
+    
+    pred = predict(model, 
+                   newdata = dat, 
+                   se.fit = TRUE)
+    
+    data.frame(
+      days = dat$Days_since_last_dose,
+      est = 2^pred$fit,
+      lower = 2^(pred$fit - 1.96*pred$se.fit),
+      upper = 2^(pred$fit + 1.96*pred$se.fit)
+    )
+    
+  })
+  
+  names(predList) = names(datList)
+  
+  predList
+  
+}
+
+plotOfPredByTime = function(predList, panel){
+  
+  scenarios = names(predList)
+  
+  sel = scenarios[grepl(c('mRNA',
+                          'Recombinant',
+                          'Vector',
+                          'Inactivated')[panel], 
+                        scenarios)]
+  
+  par(mar = c(5,6,6,2))
+  
+  plot(NULL, 
+       las = 1,
+       xlab = 'Days after full vaccination schedule',
+       ylab = 'Ratio to convalenscent sera',
+       ylim = c(0, 6),
+       xlim = c(-5, 30),
+       type = 'l', lwd = 2,
+       cex.lab = 2, 
+       cex.axis = 2,
+       axes = FALSE)
+  
+  colors = c('#e8702a',
+             '#0ea7b5',
+             '#0c457d')
+  
+  for(i in 1:length(sel)){
+    
+    used = predList[names(predList) == sel[i]]
+    
+    x = used[[1]]$days
+    
+    polygon(x = c(x, rev(x)),
+            y = c(used[[1]]$lower,
+                  rev(used[[1]]$upper)),
+            border = NA,
+            col = adjustcolor(colors[i],
+                              alpha.f = 0.2))
+    
+    lines(x,
+          used[[1]]$est,
+          lwd = 3,
+          col = colors[i],
+          lty = c(2, 1, 3)[i])
+    
+  }
+  
+  segments(-5, 1, 30, 1, col = 'black', lty = 2, lwd = 2)
+  
+  axis(side = 1, 
+       pos = -0.15,
+       at = seq(-5, 30, 5),
+       cex.axis = 2,
+       lwd = 2)
+  
+  axis(side = 2, 
+       pos = -5-35*0.03,
+       at = c(0.01, 1:6),
+       labels = c(0.01, round(1:6, 0)),
+       cex.axis = 2,
+       xpd = TRUE,
+       las = 1,
+       lwd = 2)
+  
+  if(panel == 1){
+    
+    legend(x = 'topleft',
+           legend = c('Half of standard dose',
+                      'Standard dose',
+                      'Two fold of standard dose'),
+           col = adjustcolor(colors, alpha.f = 0.6),
+           lty = c(2, 1, 3),
+           pch = 15,
+           lwd = 2,
+           cex = 2,
+           bty = 'n')
+    
+    
+  }
+  
+  title(main = c('mRNA',
+                 'Protein subunit',
+                 'NR viral vector',
+                 'Inactivated'
+                 )[panel], 
+        cex.main = 2)
+  
+  
+  text(x = -5-35*0.13,
+       y = 6.8,
+       letters[panel],
+       font = 2,
+       cex = 2.5,
+       xpd = TRUE)
+  
+}
+
+#
+# dose-response relationship of VE against variants
+# figure s9-10
+#
+
+getVEPredByConcentrationVariant = function(model, age, vector_dose, 
+                                           variant_fold_change, variant,
+                                           random){
+  
+  fold_used = as.numeric(variant_fold_change[variant_fold_change$variant == variant,
+                                             2:4])
+  
+  comb = expand.grid(vaccine_type = c('Inactivated',
+                                      'Recombinant',
+                                      'mRNA',
+                                      'Vector'),
+                     days = 14)
+  comb$vaccine_type = as.character(comb$vaccine_type)
+  comb$days = as.numeric(comb$days)
+  
+  datList = lapply(1:nrow(comb), function(i){
+    
+    dat = data.frame(
+      log_concentration_to_standard = log2(seq(0.03, 5, 0.005)),
+      Vaccine_type = comb$vaccine_type[i],
+      Age_gp = age,
+      Total_doses = 2,
+      Days_since_last_dose = comb$days[i],
+      Target = 'Live virus'
+    )
+    
+    if(vector_dose == 1 & comb$vaccine_type[i] == 'Vector'){
+      
+      dat$Total_doses = 1
+      
+    }
+    
+    dat
+    
+  })
+  
+  names(datList) = paste(comb[,1], comb[,2])
+  
+  if(random == FALSE){
+    
+    predList = lapply(datList, function(dat){
+      
+      pred = predict(model, 
+                     newdata = dat, 
+                     se.fit = TRUE)
+      res_ab = data.frame(
+        concentration = dat$log_concentration_to_standard,
+        est = (2^(pred$fit))/fold_used[1],
+        lower = (2^(pred$fit - 1.96*pred$se.fit))/fold_used[1],
+        upper = (2^(pred$fit + 1.96*pred$se.fit))/fold_used[1]
+      ) %>%
+        mutate(
+          
+          ve = 1/(1 + exp(-3*(log10(est) - log10(0.2)))),
+          ve_lower = 1/(1 + exp(-3*(log10(lower) - log10(0.2)))),
+          ve_upper = 1/(1 + exp(-3*(log10(upper) - log10(0.2)))),
+          
+          
+          ve_sev = 1/(1 + exp(-2.94*(log10(est) - log10(0.030)))),
+          ve_sev_lower = 1/(1 + exp(-2.94*(log10(lower) - log10(0.030)))),
+          ve_sev_upper = 1/(1 + exp(-2.94*(log10(upper) - log10(0.030))))
+          
+        )
+      
+      res_ab
+      
+    })
+    
+  }
+  
+  if(random == TRUE){
+    
+    predList = lapply(datList, function(dat){
+      
+      pred = predict(model, 
+                     newdata = dat, 
+                     se.fit = TRUE)
+      
+      # randomise fold
+      fold_random = rnorm(n = 1000, 
+                          mean = fold_used[1], 
+                          sd = (fold_used[3] - fold_used[2])/2/1.96)
+      
+      response_random = sapply(1:1000, function(i){
+        
+        response_random = sapply(1:length(pred$fit), function(j) {
+          
+          rnorm(n = 1, mean = pred$fit[j], sd = pred$se.fit[j]) 
+          
+        })
+        
+        (2^response_random)/fold_random[i]
+        
+      })
+      
+      response = lapply(1:nrow(response_random), function(i) quantile(response_random[i, ], c(.025, .5, .975)))
+      response = do.call('rbind', response)
+      
+      
+      res_ab = data.frame(
+        concentration = dat$log_concentration_to_standard,
+        est = response[ ,2],
+        lower = response[, 1],
+        upper = response[ ,3]
+      ) %>%
+        mutate(
+          
+          ve = 1/(1 + exp(-3*(log10(est) - log10(0.2)))),
+          ve_lower = 1/(1 + exp(-3*(log10(lower) - log10(0.2)))),
+          ve_upper = 1/(1 + exp(-3*(log10(upper) - log10(0.2)))),
+          
+          ve_sev = 1/(1 + exp(-2.94*(log10(est) - log10(0.030)))),
+          ve_sev_lower = 1/(1 + exp(-2.94*(log10(lower) - log10(0.030)))),
+          ve_sev_upper = 1/(1 + exp(-2.94*(log10(upper) - log10(0.030))))
+          
+        )
+      
+      res_ab
+      
+    })
+    
+  }
+  
+  names(predList) = names(datList)
+  
+  predList
+  
+}
+
+plotVEByConcentrationVariant = function(predVeVariant, column, row, outcome){
+  
+  variant = names(predVeVariant)[[row]]
+  scenarios = names(predVeVariant[[row]])[[column]]
+  
+  if(outcome == "infection"){
+    columns_used = c("ve", "ve_lower", "ve_upper")
+  }
+  
+  if(outcome == "severe"){
+    columns_used = c("ve_sev", "ve_sev_lower", "ve_sev_upper")
+  }
+  
+  if(column == 1){
+    left_mar = 9
+  } else {
+    left_mar = 6
+  }
+  if(row == 1){
+    top_mar = 6
+  } else {
+    top_mar = 4
+  }
+  
+  par(mar = c(5,left_mar,top_mar,2))
+  
+  plot(NULL, 
+       las = 1,
+       xlab = 'Ratio to standard dose concentration',
+       ylab = 'Vaccine efficacy, %',
+       xlim = c(-5, 2.5),
+       ylim = c(0, 1),
+       type = 'l', lwd = 2,
+       cex.lab = 2, cex.axis = 2,
+       axes = FALSE)
+  
+  colors = case_when(grepl('mRNA', scenarios)  ~ '#E64B35FF',
+                     grepl('Inactivated', scenarios) ~ '#4DBBD5FF',
+                     grepl('Vector', scenarios) ~ '#00A087FF',
+                     grepl('Recombinant', scenarios) ~ '#7E6148FF',
+                     grepl('Virus-like particle', scenarios) ~ '#8491B4FF',
+                     grepl('DNA', scenarios) ~ '#91D1C2FF')
+  
+  used = predVeVariant[[row]][[column]]
+  
+  x = used$concentration
+  
+  polygon(x = c(x, rev(x)),
+          y = c(used[ ,columns_used[2]],
+                rev(used[ ,columns_used[3]])),
+          border = NA,
+          col = adjustcolor(colors,
+                            alpha.f = 0.2))
+  
+  lines(x,
+        used[ ,columns_used[1]],
+        lwd = 2,
+        col = colors)
+  
+  y.mid = used[x == -1, columns_used[1]]
+  x.mid = -1
+  y.lower = used[x == -1, columns_used[2]]
+  y.upper = used[x == -1, columns_used[3]]
+  
+  segments(-5, y.mid, x.mid, y.mid, col = 'black', lty = 2, lwd = 2)
+  segments(x.mid, 0, x.mid, y.mid, col = 'black', lty = 2, lwd = 2)
+  
+  ve_txt =  paste(sprintf('%.0f', y.mid*100),
+                  ' (',
+                  sprintf('%.0f', y.lower*100),
+                  ', ',
+                  sprintf('%.0f', y.upper*100),
+                  ')',
+                  sep = '') 
+  
+  if(y.lower > 0.05){
+    text(x = 0.52,
+         y = y.lower - 0.05,
+         ve_txt,
+         cex = 2)
+  }
+  
+  if(y.lower <= 0.05){
+    text(x = 0.52,
+         y = y.upper + 0.05,
+         ve_txt,
+         cex = 2)
+  }
+  
+  
+  axis(side = 1, 
+       pos = -0.05,
+       at = log2(c(0.03, 0.1, 0.5, 1, 2, 5)),
+       labels = c(0.03, 0.1, 0.5, 1, 2, 5),
+       cex.axis = 2,
+       lwd = 2)
+  
+  axis(side = 2, 
+       pos = -5.2,
+       at = seq(0, 1, 0.2),
+       labels = seq(0, 1, 0.2)*100,
+       cex.axis = 2,
+       xpd = TRUE,
+       las = 1,
+       las = 2)
+  
+  
+  if(row == 1){
+    
+    mtext(text = c('Inactivated',
+                   'Protein subunit',
+                   'mRNA',
+                   'NR viral vector')[column],
+          side = 3,
+          line = 2,
+          xpd = TRUE,
+          at = -1,
+          font = 2,
+          cex = 2)
+    
+    
+  }
+  
+  if(column == 1){
+    
+    mtext(text = variant,
+          side = 2,
+          line = 6,
+          xpd = TRUE,
+          at = 0.5,
+          font = 2,
+          cex = 2)
+    
+    
+    
+  }
+
+  
+}
+
+
+getVEvalidationData = function(predVeVariant, ve){
+  
+  ve_pred = lapply(1:nrow(ve), function(i){
+    
+    vax = ve$Vaccine_type[i]
+    var = ve$Variant[i]
+    out = ve$Outcome[i]
+    
+    if(out == "Severe"){
+      cols = c("ve_sev", "ve_sev_lower", "ve_sev_upper")
+    } else {
+      cols =c("ve", "ve_lower", "ve_upper")
+    }
+    
+    used = predVeVariant[[var]][[paste(vax, 14)]]
+    rt = used[used$concentration == 1, cols]
+    names(rt) = c("est", "lower", "upper")
+    
+    rt
+    
+  })
+  ve_pred = do.call('rbind', ve_pred)
+  
+  ve = cbind(ve, ve_pred*100)
+  
+  ve = ve %>%
+    filter(Study_design != "Observational" &
+             PCR_confirmed == "Yes")
+  
+  ve
+  
+}
+
+VEValidationPlot = function(ve){
+  
+  colors = c('mRNA' = '#E64B35FF',
+             'Inactivated' = '#4DBBD5FF',
+             'Vector' = '#00A087FF',
+             'Recombinant' = '#7E6148FF')
+  
+  pch = c("Alpha" = 0,
+          "Beta" = 1,
+          "Delta" = 19,
+          "Gamma" = 6,
+          "Omicron" = 15)
+  
+    veInfection = ve %>%
+      mutate(Outcome = ifelse(Outcome == "Both",
+                              "Infection",
+                              Outcome),
+             VE_Lower = ifelse(VE_Lower < 0,
+                               0,
+                               VE_Lower)) %>%
+      filter(Outcome == "Infection")
+
+    ggplot(data = veInfection) +
+      geom_point(aes(x = est,
+                     y = VE,
+                     color = Vaccine_type,
+                     shape = Variant),
+                 size = 3,
+                 alpha = 0.6) +
+      geom_errorbar(aes(x = est,
+                        ymin = VE_Lower,
+                        ymax = VE_Upper,
+                        color = Vaccine_type),
+                    width = 2,
+                    alpha = 0.6) +
+      geom_errorbar(aes(y = VE,
+                        xmin = lower,
+                        xmax = upper,
+                        color = Vaccine_type),
+                    width = 2,
+                    alpha = 0.6) +
+      geom_segment(aes(x = 0, 
+                       y = 0,
+                       xend = 100,
+                       yend = 100),
+                   linetype = "dashed") +
+      scale_y_continuous(name = "Oberserved VE, %",
+                         limits = c(0, 100),
+                         expand = c(0, 0)) +
+      scale_x_continuous(name = "Predicted VE, %",
+                         limits = c(0, 100),
+                         expand = c(0, 0)) +
+      scale_color_manual(name = "Vaccine platform",
+                         values = colors) +
+      scale_shape_manual(name = "Variant",
+                         values = pch)
+  
+ 
+  
+}
+
+#
+# plots for t-cell comparison
+# figure S12-13
+#
+
+getTCellPlotDataSplit = function(t_cell, dose_level){
+  
+  data = t_cell %>%
+    dplyr::select(Record_number, Author, Group_ID, Age_lower, Age_upper, 
+                  Vaccine_type, Vaccine, Concentration_ratio, N_1, N_2) %>%
+    unique() %>%
+    mutate(Concentration_ratio_original = Concentration_ratio,
+           
+           N = N_1 + N_2,
+           
+           Vaccine_type = case_when(Vaccine_type == "DNA" ~ "DNA",
+                                    Vaccine_type == "Inactivated" ~ "Inactivated",
+                                    Vaccine_type == "mRNA" ~ "RNA",
+                                    Vaccine_type == "Recombinant" ~ "Protein subunit",
+                                    Vaccine_type == "Vector" ~ "Non-replicating vector",
+                                    Vaccine_type == "Virus-like particle" ~ "Virus-like particle"),
+           Vaccine_type = factor(Vaccine_type,
+                                 levels = c("Inactivated",
+                                            "RNA",
+                                            "Protein subunit",
+                                            "Non-replicating vector",
+                                            "Virus-like particle",
+                                            "DNA"))) %>%
+    arrange(Vaccine_type, Vaccine, Concentration_ratio, Age_lower, Record_number) %>%
+    dplyr::select(Record_number, Author, Group_ID, Age_lower, Age_upper, 
+                  Vaccine_type, Vaccine, Concentration_ratio, N) 
+  
+  if(dose_level == "Lower"){
+    
+    data = data %>%
+      filter(Concentration_ratio <= 1)
+    
+  }
+  
+  if(dose_level == "Higher"){
+    
+    data = data %>%
+      filter(Concentration_ratio > 1)
+    
+  }
+  
+  data$Any_IFN_gamma = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'Any' & 
+      used$Specific_immunity_type == "IFN-gamma" &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Delta_mean", "Delta_lower", "Delta_upper", "Concentration_ratio")]
+      
+      sig = ifelse(used$Delta_lower < 0 &
+                     used$Delta_upper > 0,
+                   "NS", "Sig")
+      
+            val = ifelse(used$Delta_mean < 0,
+                   "Lower", "Higher")
+      
+      rt = paste(val, sig, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$Any_other_th1 = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'Any' & 
+      used$Specific_immunity_type %in% c("IL-2",
+                                         "TNF-alpha") &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Delta_mean", "Delta_lower", "Delta_upper", "Concentration_ratio")]
+      
+      sig = ifelse(used$Delta_lower < 0 &
+                     used$Delta_upper > 0,
+                   "NS", "Sig")
+
+      val = ifelse(used$Delta_mean < 0,
+                   "Lower", "Higher")
+      
+      rt = paste(val, sig, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$Any_th2 = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'Any' & 
+      used$Specific_immunity_type %in% c("IL-4",
+                                         "IL-5",
+                                         "IL-13") &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Delta_mean", "Delta_lower", "Delta_upper", "Concentration_ratio")]
+      
+      sig = ifelse(used$Delta_lower < 0 &
+                     used$Delta_upper > 0,
+                   "NS", "Sig")
+      
+      val = ifelse(used$Delta_mean < 0,
+                   "Lower", "Higher")
+      
+      rt = paste(unique(val), unique(sig), sep = ", ")
+      
+      if(length(rt) > 1){rt = paste(rt, collapse = ", ")}
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD4_any_th1= sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD4' & 
+      used$Specific_immunity_type == "Any Th1" &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Delta_mean", "Delta_lower", "Delta_upper", "Concentration_ratio")]
+      
+      sig = ifelse(used$Delta_lower < 0 &
+                     used$Delta_upper > 0,
+                   "NS", "Sig")
+
+      val = ifelse(used$Delta_mean < 0,
+                   "Lower", "Higher")
+      
+      rt = paste(val, sig, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD4_IFN_gamma = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD4' & 
+      used$Specific_immunity_type == "IFN-gamma" &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Delta_mean", "Delta_lower", "Delta_upper", "Concentration_ratio")]
+      
+      sig = ifelse(used$Delta_lower < 0 &
+                     used$Delta_upper > 0,
+                   "NS", "Sig")
+
+      val = ifelse(used$Delta_mean < 0,
+                   "Lower", "Higher")
+      
+      rt = paste(val, sig, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD4_IL_2 = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD4' & 
+      used$Specific_immunity_type %in% c("IL-2") &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Delta_mean", "Delta_lower", "Delta_upper", "Concentration_ratio")]
+      
+      sig = ifelse(used$Delta_lower < 0 &
+                     used$Delta_upper > 0,
+                   "NS", "Sig")
+    
+      val = ifelse(used$Delta_mean < 0,
+                   "Lower", "Higher")
+      
+      rt = paste(val, sig, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD4_TNF_alpha = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD4' & 
+      used$Specific_immunity_type %in% c("TNF-alpha") &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Delta_mean", "Delta_lower", "Delta_upper", "Concentration_ratio")]
+      
+      sig = ifelse(used$Delta_lower < 0 &
+                     used$Delta_upper > 0,
+                   "NS", "Sig")
+      
+      val = ifelse(used$Delta_mean < 0,
+                   "Lower", "Higher")
+      
+      rt = paste(val, sig, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD4_any_th2= sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD4' & 
+      used$Specific_immunity_type == "Any Th2" &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Delta_mean", "Delta_lower", "Delta_upper", "Concentration_ratio")]
+      
+      sig = ifelse(used$Delta_lower < 0 &
+                     used$Delta_upper > 0,
+                   "NS", "Sig")
+      
+      val = ifelse(used$Delta_mean < 0,
+                   "Lower", "Higher")
+      
+      if(used$Delta_lower == 0 & used$Delta_upper == 0){sig = "NS"; val = 'Same'}
+      
+      rt = paste(val, sig, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD4_IL_4 = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD4' & 
+      used$Specific_immunity_type %in% c("IL-4") &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Delta_mean", "Delta_lower", "Delta_upper", "Concentration_ratio")]
+      
+      sig = ifelse(used$Delta_lower < 0 &
+                     used$Delta_upper > 0,
+                   "NS", "Sig")
+      
+      val = ifelse(used$Delta_mean < 0,
+                   "Lower", "Higher")
+      
+      rt = paste(val, sig, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD4_IL_5 = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD4' & 
+      used$Specific_immunity_type %in% c("IL-5") &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Delta_mean", "Delta_lower", "Delta_upper", "Concentration_ratio")]
+      
+      sig = ifelse(used$Delta_lower < 0 &
+                     used$Delta_upper > 0,
+                   "NS", "Sig")
+      
+      val = ifelse(used$Delta_mean < 0,
+                   "Lower", "Higher")
+      
+      rt = paste(val, sig, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD4_IL_13 = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD4' & 
+      used$Specific_immunity_type %in% c("IL-13") &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Delta_mean", "Delta_lower", "Delta_upper", "Concentration_ratio")]
+      
+      sig = ifelse(used$Delta_lower < 0 &
+                     used$Delta_upper > 0,
+                   "NS", "Sig")
+
+      val = ifelse(used$Delta_mean < 0,
+                   "Lower", "Higher")
+      
+      rt = paste(val, sig, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD8_any= sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD8' & 
+      used$Specific_immunity_type == "Any CD8" &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Delta_mean", "Delta_lower", "Delta_upper", "Concentration_ratio")]
+      
+      sig = ifelse(used$Delta_lower < 0 &
+                     used$Delta_upper > 0,
+                   "NS", "Sig")
+      
+      val = ifelse(used$Delta_mean < 0,
+                   "Lower", "Higher")
+      
+      rt = paste(val, sig, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD8_IFN_gamma = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD8' & 
+      used$Specific_immunity_type == "IFN-gamma" &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Delta_mean", "Delta_lower", "Delta_upper", "Concentration_ratio")]
+      
+      sig = ifelse(used$Delta_lower < 0 &
+                     used$Delta_upper > 0,
+                   "NS", "Sig")
+           
+      val = ifelse(used$Delta_mean < 0,
+                   "Lower", "Higher")
+      
+      rt = paste(val, sig, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD8_IL_2 = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD8' & 
+      used$Specific_immunity_type %in% c("IL-2") &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Delta_mean", "Delta_lower", "Delta_upper", "Concentration_ratio")]
+      
+      sig = ifelse(used$Delta_lower < 0 &
+                     used$Delta_upper > 0,
+                   "NS", "Sig")
+           
+      val = ifelse(used$Delta_mean < 0,
+                   "Lower", "Higher")
+      
+      rt = paste(val, sig, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD8_TNF_alpha = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD8' & 
+      used$Specific_immunity_type %in% c("TNF-alpha") &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Delta_mean", "Delta_lower", "Delta_upper", "Concentration_ratio")]
+      
+      sig = ifelse(used$Delta_lower < 0 &
+                     used$Delta_upper > 0,
+                   "NS", "Sig")
+           
+      val = ifelse(used$Delta_mean < 0,
+                   "Lower", "Higher")
+      
+      rt = paste(val, sig, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data
+  
+  
+}
+
+getTCellPlotDataBaselineSplit = function(t_cell, dose_level){
+  
+  data = t_cell %>%
+    dplyr::select(Record_number, Author, Group_ID, Age_lower, Age_upper, 
+                  Vaccine_type, Vaccine, Concentration_ratio, N_1, N_2) %>%
+    unique() %>%
+    mutate(Concentration_ratio_original = Concentration_ratio,
+           
+           N = N_1 + N_2,
+           
+           Vaccine_type = case_when(Vaccine_type == "DNA" ~ "DNA",
+                                    Vaccine_type == "Inactivated" ~ "Inactivated",
+                                    Vaccine_type == "mRNA" ~ "RNA",
+                                    Vaccine_type == "Recombinant" ~ "Protein subunit",
+                                    Vaccine_type == "Vector" ~ "Non-replicating vector",
+                                    Vaccine_type == "Virus-like particle" ~ "Virus-like particle"),
+           Vaccine_type = factor(Vaccine_type,
+                                 levels = c("Inactivated",
+                                            "RNA",
+                                            "Protein subunit",
+                                            "Non-replicating vector",
+                                            "Virus-like particle",
+                                            "DNA"))) %>%
+    arrange(Vaccine_type, Vaccine, Concentration_ratio, Age_lower, Record_number) %>%
+    dplyr::select(Record_number, Author, Group_ID, Age_lower, Age_upper, 
+                  Vaccine_type, Vaccine, Concentration_ratio, N) 
+  
+  if(dose_level == "Lower"){
+    
+    data = data %>%
+      filter(Concentration_ratio <= 1)
+    
+  }
+  
+  if(dose_level == "Higher"){
+    
+    data = data %>%
+      filter(Concentration_ratio > 1)
+    
+  }
+  
+  data$Any_IFN_gamma = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'Any' & 
+      used$Specific_immunity_type == "IFN-gamma" &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Ref_baseline", "Ref_baseline_test", "Concentration_ratio")]
+      
+      rt = paste(used$Ref_baseline, used$Ref_baseline_test, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$Any_other_th1 = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'Any' & 
+      used$Specific_immunity_type %in% c("IL-2",
+                                         "TNF-alpha") &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Ref_baseline", "Ref_baseline_test", "Concentration_ratio")]
+      
+      rt = paste(used$Ref_baseline, used$Ref_baseline_test, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$Any_th2 = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'Any' & 
+      used$Specific_immunity_type %in% c("IL-4",
+                                         "IL-5",
+                                         "IL-13") &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Ref_baseline", "Ref_baseline_test", "Concentration_ratio")]
+      
+      rt = paste(unique(used$Ref_baseline), 
+                 unique(used$Ref_baseline_test), 
+                 sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD4_any_th1= sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD4' & 
+      used$Specific_immunity_type == "Any Th1" &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Ref_baseline", "Ref_baseline_test", "Concentration_ratio")]
+      
+      rt = paste(used$Ref_baseline, used$Ref_baseline_test, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD4_IFN_gamma = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD4' & 
+      used$Specific_immunity_type == "IFN-gamma" &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Ref_baseline", "Ref_baseline_test", "Concentration_ratio")]
+      
+      rt = paste(used$Ref_baseline, used$Ref_baseline_test, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD4_IL_2 = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD4' & 
+      used$Specific_immunity_type %in% c("IL-2") &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Ref_baseline", "Ref_baseline_test", "Concentration_ratio")]
+      
+      rt = paste(used$Ref_baseline, used$Ref_baseline_test, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD4_TNF_alpha = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD4' & 
+      used$Specific_immunity_type %in% c("TNF-alpha") &
+      used$Days_lower == max(used$Days_lower)
+    if(any(sel)){
+      
+      used = used[sel, c("Ref_baseline", "Ref_baseline_test", "Concentration_ratio")]
+      
+      rt = paste(used$Ref_baseline, used$Ref_baseline_test, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD4_any_th2= sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD4' & 
+      used$Specific_immunity_type == "Any Th2" &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Ref_baseline", "Ref_baseline_test", "Concentration_ratio")]
+      
+      rt = paste(used$Ref_baseline, used$Ref_baseline_test, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD4_IL_4 = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD4' & 
+      used$Specific_immunity_type %in% c("IL-4") &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Ref_baseline", "Ref_baseline_test", "Concentration_ratio")]
+      
+      rt = paste(used$Ref_baseline, used$Ref_baseline_test, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD4_IL_5 = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD4' & 
+      used$Specific_immunity_type %in% c("IL-5") &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Ref_baseline", "Ref_baseline_test", "Concentration_ratio")]
+      
+      rt = paste(used$Ref_baseline, used$Ref_baseline_test, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD4_IL_13 = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD4' & 
+      used$Specific_immunity_type %in% c("IL-13") &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Ref_baseline", "Ref_baseline_test", "Concentration_ratio")]
+      
+      rt = paste(used$Ref_baseline, used$Ref_baseline_test, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD8_any= sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD8' & 
+      used$Specific_immunity_type == "Any CD8" &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Ref_baseline", "Ref_baseline_test", "Concentration_ratio")]
+      
+      rt = paste(used$Ref_baseline, used$Ref_baseline_test, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD8_IFN_gamma = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD8' & 
+      used$Specific_immunity_type == "IFN-gamma" &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Ref_baseline", "Ref_baseline_test", "Concentration_ratio")]
+      
+      rt = paste(used$Ref_baseline, used$Ref_baseline_test, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    rt
+    
+  })
+  
+  data$CD8_IL_2 = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD8' & 
+      used$Specific_immunity_type %in% c("IL-2") &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Ref_baseline", "Ref_baseline_test", "Concentration_ratio")]
+      
+      rt = paste(used$Ref_baseline, used$Ref_baseline_test, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data$CD8_TNF_alpha = sapply(1:nrow(data), function(i){
+    
+    used = t_cell %>%
+      dplyr::filter(Record_number == data$Record_number[i] &
+                      Age_lower == data$Age_lower[i] &
+                      Group_ID == data$Group_ID[i])
+    
+    sel = used$t_cell_type == 'CD8' & 
+      used$Specific_immunity_type %in% c("TNF-alpha") &
+      used$Days_lower == max(used$Days_lower)
+    
+    if(any(sel)){
+      
+      used = used[sel, c("Ref_baseline", "Ref_baseline_test", "Concentration_ratio")]
+      
+      rt = paste(used$Ref_baseline, used$Ref_baseline_test, sep = ", ")
+      
+    } else {
+      
+      rt = NA
+      
+    }
+    
+    rt
+    
+  })
+  
+  data
+  
+  
+}
+
+tCellPlotSplit = function(t_cell, dose_level){
+  
+  data = getTCellPlotDataBaselineSplit(t_cell, dose_level)
+  
+  data = data %>%
+    arrange(Concentration_ratio, Age_lower)
+  
+  nColumn = ncol(data)
+  nRev = 10
+  
+  ys = rev(1:nrow(data))
+  y.min = 0
+  y.max = max(ys)*1.5
+  
+  size = 1.5
+  
+  plot(NULL, 
+       xlim = c(-20, nColumn - nRev + 1 + 17), 
+       ylim = c(y.min - (y.max-y.min)*0.05, y.max), 
+       las = 1,
+       xlab = "",
+       ylab = "",
+       axes = FALSE)
+  
+  text(c(7.5, 24.5,
+         -0.5, 16.5), 
+       y.max*1.1, 
+       c("Pre-vaccination", "Standard dose",
+         "a", "b"),
+       font = 2, cex = 2.5, xpd = TRUE)
+  
+  
+  
+  n = log10(data$N)
+  pt.size = ((n - log10(8))/(log10(400) - log10(8)) + 0.25) * 3
+  
+  #
+  # baseline
+  #
+  
+  
+  for(i in nRev:nColumn){
+    
+    used = data[ ,i]
+    
+    colors = case_when(is.na(used) ~ "white",
+                       grepl("Significant", used) ~ "#a26e9b",
+                       grepl("NS", used) ~ "#6ea275")
+    points(x = rep(i - nRev + 0.5, length(ys)),
+           y = ys - 0.5,
+           col = colors,
+           cex = pt.size,
+           pch = 19)
+  }
+  
+  
+  #
+  # compared to standard dose group
+  #
+  
+  data = getTCellPlotDataSplit(t_cell, dose_level)
+  
+  data = data %>%
+    arrange(Concentration_ratio, Age_lower)
+  
+  for(i in nRev:nColumn){
+    
+    used = data[ ,i]
+    
+    colors = case_when(is.na(used) ~ "white",
+                       used == "Lower, Sig" ~ "#3C5488FF",
+                       used  == "Lower, NS" ~ "#4DBBD57F",
+                       used == "Higher, Sig" ~ "#E64B35FF",
+                       used == "Higher, NS" ~ "#F39B7F7F",
+                       used == "Same, NS" ~ "#7E61487F")
+    
+    points(x = rep(i - nRev + 17.5, length(ys)),
+           y = ys - 0.5,
+           col = colors,
+           cex = pt.size,
+           pch = 19)
+  }
+  
+  
+  if(any(grepl("Yang", data$Author)) == TRUE){
+    
+    # Yang
+    i = c(1:nrow(data))[grepl("Yang", data$Author) == TRUE]
+    
+    points(x = i - nRev + 17.4,
+           y = ys[17] - 0.5,
+           col = "#4DBBD57F",
+           cex = pt.size[17],
+           pch = 19)
+    
+    points(x = i - nRev + 17.6,
+           y = ys[17] - 0.5,
+           col = "#F39B7F7F",
+           cex = pt.size[17],
+           pch = 19)
+    
+  }
+  
+  colors = c("Significantly lower" = "#3C5488FF",
+             "Non-significantly lower" = "#4DBBD57F",
+             "Significantly higher" = "#E64B35FF",
+             "Non-significantly higher"  = "#F39B7F7F",
+             "Neither detectable" = "#7E61487F")
+  
+  legend(x = nColumn - nRev + 19.5,
+         y = -0.5,
+         legend = names(colors),
+         cex = 1.5,
+         xpd = TRUE,
+         col = colors,
+         pch = 19,
+         ncol = 2,
+         adj = c(0, 0.5),
+         xjust = 1,
+         bty = 'n',
+         pt.cex = 2,
+         title = "Compared to standard dose")
+  
+  colors = c("Significantly higher" = "#a26e9b",
+             "No difference"  = "#6ea275")
+  
+  legend(x = nColumn - nRev - 2.5,
+         y = -0.5,
+         legend = names(colors),
+         cex = 1.5,
+         xpd = TRUE,
+         col = colors,
+         pch = 19,
+         ncol = 1,
+         adj = c(0, 0.5),
+         xjust = 1,
+         bty = 'n',
+         pt.cex = 2,
+         title = "Compared to pre-vaccination")
+  
+  txt = c(expression(paste("IFN-", gamma, sep = "")),
+          expression("Other Th1"),
+          expression("Any Th2"),
+          
+          expression("Any Th1"),
+          expression(paste("IFN-", gamma, sep = "")),
+          expression("IL-2"),
+          expression(paste("TNF-", alpha, sep = "")),
+          
+          expression("Any Th2"),
+          expression("IL-4"),
+          expression("IL-5"),
+          expression("IL-13"),
+          
+          expression("Any"),
+          expression(paste("IFN-", gamma, sep = "")),
+          expression("IL-2"),
+          expression(paste("TNF-", alpha, sep = "")))
+  
+  text(x = c(nRev:nColumn) - nRev + 0.5,
+       y = max(ys)*1.1,
+       txt,
+       adj = c(0, 0.5),
+       srt = 90,
+       xpd = TRUE,
+       cex = size)
+  
+  text(x = c(nRev:nColumn) - nRev + 17.5,
+       y = max(ys)*1.1,
+       txt,
+       adj = c(0, 0.5),
+       srt = 90,
+       xpd = TRUE,
+       cex = size)
+  
+  y.pos = max(ys)*1.4
+  x.pos.1 = c(0.5, 3.5, 7.5, 11.5)
+  x.pos.2 = c(2.5, 6.5, 10.5, 14.5)
+  segments(x.pos.1, y.pos, x.pos.2, y.pos)
+  segments(x.pos.1, y.pos, x.pos.1, y.pos-0.5)
+  segments(x.pos.2, y.pos, x.pos.2, y.pos-0.5)
+  
+  segments(x.pos.1 + 17, y.pos, x.pos.2 + 17, y.pos)
+  segments(x.pos.1 + 17, y.pos, x.pos.1 + 17, y.pos-0.5)
+  segments(x.pos.2 + 17, y.pos, x.pos.2 + 17, y.pos-0.5)
+  
+  
+  rect(min(x.pos.1) - 0.5,
+       0,
+       max(x.pos.2) + 0.5,
+       max(ys))
+  
+  rect(min(x.pos.1) + 16.5,
+       0,
+       max(x.pos.2) + 17.5,
+       max(ys))
+  
+  segments(x.pos.2[1:3] + 0.5,
+           0,
+           x.pos.2[1:3] + 0.5,
+           max(ys))
+  
+  segments(x.pos.2[1:3] + 17.5,
+           0,
+           x.pos.2[1:3] + 17.5,
+           max(ys))
+  
+  text((x.pos.1 + x.pos.2)/2,
+       max(ys)*1.45,
+       c("CD4+/CD8+",
+         "CD4+ Th1",
+         "CD4+ Th2",
+         "CD8+"),
+       cex = size,
+       font = 2,
+       xpd = TRUE)
+  
+  text((x.pos.1 + x.pos.2)/2 + 17,
+       max(ys)*1.45,
+       c("CD4+/CD8+",
+         "CD4+ Th1",
+         "CD4+ Th2",
+         "CD8+"),
+       cex = size,
+       font = 2,
+       xpd = TRUE)
+  
+  segments(7.5, y.pos, 10.5, y.pos)
+  segments(11.5, y.pos, 14.5, y.pos)
+  
+  
+  # Information texts
+  
+  x.pos = c(#-20, 
+    -18.5, -12, -9, -6.5, -0.5)
+  
+  text(c(x.pos),
+       y = max(ys)*1.1,
+       c("Author", "Vaccine",
+         "Age", "N", "Dose fraction"),
+       font = 2,
+       adj = c(1, 0.5),
+       xpd = TRUE,
+       cex = size)
+  
+  # author
+  text(x = x.pos[1],
+       y = ys - 0.5,
+       data$Author,
+       adj = c(1, 0.5),
+       xpd = TRUE,
+       cex = size)
+  
+  # text()
+  
+  # vaccine
+  text(x = x.pos[2],
+       y = ys - 0.5,
+       data$Vaccine,
+       adj = c(1, 0.5),
+       xpd = TRUE,
+       cex = size)
+  
+  # age group
+  ages = case_when(data$Age_upper == 100 ~ paste(data$Age_lower, "+", sep = ''),
+                   data$Age_upper < 100 ~ paste(data$Age_lower, '-', data$Age_upper, sep = ''))
+  text(x = x.pos[3],
+       y = ys - 0.5,
+       ages,
+       adj = c(1, 0.5),
+       xpd = TRUE,
+       cex = size)
+  
+  # sample size
+  text(x = x.pos[4],
+       y = ys - 0.5,
+       data$N,
+       adj = c(1, 0.5),
+       xpd = TRUE,
+       cex = size)
+  
+  
+  text(x = x.pos[5]-1.5,
+       y = ys - 0.5,
+       round(data$Concentration_ratio, 2),
+       adj = c(1, 0.5),
+       xpd = TRUE,
+       cex = size)
+  
+  
+  
+}
+
+#
+# function to summarise coefficients of model
+# Table S4
+#
+
+smrTabGAM = function(model){
+  
+  smr = summary(model)
+  est = smr$p.coeff[-1]
+  se = smr$se[names(est)]
+  
+  tibble(
+    
+    var = names(est),
+    est = paste(sprintf("%.01f", 2^est),
+                '(',
+                sprintf("%.01f", 2^(est - 1.96*se)),
+                ', ',
+                sprintf("%.01f", 2^(est + 1.96*se)),
+                ')',
+                sep = '')
+    
+  )
+  
+  
+}
+
+
+#
+# functions to plot safety 
+#
+
+aggSafetyPlot = function(safety_meta){
+  
+  ggplot(data = safety_meta %>%
+           mutate(Measurement = factor(Measurement,
+                                       levels = c("Local",
+                                                  "Systemic",
+                                                  "Solicited",
+                                                  "Unsolicited",
+                                                  "Overall")),
+                  Vaccine_type = factor(Vaccine_type,
+                                        c("Inactivated",
+                                          "RNA",
+                                          "Protein_Subunit",
+                                          "Vector",
+                                          "VLP",
+                                          "Overall")))) +
+    geom_point(aes(x = Measurement,
+                   y = exp(RR),
+                   color = Vaccine_type,
+                   shape = Vaccine_type),
+               position = position_dodge(width = 0.50),
+               size = 4) +
+    geom_errorbar(aes(x = Measurement,
+                      ymin = exp(RR_lower), 
+                      ymax = exp(RR_upper),
+                      color = Vaccine_type),
+                  width = 0.3,
+                  position = position_dodge(width = 0.50)) +
+    geom_hline(yintercept = 1,
+               linetype = "dashed") +
+    scale_y_continuous(name = "Risk ratio",
+                       breaks = c(0.1, 0.5, 1, 1.5, 2, 2.5, 3, 3.5),
+                       limits = c(0.1, 3.5),
+                       expand = c(0, 0)) +
+    scale_x_discrete(name = "Adverse events") +
+    scale_color_manual(name = "Vaccine type",
+                       values = c('Inactivated' = '#4DBBD5FF',
+                                  'RNA' = '#E64B35FF',
+                                  'Protein_Subunit' = '#7E6148FF',
+                                  'Vector' = '#00A087FF',
+                                  'VLP' = '#8491B4FF',
+                                  'Overall' = "#91D1C2FF"),
+                       labels = c("Inactivated",
+                                  'mRNA',
+                                  "Protein subunit",
+                                  'NP viral vector',
+                                  'Virus-like particle',
+                                  'Overall')) +
+    scale_shape_manual(name = "Vaccine type",
+                       values = c('Inactivated' = 0,
+                                  'RNA' = 1,
+                                  'Protein_Subunit' = 2,
+                                  'Vector' = 4,
+                                  'VLP' = 5,
+                                  'Overall' = 19),
+                       labels = c("Inactivated",
+                                  'mRNA',
+                                  "Protein subunit",
+                                  'NP viral vector',
+                                  'Virus-like particle',
+                                  'Overall')) +
+    theme(legend.position = "top",
+          strip.background = element_blank(),
+          strip.text = element_text(size = 20, face = 'bold',colour = "black")) +  
+    facet_rep_wrap(~ factor(Dose_level,
+                            levels = c("Lower", "Higher")), 
+                   repeat.tick.labels = 'all',
+                   labeller = as_labeller(c("Lower" = "a) Lower dose",
+                                            "Higher" = "b) Higher dose")))
+  
+  
+}
+
+getSafetySubset = function(safety, measurement, dose_level){
+  
+  safety_sub = safety %>%
+    dplyr::filter(Measurement == measurement &
+                    Dose_level %in% c("Standard", dose_level) &
+                    !is.na(Event)) %>%
+    left_join(., 
+              raw %>%
+                dplyr::select(Record_number, Year, Vaccine, Vaccine_type) %>%
+                unique(),
+              by = c("Record_number", "Year", "Vaccine", "Vaccine_type"))
+  
+  ids = unique(safety_sub$Record_number)
+  
+  rr_subset = lapply(ids, function(i){
+    
+    # print(i)
+    
+    used = safety_sub[safety_sub$Record_number == i, ]
+    
+    if(!all(used$Dose_level == "Standard")){
+      
+      gps = unique(used[, c("Subgroup", "Dosages")])
+      
+      df =lapply(1:nrow(gps), function(j){
+        
+        xn_1 = used[used$Subgroup == gps$Subgroup[j] & 
+                      used$Dosages == gps$Dosages[j] & 
+                      used$Dose_level == dose_level, 
+                    c("Event", "N", "Dose_concentration")]
+        
+        xn_2 = used[used$Subgroup == gps$Subgroup[j] & 
+                      used$Dosages == gps$Dosages[j] & 
+                      used$Dose_level == "Standard", 
+                    c("Event", "N", "Dose_concentration")]
+        
+        if(nrow(xn_1) > 0 & nrow(xn_2) > 0){
+          
+          df = data.frame(
+            Record_number = i,
+            Author = used$Author[1],
+            Year = used$Year[1],
+            Vaccine = used$Vaccine[1],
+            Vaccine_type = used$Vaccine_type[1],
+            
+            Subgroup = gps$Subgroup[j],
+            Dosages = gps$Dosages[j],
+            
+            n1i = xn_1[2],
+            n2i = xn_2[2],
+            
+            x1i = xn_1[1],
+            x2i = xn_2[1],
+            
+            Dose_ratio = pull(xn_1[3])/pull(xn_2[3])
+            
+          )
+          
+          df
+          
+          
+        }
+        
+      })
+      
+      do.call('rbind', df)
+      
+    }
+    
+    
+    
+  })
+  
+  rr_subset = do.call('rbind', rr_subset)
+  
+  rr_subset$Study = paste(rr_subset$Author, rr_subset$Year, sep = ", ")
+  
+  rr_subset$Dose_ratio = round(rr_subset$Dose_ratio, 2)
+  
+  rr_subset %>%
+    arrange(Vaccine_type, Dose_ratio) %>%
+    mutate("Nonstandard_dose" = paste(Event, N, sep = "/"),
+           "Standard_dose" = paste(Event.1, N.1, sep = "/"))
+  
+}
+
+fitMeta = function(safety, measurement, dose_level, subgroup){
+  
+  rr_subset = getSafetySubset(safety, 
+                              measurement = measurement, 
+                              dose_level = dose_level)
+  
+  dat <- escalc(measure="RR", 
+                ai=Event, n1i=N, ci=`Event.1`, n2i=`N.1`, 
+                data=rr_subset)
+  res <- rma(yi, vi, data=dat)
+  
+  #
+  # fit random-effects model in subgroups
+  #
+  
+  if(subgroup == 'platform'){
+    
+    platform = unique(dat$Vaccine_type)
+    
+    resSub = lapply(platform, function(i){
+      
+      rma(yi, vi, 
+          subset = (Vaccine_type == i), 
+          data = dat)
+      
+    })
+    
+    names(resSub) = platform
+    
+  }
+  
+  if(subgroup == 'doses'){
+    
+    doses = c("Partial",
+              "Full",
+              "Any")
+    
+    resSub = lapply(doses, function(i){
+      
+      rma(yi, vi, 
+          subset = (Dosages == i), 
+          data = dat)
+      
+    })
+    
+    names(resSub) = doses
+    
+  }
+  
+  list(full = res,
+       subgroup = resSub,
+       data = dat)
+  
+}
+
+rawSafetyPlot = function(safety, measurement, dose_level, subgroup, panel){
+  
+  
+  if(subgroup == "platform"){
+    
+    orderLev = c("Inactivated", "mRNA", "Recombinant", "Vector", "Virus-like particle", "DNA")
+    colUsed = "Vaccine_type"
+    subgroupLabel = c("Inactivated", 
+                      "mRNA", 
+                      "Protein subunit", 
+                      "Non-replicating viral vector",
+                      "Virus-like particle", 
+                      "DNA")
+    
+    labels =  c("Vaccine",
+                "Vaccination",
+                "Dose \nratio",
+                "Nonstandard \ngroup",
+                "Standard \ngroup")
+    
+    if(dose_level == "Lower"){
+      
+      orderLev = orderLev[1:3]
+      subgroupLabel = subgroupLabel[1:3]
+      
+    }
+    
+    if(dose_level == "Higher" & measurement == "Overall"){
+      
+      orderLev = c("Inactivated",
+                   "mRNA",
+                   "Recombinant",
+                   "Vector")
+      subgroupLabel = c("Inactivated", 
+                        "mRNA", 
+                        "Protein subunit", 
+                        "Non-replicating viral vector")
+      
+    }
+    
+    if(dose_level == "Higher" & measurement == "Solicited"){
+      
+      orderLev = c("Inactivated",
+                   "Recombinant",
+                   "Vector")
+      subgroupLabel = c("Inactivated", 
+                        "Protein subunit", 
+                        "Non-replicating viral vector")
+      
+    }
+    
+    if(dose_level == "Higher" & measurement == "Unsolicited"){
+      
+      orderLev = c("Inactivated",
+                   "Recombinant",
+                   "Vector",
+                   "Virus-like particle")
+      subgroupLabel = c("Inactivated", 
+                        "Protein subunit", 
+                        "Non-replicating viral vector",
+                        "Virus-like particle")
+      
+    }
+    
+    
+  } else {
+    
+    orderLev = c('Partial', "Full", "Any")
+    colUsed = "Dosages"
+    
+    subgroupLabel = paste(orderLev,
+                          "vaccination")
+    
+    labels =  c("Vaccine \ntype",
+                "Vaccine",
+                "Dose \nratio",
+                "Nonstandard \ngroup",
+                "Standard \ngroup")
+    
+  }
+  
+  models = fitMeta(safety, measurement, dose_level, subgroup)
+  
+  dat = models$data
+  
+  x.pos = c(-9, -7.5, -6.5, -5.5, -4.5)
+  n = sapply(c(orderLev), function(i) sum(dat[ ,colUsed] == i))
+  
+  
+  x.min = -12
+  x.max = 5.5
+  y.min = -1
+  y.max = 2 + 4*length(n) + nrow(dat)
+  
+  par(mar = c(6,6,6,6))
+  
+  if(length(orderLev) == 3){
+    
+    y.pos = c(3:(n[1]+2),
+              (n[1]+7):(n[1]+6+n[2]),
+              (n[1]+n[2]+11):(sum(n)+10))
+    
+    text.pos = c(2,
+                 n[1]+6,
+                 n[1]+n[2]+10)
+    
+  }
+  
+  if(length(orderLev) == 4){
+    
+    y.pos = c(3:(n[1]+2),
+              (n[1]+7):(n[1]+n[2]+6),
+              (n[1]+n[2]+11):(sum(n[1:3])+10),
+              (sum(n[1:3])+15):(sum(n[1:4])+14))
+    
+    text.pos = c(2,
+                 n[1]+6,
+                 sum(n[1:2])+10,
+                 sum(n[1:3])+14)
+    
+  }
+  
+  if(length(orderLev) == 5){
+    
+    y.pos = c(3:(n[1]+2),
+              (n[1]+7):(n[1]+n[2]+6),
+              (n[1]+n[2]+11):(sum(n[1:3])+10),
+              (sum(n[1:3])+15):(sum(n[1:4])+14),
+              (sum(n[1:4])+19):(sum(n[1:5])+18))
+    
+    text.pos = c(2,
+                 n[1]+6,
+                 sum(n[1:2])+10,
+                 sum(n[1:3])+14,
+                 sum(n[1:4])+18)
+    
+  }
+  
+  if(length(orderLev) == 6){
+    
+    y.pos = c(3:(n[1]+2),
+              (n[1]+7):(n[1]+n[2]+6),
+              (n[1]+n[2]+11):(sum(n[1:3])+10),
+              (sum(n[1:3])+15):(sum(n[1:4])+14),
+              (sum(n[1:4])+19):(sum(n[1:5])+18),
+              (sum(n[1:5])+23):(sum(n[1:6])+22))
+    
+    text.pos = c(2,
+                 n[1]+6,
+                 sum(n[1:2])+10,
+                 sum(n[1:3])+14,
+                 sum(n[1:4])+18,
+                 sum(n[1:5])+22,
+                 sum(n[1:5])+22)
+    
+  }
+  
+  
+  top.pos = 2
+  
+  forest(models$full, 
+         annotate = TRUE,
+         addfit = TRUE,
+         xlim = c(x.min,x.max), 
+         ylim = c(y.min, y.max),
+         at = seq(-4, 4, 2),
+         header = c("Study", "Log risk ratio"), 
+         slab = paste(dat$Author, 
+                      dat$Year, 
+                      sep=", "),
+         top = top.pos, 
+         ilab=dat[ ,c("Vaccine",
+                      "Dosages",
+                      "Dose_ratio",
+                      "Nonstandard_dose",
+                      "Standard_dose")],
+         ilab.xpos = x.pos,
+         order = factor(dat[ ,colUsed],
+                        orderLev), 
+         rows= y.max - y.pos,
+         mlab = mlabfun("RE Model for All Studies", models$full),
+         cex = 1,
+         xlab = 'Log risk ratio')
+  
+  text(x.min, 
+       y.max - text.pos, 
+       pos = 4, 
+       subgroupLabel,
+       font = 4, cex = 1)
+  
+  text(x.pos, 
+       y.max, 
+       labels)
+  
+  text(x.min, 
+       y.max + 1.5, 
+       panel,
+       font = 2,
+       cex = 1.5,
+       xpd = TRUE,
+       adj = c(0, 0.5))
+  
+  ### add summary polygons for the three subgroups
+  
+  for(m in 1:length(models$subgroup)){
+    
+    addpoly(models$subgroup[[m]], 
+            row = y.max - text.pos[m] - n[m] - 1.5, 
+            cex = 1,  xpd = TRUE,
+            mlab = mlabfun("RE Model for Subgroup", 
+                           models$subgroup[[m]]))
+    
+  }
+  
+  
+}
+
+
+```
+
+
+```{r import data, include=FALSE}
+
+#
+# 1.antibody titer data ------
+#
+
+raw = read_csv("/Volumes/GoogleDrive/My Drive/projects/fractional_doses/data/data_nAbs.csv")
+
+#
+# 2. seroconversion data ------
+#
+
+seroconversion = read_csv("/Volumes/GoogleDrive/My Drive/projects/fractional_doses/data/data_seroconversion.csv")
+          
+#
+# 3. cross-reactivity data ------
+# extracted from literature (see Table S5)
+#
+
+variant_fold_change = read_excel("/Volumes/GoogleDrive/My Drive/projects/fractional_doses/ve_agg.xlsx",
+                                 sheet = "Fold_of_change") 
+
+#
+# 4. VE against VoCs predicted from dose-response relationship ------
+# to plot Figure 2
+#
+
+ve_agg = read_excel("/Volumes/GoogleDrive/My Drive/projects/fractional_doses/data/data_ve_agg.xlsx",
+                    sheet = "VE") # estimated from model; see predListVE
+
+#
+# 5. T-cell data ------
+#
+
+t_cell = read_csv("/Volumes/GoogleDrive/My Drive/projects/fractional_doses/data/data_t_cell.csv")
+
+#
+# 6. Safety data ------
+#
+safety = read_csv("/Volumes/GoogleDrive/My Drive/projects/fractional_doses/data/data_safety.csv")
+
+safety_meta = read_excel("/Volumes/GoogleDrive/My Drive/projects/fractional_doses/data/data_safety_agg.xlsx") # derived from Figure 15-19; used to plot Figure S14
+
+#
+# 7. data for validate VE against VoCs (standard dose)
+# derived from literature; see Table S6
+#
+
+ve = read_excel("/Volumes/GoogleDrive/My Drive/projects/fractional_doses/data/data_ve_variants.xlsx")
+
+
+```
+
+## Main figures
+
+**Figure 1. Dose-response relationship of neutralizing antibodies (nAbs) and vaccine efficacy (VE) against ancestral strains introduced by COVID-19 vaccines.**
+(A) Dose-response relationship of nAbs against ancestral strains. nAbs were standardized as the ratio to the convalescent sera. A 2-dose schedule was assumed for RNA, protein subunit and inactivated vaccines, while 1-dose schedule was assumed for non-replicating viral vector.Dashed horizontal line indicates the average level of nAbs against ancestral strains in convalescent sera. (B) Dose-response relationship of predicted VEs against symptomatic and severe infections of ancestral strains. (C) Association between reduction in VEs and dose fractionation. Reductions in VEs were measured as the ratio between VEs against symptomatic or severe infections of ancestral strains between fractional and standard dose groups. 
+
+```{r Figure 1, message=FALSE, echo=FALSE, warning=FALSE, fig.width=25, fig.height=20}
+
+# prepare data
+res_nt_ab = transNewVars(data = raw)
+model = fitGAM(res_nt_ab)
+predList = getPredByConcentration(model = model, age = 'Adult', vector_dose = 1) # dose-response relationship
+predListVE = getVEPredByConcentration(model = model, age = 'Adult', vector_dose = 1) # predicted VE against ancestral strains using the dose-response relationship
+
+
+layout(matrix(1:12, nrow = 3, byrow = FALSE))
+
+for(i in 1:4){
+  
+  if(i == 1){label = c("a", "b","c")} else {label = rep("", 3)} 
+  
+  plotOfPredByConcentration(predList, panel = i, label = label[1])
+  plotVEByConcentrationCombined(predListVE, 
+                                panel = c(3,2,4,1)[i], 
+                                label = label[2])
+  plotVEByConcentrationCombinedRelative(predListVE, 
+                                        panel = c(3,2,4,1)[i],  
+                                        label = label[3])
+  
+  
+}
+
+
+
+```
+
+
+**Figure 2. Predicted vaccine efficacy (VEs) against SARS-CoV-2 variants of concern after fully vaccinated with half-dose vaccines. **
+
+VEs against symptomatic (a-e) and severe (f-j) infections after full vaccination of half-dose are shown, with the complete dose-dependent effectiveness are shown in Supplementary Figure 9-10. A 2-dose schedule was assumed for RNA, protein subunit and inactivated vaccines, while 1-dose schedule was assumed for non-replicating viral vector.
+
+```{r Figure 2, message=FALSE, echo=FALSE, warning=FALSE, fig.width=18, fig.height=10}
+
+
+layout(matrix(1:10, byrow = TRUE, ncol = 5),
+       heights = c(1, 1.2),
+       widths = c(1.2, rep(1, 4)))
+
+for(i in c("Infection", "Severe")){
+  
+  if(i == "Infection"){
+    panels = letters[1:5]
+  } else {
+    panels = letters[6:10]
+  }
+
+  
+  for(j in 1:5){
+    
+    aggVePlot(ve_agg, 
+              panel = panels[j],
+              variant = unique(ve_agg$variant)[j], 
+              outcome = i)
+    
+  }
+  
+}
+
+
+```
+
+
+**Figure S3. Pooled risk ratio (in log scale) of seroconversion between fractional and standard dose group of COVID-19 vaccines.**
+Number of seroconversion individuals and sample sizes were shown for the standard and nonstandard group, respectively.
+```{r figure s3, message=FALSE, results=FALSE,fig.keep='all', echo=FALSE, warning=FALSE, fig.width=13, fig.height=15}
+
+
+scForestPlot(seroconversion, 
+              measurement = "any", 
+              dose_level = "Lower")
+
+
+```
+
+**Figure S4. Model predictions of dose-response relationship of neutralizing antibodies (nAbs) against ancestral strains introduced by COVID-19 vaccines.**
+nAbs were standardized as the ratio to the convalescent sera. Model estimates were shown in Supplementary Table 4. Dots indicates the raw data, which were shown in Supplementary Figure 5 to 7. We show predictions of nAbs on day 0 (A-D), day 14 (E-H) and day 28 (I-L) since the complete vaccination.
+
+```{r figure s4, message=FALSE, echo=FALSE, warning=FALSE, fig.width=18, fig.height=12}
+
+
+layout(mat = matrix(c(1:12), nrow = 3, byrow = FALSE),
+       widths = 1, heights = 1)
+
+for(i in 1:4){
+  
+    plotOfPredByConcentrationValidation(predList, 
+                                      model, 
+                                      panel = i, 
+                                      time = 1, # day 0
+                                      label = letters[i])
+  
+  plotOfPredByConcentrationValidation(predList, 
+                                      model, 
+                                      panel = i, # day 14
+                                      time = 2, 
+                                      label = letters[4+i])
+  
+  plotOfPredByConcentrationValidation(predList, 
+                                      model, 
+                                      panel = i, 
+                                      time = 3, # day 28+
+                                      label = letters[8+i])
+  
+}
+
+
+```
+
+
+**Figure S5. Standardized neutralizing antibodies (nAbs) introduced by COVID-19 vaccines on day 0 since the complete vaccination.** 
+nAbs were standardized as the ratio to the convalescent sera. Estimates were classified as groups that received lower (A), the same (B), and higher (C) dose than the standard dose of that vaccine.
+
+```{r figure s5, message=FALSE, echo=FALSE, warning=FALSE, fig.width=25, fig.height=16}
+
+
+layout(matrix(1:4, nrow = 2, ncol = 2, byrow = TRUE),
+       widths = rep(1.5, 2), heights = c(1.2, 0.9))
+
+pointEstPlot(res_nt_ab, 
+             subgroup = 'NT Ab',
+             d1 = 0,
+             d2 = 0,
+             concentration = 'lower',
+             panel = 1)
+
+pointEstPlot(res_nt_ab, 
+             subgroup = 'NT Ab',
+             d1 = 0,
+             d2 = 0,
+             concentration = 'standard',
+             panel = 2)
+
+pointEstPlot(res_nt_ab, 
+             subgroup = 'NT Ab',
+             d1 = 0,
+             d2 = 0,
+             concentration = 'higher',
+             panel = 3)
+
+pointEstLegendPlot()
+
+
+```
+
+
+**Figure S6. Standardized neutralizing antibodies (nAbs) introduced by COVID-19 vaccines on day 14 since the complete vaccination** 
+nAbs were standardized as the ratio to the convalescent sera. Estimates were classified as groups that received lower (A), the same (B), and higher (C) dose than the standard dose of that vaccine.
+
+```{r figure s6, message=FALSE, echo=FALSE, warning=FALSE, fig.width=25, fig.height=16}
+
+
+layout(matrix(1:4, nrow = 2, ncol = 2, byrow = TRUE),
+       widths = rep(1.5, 2), heights = c(1.2, 0.9))
+
+pointEstPlot(res_nt_ab, 
+             subgroup = 'NT Ab',
+             d1 = 14,
+             d2 = 14,
+             concentration = 'lower',
+             panel = 1)
+
+pointEstPlot(res_nt_ab, 
+             subgroup = 'NT Ab',
+             d1 = 14,
+             d2 = 14,
+             concentration = 'standard',
+             panel = 2)
+
+pointEstPlot(res_nt_ab, 
+             subgroup = 'NT Ab',
+             d1 = 14,
+             d2 = 14,
+             concentration = 'higher',
+             panel = 3)
+
+pointEstLegendPlot()
+
+
+```
+
+
+**Figure S7. Standardized neutralizing antibodies (nAbs) introduced by COVID-19 vaccines on day 28 or later since the complete vaccination** 
+nAbs were standardized as the ratio to the convalescent sera. Estimates were classified as groups that received lower (A), the same (B), and higher (C) dose than the standard dose of that vaccine.
+
+```{r figure s7, message=FALSE, echo=FALSE, warning=FALSE, fig.width=25, fig.height=16}
+
+
+layout(matrix(1:4, nrow = 2, ncol = 2, byrow = TRUE),
+       widths = rep(1.5, 2), heights = c(0.9, 1.2))
+
+pointEstPlot(res_nt_ab, 
+             subgroup = 'NT Ab',
+             d1 = 28,
+             d2 = 100,
+             concentration = 'lower',
+             panel = 1)
+
+pointEstLegendPlot()
+
+pointEstPlot(res_nt_ab, 
+             subgroup = 'NT Ab',
+             d1 = 28,
+             d2 = 100,
+             concentration = 'standard',
+             panel = 2)
+
+pointEstPlot(res_nt_ab, 
+             subgroup = 'NT Ab',
+             d1 = 28,
+             d2 = 100,
+             concentration = 'higher',
+             panel = 3)
+
+
+
+```
+
+
+**Figure S8. Associations between time since complete vaccination and the standardized neutralizing antibodies (nAbs) against the ancestral strains elicited by fractioning dose of COVID-19 vaccines.**
+Predictions on half, standard, and two-fold of the standard vaccine doses are shown. A 2-dose schedule was assumed for RNA, protein subunit and inactivated vaccines, while 1-dose schedule was assumed for non-replicating viral vector, which dose-relationship was driven by a 1-dose schedule vaccine (i.e., Ad26.COV2.S). Complete data that were used to derive these predictions were shown in Supplementary Figure 5 to 7. Dashed horizontal line indicates the average level of neutralizing antibodies against the wild-type strain in convalescent sera. (A) RNA. (B) Protein subunit. (C) Non-replicating viral vector. (D) Inactivated. 
+
+```{r figure s8, message=FALSE, echo=FALSE, warning=FALSE, fig.width=17, fig.height=15}
+
+predListTime = getPredByTime(model = model, age = 'Adult', vector_dose = 1)
+
+
+par(mfrow = c(2, 2))
+for(i in 1:4){
+  plotOfPredByTime(predListTime, panel = i)
+}
+
+
+
+```
+
+
+**Figure S9. Dose-relationship between dose fractionation and predicted vaccine efficacy (VE) against symptomatic infections of variants of concern.** Half-dose VEs were indicated.
+
+```{r figure s9, message=FALSE, echo=FALSE, warning=FALSE, fig.width=20, fig.height=25}
+
+variants = c("Alpha",
+             "Beta",
+             "Gamma",
+             "Delta",
+             "Omicron")
+
+saveData = FALSE
+
+if(saveData){
+  
+  predVeVariant = lapply(variants, function(v){
+   
+   getVEPredByConcentrationVariant(model, age = "Adult", vector_dose = 1, 
+                                   variant_fold_change, variant = v, random = TRUE)
+   
+})
+
+  names(predVeVariant) = variants
+  
+  write_rds(predVeVariant, 
+            "/Volumes/GoogleDrive/My Drive/R projects/published_Git/Fractional_doses/data/pred_Ve_against_Variant.rds")
+  
+} else {
+  
+  predVeVariant = read_rds("/Volumes/GoogleDrive/My Drive/R projects/published_Git/Fractional_doses/data/pred_Ve_against_Variant.rds")
+  
+}
+
+
+layout(matrix(1:20, nrow = 5, ncol = 4, byrow = TRUE),
+       widths = c(1.1, 1,1,1),
+       heights = c(1.2, 1,1,1))
+
+for(i in 1:5){
+   
+   sapply(1:4, function(j){
+      
+      plotVEByConcentrationVariant(predVeVariant,
+                                   column = j, 
+                                   row = i,
+                                   outcome = "infection")
+      
+   })
+   
+}
+
+
+```
+
+
+**Figure S10. Dose-relationship between dose fractionation and predicted vaccine efficacy (VE) against severe infections of variants of concern.** Half-dose VEs were indicated.
+
+```{r figure s10, message=FALSE, echo=FALSE, warning=FALSE, fig.width=20, fig.height=26}
+
+layout(matrix(1:20, nrow = 5, ncol = 4, byrow = TRUE),
+       widths = c(1.1, 1,1,1),
+       heights = c(1.2, 1,1,1))
+
+for(i in 1:5){
+   
+   sapply(1:4, function(j){
+      
+      plotVEByConcentrationVariant(predVeVariant,
+                                   column = j, 
+                                   row = i,
+                                   outcome = "severe")
+      
+   })
+   
+}
+
+
+```
+
+
+**Figure S11. Correlation between predicted and observed vaccine efficacy (VE) against variants of concern for standard dose of COVID-19 vaccines.** 
+Full model predictions (dose ratio = 1) were shown in Supplementary Figure S9. Observation data were shown in Supplementary Table 6.
+
+```{r figure s11, message=FALSE, echo=FALSE, warning=FALSE, fig.width=9, fig.height=7}
+
+ve = getVEvalidationData(predVeVariant, ve) # data for Table S6
+
+
+VEValidationPlot(ve)
+
+
+
+```
+
+**Figure S12. Comparison of T-cell responses against the ancestral strains elicited by dose fractioning of COVID-19 vaccines.**
+Size of dots represent the total sample sizes of the standard and non-standard dose groups. (A) Compared to pre-vaccination. If the mean and 95% CI of the difference in mean T-cell levels before and after the fractional doses were all greater than 0, we determined T-cell responses were significantly higher between the groups. (B) Compared to people who received standard doses. If the mean and 95% CI of the difference in mean T-cell levels between the fractional and standard dose groups were all greater or less than 0, we determined T-cell responses were significantly higher or lower than that elicited by the standard dose.
+
+```{r figure s12, message=FALSE, echo=FALSE, warning=FALSE, fig.width=22.5, fig.height=10}
+
+
+tCellPlotSplit(t_cell, dose_level = "Lower")
+
+
+```
+
+
+
+**Figure S13. Comparison of T-cell responses against the ancestral strains elicited by higher doses of COVID-19 vaccines.**
+Size of dots represent the total sample sizes of the standard and non-standard dose groups. (A) Compared to pre-vaccination. If the mean and 95% CI of the difference in mean T-cell levels before and after the higher doses were all greater than 0, we determined T-cell responses were significantly higher between the groups. (B) Compared to people who received standard doses. If the mean and 95% CI of the difference in mean T-cell levels between the higher and standard dose groups were all greater or less than 0, we determined T-cell responses were significantly higher or lower than that elicited by the standard dose.
+
+```{r figure s13, message=FALSE, echo=FALSE, warning=FALSE, fig.width=22.5, fig.height=10}
+
+tCellPlotSplit(t_cell, dose_level = "Higher")
+
+
+```
+
+
+**Figure S14. Comparison of safety after vaccinated with lower doses (left) and higher doses (right) to standard doses of SARS-CoV-2 vaccines.**
+Complete data that were used to derive the pooled estimates were shown in Figure S15-19. Dashed horizontal line indicates the average level of adverse events after vaccinated with standard doses of vaccines. 
+
+```{r figure 14, message=FALSE, echo=FALSE, warning=FALSE, fig.width=13, fig.height=7}
+
+
+aggSafetyPlot(safety_meta)
+
+
+```
+
+**Figure S15 to S19. Pooled risk ratio (in log scale) of experiencing adverse events after vaccinated with fractional and standard dose groups.**
+
+```{r figure 15-19, message=FALSE, echo=FALSE, fig.keep='all', warning=FALSE, fig.width=12, fig.height=10}
+
+i = 'Lower'
+w = 16
+h = 12
+
+measurements = c("Local", "Systemic",
+                 "Solicited", "Unsolicited",
+                 "Overall")
+
+for(k in 1:5){
+    
+  j = measurements[k]
+    
+    rawSafetyPlot(safety,
+                  measurement = j,
+                  dose_level = i,
+                  subgroup = 'platform',
+                  panel = paste(j, 
+                                " events in ",
+                                tolower(i),
+                                " dose group",
+                                sep = ""))
+    
+  }
+
+```
+
+
+## Supplementary Tables
+
+**Supplementary Table 3. Factors associated with risk of experiencing seroconversion of neutralizing antibodies after receiving non-standard and standard doses.**
+
+```{r Supplementary Table 3, message=FALSE, echo=FALSE, warning=FALSE}
+
+tab_lower = getScMetaTable(seroconversion, "any", "Lower")
+tab_higher = getScMetaTable(seroconversion, "any", "Higher")
+
+kable(tab_lower)
+kable(tab_higher)
+
+```
+
+
+**Supplementary Table 4. Factors associated with neutralizing antibody responses after receiving different fractional doses of vaccinations.**
+
+```{r Supplementary Table 4, message=FALSE, echo=FALSE, warning=FALSE}
+
+gam_smr = smrTabGAM(model)
+
+kable(gam_smr)
+
+
+
+```
+
