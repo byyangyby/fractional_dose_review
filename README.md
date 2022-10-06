@@ -1,10 +1,12 @@
 # Review of dose fractionation of COVID-19 vaccines
 
-This reposory contains data and R scripts that were used for the preprint entitled **"Immunogenicity, efficacy, and safety of SARS-CoV-2 vaccine dose fractionation: a systematic review and meta-analysis"** by Yang B, Huang X., Gao H., Leung N.H., Tsang T.K. and Cowling B.J..
+This reposory contains data and R scripts that were used for the manuscript:
+
+Yang B, Huang X., Gao H., Leung N.H., Tsang T.K. and Cowling B.J. **"Immunogenicity, efficacy, and safety of SARS-CoV-2 vaccine dose fractionation: a systematic review and meta-analysis"**. [Preprint](https://doi.org/10.21203/rs.3.rs-1571821/v2)
 
 Correspondance regarding this study shall be addressed to Benjamin Cowling (bcowling@hku.hk) or Bingyi Yang (yangby@hku.hk).
 
-## Data
+## Data [![DOI](https://sandbox.zenodo.org/badge/468280269.svg)](https://sandbox.zenodo.org/badge/latestdoi/468280269)
 
 All data were extracted and summaized from published studies, with detailed can be found in file *References*. 
 
