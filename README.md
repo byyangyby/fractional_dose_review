@@ -2,7 +2,7 @@
 
 This reposory contains data and R scripts that were used for the manuscript:
 
-Yang B, Huang X., Gao H., Leung N.H., Tsang T.K. and Cowling B.J. [**Immunogenicity, efficacy, and safety of SARS-CoV-2 vaccine dose fractionation: a systematic review and meta-analysis.**](https://doi.org/10.1186/s12916-022-02600-0) _BMC Med_ 20, 409 (2022).
+Yang B, Huang X., Gao H., Leung N.H., Tsang T.K. and Cowling B.J. [Immunogenicity, efficacy, and safety of SARS-CoV-2 vaccine dose fractionation: a systematic review and meta-analysis.](https://doi.org/10.1186/s12916-022-02600-0) _BMC Med_ 20, 409 (2022).
 
 Correspondance regarding this study shall be addressed to Benjamin Cowling (bcowling@hku.hk) or Bingyi Yang (yangby@hku.hk).
 
